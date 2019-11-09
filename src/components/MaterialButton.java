@@ -19,22 +19,19 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import global.ActiveTheme;
+import global.Themes;
 import settings.ColorTheme;
 
-//TODO: Primijeniti boje iz teme
 @SuppressWarnings("serial")
 public class MaterialButton extends JButton {
+	@SuppressWarnings("unused")
 	private static final int PRIMARY_BUTTON = 1;
+	@SuppressWarnings("unused")
 	private static final int SECONDARY_BUTTON = 2;
+	@SuppressWarnings("unused")
 	private static final int OPTIONAL_BUTTON = 3;
 
 	private int buttonType;
-	private Color primaryColor = new Color(32, 135, 255);
-	private Color hoverColor = new Color(255, 50, 50);
-	private Color focusColor = new Color(255, 0, 0);
-	private Color textColor = new Color(255, 255, 255);
-	private Color textColorHover = new Color(255, 255, 255);
 
 	private Font font = new Font("MS UI Gothic", Font.BOLD, 24);
 
@@ -81,8 +78,8 @@ public class MaterialButton extends JButton {
 		graphics2d.fillRect(0, 0, dimensions.width, dimensions.height);
 		int borderRadius = (dimensions.width > dimensions.height) ? dimensions.height / 4 : dimensions.width / 4;
 
-		ColorTheme th =ActiveTheme.getInstance();
-		
+		ColorTheme th = Themes.getInstance();
+
 		if (icon != null) {
 			Image image = ((ImageIcon) icon).getImage();
 			int st = borderRadius / 5; // Stroke thickness
@@ -107,32 +104,43 @@ public class MaterialButton extends JButton {
 			}
 
 		} else if (text != null) {
+			Color buttonColor = null;
+			switch (buttonType) {
+			case 1:
+				buttonColor = th.getPrimaryButtonColor();
+				break;
+			case 2:
+				buttonColor = th.getSecondaryButtonColor();
+				break;
+			case 3:
+				buttonColor = th.getOptionalButtonColor();
+			}
 			if (hover && !mousePressed) {
-				graphics2d.setColor(hoverColor);
+				graphics2d.setColor(th.getDangerColor());
 				graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
-				graphics2d.setColor(textColorHover);
+				graphics2d.setColor(th.getSecondaryTextColor());
 				Point p = getTextPosition(font);
 				graphics2d.drawString(text, p.x, p.y);
 				return;
 			}
 
 			if (mousePressed) {
-				graphics2d.setColor(hoverColor);
+				graphics2d.setColor(th.getDangerColor());
 				graphics2d.fillRoundRect(2, 2, dimensions.width - 4, dimensions.height - 4, borderRadius, borderRadius);
-				graphics2d.setColor(textColorHover);
+				graphics2d.setColor(th.getSecondaryTextColor());
 				Point p = getTextPosition(font);
 				graphics2d.drawString(text, p.x, p.y);
 				return;
 			}
 
-			graphics2d.setColor(primaryColor);
+			graphics2d.setColor(buttonColor);
 			graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
-			graphics2d.setColor(textColor);
+			graphics2d.setColor(th.getSecondaryTextColor());
 			Point p = getTextPosition(font);
 			graphics2d.drawString(text, p.x, p.y);
 
 			if (isFocused) {
-				graphics2d.setColor(focusColor);
+				graphics2d.setColor(th.getDangerColor());
 				graphics2d.fillOval(dimensions.width - 10, dimensions.height - 10, 10, 10);
 			}
 		}

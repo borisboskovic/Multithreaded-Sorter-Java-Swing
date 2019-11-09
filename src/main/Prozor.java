@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import components.MaterialButton;
+import components.MaterialTextField;
 import components.PanelButton;
 
 public class Prozor extends JFrame {
@@ -45,11 +46,12 @@ public class Prozor extends JFrame {
 		left.setLayout(leftPanelLayout);
 		left.setBackground(Color.WHITE);
 		
-		left.add(new PanelButton("Generisi fajlove sa nasumiènim brojevima"));
-		left.add(new PanelButton("Sortiraj na jednom tredu"));
-		left.add(new PanelButton("Sortiraj više fajlova istovremeno"));
-		left.add(new PanelButton("Uporedi performanse sortiranja"));
+		left.add(new PanelButton("Generisi fajlove sa\nnasumiènim brojevima"));
+		left.add(new PanelButton("Sortiraj na jednom\ntredu"));
+		left.add(new PanelButton("Sortiraj više\nfajlova istovremeno"));
+		left.add(new PanelButton("Uporedi performanse\nsortiranja"));
 		
+		panel.add(new MaterialTextField(15));
 		
 		add(panel, BorderLayout.CENTER);
 		add(left, BorderLayout.WEST);

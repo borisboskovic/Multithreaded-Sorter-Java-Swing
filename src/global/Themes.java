@@ -13,10 +13,10 @@ import com.google.gson.GsonBuilder;
 
 import settings.ColorTheme;
 
-public class ActiveTheme {
+public class Themes {
 	private static ColorTheme theme = null;
 
-	private ActiveTheme() {
+	private Themes() {
 	}
 
 	public static ColorTheme getInstance() {
@@ -68,7 +68,7 @@ public class ActiveTheme {
 		defaultTheme.setMainPanelColor(Color.WHITE);
 		defaultTheme.setPrimaryTextColor(Color.BLACK);
 
-		ActiveTheme.theme = defaultTheme;
+		Themes.theme = defaultTheme;
 
 		Gson gson = new GsonBuilder().create();
 
