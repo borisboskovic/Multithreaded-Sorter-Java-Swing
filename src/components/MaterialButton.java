@@ -19,6 +19,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import global.Fonts;
 import global.Themes;
 import settings.ColorTheme;
 
@@ -33,7 +34,7 @@ public class MaterialButton extends JButton {
 
 	private int buttonType;
 
-	private Font font = new Font("MS UI Gothic", Font.BOLD, 24);
+	private Font font;
 
 	private boolean hover = false;
 	private boolean mousePressed = false;
@@ -44,6 +45,7 @@ public class MaterialButton extends JButton {
 
 	public MaterialButton(String text) {
 		super(text);
+		font = new Font(Fonts.getCurrentFontName(), Font.PLAIN, 24);
 		super.setFont(font);
 		this.text = text;
 		buttonType = 1;
@@ -78,7 +80,7 @@ public class MaterialButton extends JButton {
 		graphics2d.fillRect(0, 0, dimensions.width, dimensions.height);
 		int borderRadius = (dimensions.width > dimensions.height) ? dimensions.height / 4 : dimensions.width / 4;
 
-		ColorTheme th = Themes.getInstance();
+		ColorTheme th = Themes.getCurrentTheme();
 
 		if (icon != null) {
 			Image image = ((ImageIcon) icon).getImage();

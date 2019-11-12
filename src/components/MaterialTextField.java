@@ -1,37 +1,36 @@
 package components;
 
+import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import global.Fonts;
+import global.Themes;
 
 public class MaterialTextField extends JTextField {
 
+	private Font font;
+
 	public MaterialTextField(int length) {
 		super(length);
-		dohvatiFont();
-		System.out.println(getFont().getFamily());
+		font = new Font(Fonts.getCurrentFontName(), Font.PLAIN, 22);
+		setFont(font);
+		applyStyle();
 	}
 
-	private void dohvatiFont() {
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		try {
-			ge.registerFont(Font.createFont(Font.PLAIN, new FileInputStream("resources//fonts//Roboto-Condensed.ttf")));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.setFont(new Font("Roboto Cn", Font.PLAIN, 24));
+	private void applyStyle() {
+		setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createLineBorder(Themes.getCurrentTheme().getThemeColor(), 0),
+				BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+		setBackground(Themes.getCurrentTheme().getInputMainColor());
+		setCaretColor(Themes.getCurrentTheme().getPrimaryTextColor());
+		setForeground(Themes.getCurrentTheme().getPrimaryTextColor());
+//		setPreferredSize(new Dimension(100, 50));
+		setCaretPosition(0);
 	}
 
 }

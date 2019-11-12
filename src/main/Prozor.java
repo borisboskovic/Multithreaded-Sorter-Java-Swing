@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import components.MaterialButton;
 import components.MaterialTextField;
 import components.PanelButton;
+import view.GeneratorPanel;
 
 public class Prozor extends JFrame {
 
@@ -52,9 +53,12 @@ public class Prozor extends JFrame {
 		left.add(new PanelButton("Uporedi performanse\nsortiranja"));
 		
 		panel.add(new MaterialTextField(15));
+		panel.add(new MaterialTextField(10));
 		
 		add(panel, BorderLayout.CENTER);
 		add(left, BorderLayout.WEST);
+		
+		add(new GeneratorPanel(), BorderLayout.SOUTH);
 		setVisible(true);
 	}
 

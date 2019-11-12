@@ -1,7 +1,7 @@
 /******************************************************************************
  * Author: Milica Milosevic, Boris Boskovic
  * Purpose: Singleton klasa Fonts. Pri kreiranju dohvata i registruje fontove
- * 		koji se nalaze u resursima. Posjeduje metodu
+ * 		koji se nalaze u resursima.
  *****************************************************************************/
 package global;
 
@@ -23,6 +23,13 @@ public class Fonts {
 	 * Private Constructor (Singletone class)
 	 */
 	private Fonts() {
+		registerFonts();
+	}
+
+	/**
+	 * Metoda registruje sve fontove iz foldera fonts u graficko okruzenje
+	 */
+	public void registerFonts() {
 		File fontsDirectory = new File("resources//fonts");
 		File[] fontFiles = fontsDirectory.listFiles();
 
@@ -49,7 +56,7 @@ public class Fonts {
 			}
 		}
 	}
-
+	
 	/**
 	 * Metoda koja dohvaca ime trenutno podesenog fajla. Ime se cuva u:
 	 * resoures/current-font
@@ -57,6 +64,9 @@ public class Fonts {
 	 * @return Naziv trenutno podesenog fonta
 	 */
 	public static String getCurrentFontName() throws NullPointerException {
+		if (fonts == null)
+			fonts = new Fonts();
+
 		String fontFamilyName = null;
 		BufferedReader in = null;
 		try {

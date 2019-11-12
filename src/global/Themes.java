@@ -1,3 +1,8 @@
+/******************************************************************************
+ * Author: Milica Milosevic, Boris Boskovic
+ * Purpose: Singleton klasa Themes. Pri kreiranju dohvata sve teme i registruje
+ * 		izabranu temu
+ *****************************************************************************/
 package global;
 
 import java.awt.Color;
@@ -7,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,35 +21,15 @@ import settings.ColorTheme;
 
 public class Themes {
 	private static ColorTheme theme = null;
+	private static HashMap<String, ColorTheme> allThemes = new HashMap<>();
 
 	private Themes() {
 	}
 
-	public static ColorTheme getInstance() {
+	public static ColorTheme getCurrentTheme() {
 		if (theme == null)
 			getFromFile();
 		return theme;
-	}
-
-	private static void getFromFile() {
-		String activeThemeName;
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader("preferences\\active-theme"));
-			activeThemeName = reader.readLine();
-			reader.close();
-
-			File themesDirectory = new File("resources\\themes");
-			File[] themes = themesDirectory.listFiles();
-			for (File th : themes) {
-				if (th.getName().contains(activeThemeName)) {
-					BufferedReader reader2 = new BufferedReader(new FileReader(th));
-					Gson gson = new GsonBuilder().create();
-					theme = gson.fromJson(reader2, ColorTheme.class);
-				}
-			}
-		} catch (IOException e) {
-			generateDefaultTheme();
-		}
 	}
 
 	public static void refresh() {
@@ -78,7 +64,34 @@ public class Themes {
 			gson.toJson(defaultTheme, writer);
 			writer.close();
 		} catch (IOException e) {
-//
+		}
+	}
+
+	private static void getFromFile() {
+		theme = null;
+		allThemes = new HashMap<>();
+		String activeThemeName;
+		try {
+			BufferedReader readerActive = new BufferedReader(new FileReader("preferences\\active-theme"));
+			activeThemeName = readerActive.readLine();
+			readerActive.close();
+
+			File themesDirectory = new File("resources\\themes");
+			File[] themes = themesDirectory.listFiles();
+			BufferedReader reader = null;
+
+			for (File th : themes) {
+				System.out.println(th);
+				reader = new BufferedReader(new FileReader(th));
+				Gson gson = new GsonBuilder().create();
+				ColorTheme temp = gson.fromJson(reader, ColorTheme.class);
+				allThemes.put(temp.getThemeName(), temp);
+			}
+			theme = allThemes.get(activeThemeName);
+
+			reader.close();
+		} catch (IOException e) {
+			generateDefaultTheme();
 		}
 	}
 
