@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 
-import global.Fonts;
 import global.Themes;
 import settings.ColorTheme;
 
@@ -32,7 +31,7 @@ public class PanelButton extends JButton {
 
 	public PanelButton(String text) {
 		super(text);
-		font = new Font(Fonts.getCurrentFontName(), Font.PLAIN, 24);
+		font = Themes.getCurrentTheme().getFonts().getPanelButtonFont();
 		setFont(font);
 		this.text = text;
 		this.addMouseListener(mouseListener);

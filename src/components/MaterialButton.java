@@ -19,18 +19,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import global.Fonts;
 import global.Themes;
 import settings.ColorTheme;
 
 @SuppressWarnings("serial")
 public class MaterialButton extends JButton {
-	@SuppressWarnings("unused")
-	private static final int PRIMARY_BUTTON = 1;
-	@SuppressWarnings("unused")
-	private static final int SECONDARY_BUTTON = 2;
-	@SuppressWarnings("unused")
-	private static final int OPTIONAL_BUTTON = 3;
+	public static final int PRIMARY_BUTTON = 1;
+	public static final int SECONDARY_BUTTON = 2;
+	public static final int OPTIONAL_BUTTON = 3;
 
 	private int buttonType;
 
@@ -45,7 +41,7 @@ public class MaterialButton extends JButton {
 
 	public MaterialButton(String text) {
 		super(text);
-		font = new Font(Fonts.getCurrentFontName(), Font.PLAIN, 24);
+		font = Themes.getCurrentTheme().getFonts().getMainButtonFont();
 		super.setFont(font);
 		this.text = text;
 		buttonType = 1;
@@ -55,6 +51,7 @@ public class MaterialButton extends JButton {
 
 	public MaterialButton(String text, int buttonType) {
 		super(text);
+		font = Themes.getCurrentTheme().getFonts().getMainButtonFont();
 		super.setFont(font);
 		this.text = text;
 		this.buttonType = buttonType;
@@ -76,10 +73,12 @@ public class MaterialButton extends JButton {
 		graphics2d.setFont(font);
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics2d.setColor(this.getParent().getBackground());
+		graphics2d.clearRect(0, 0, getSize().width, getSize().height);
 		Dimension dimensions = this.getPreferredSize();
 		graphics2d.fillRect(0, 0, dimensions.width, dimensions.height);
 		int borderRadius = (dimensions.width > dimensions.height) ? dimensions.height / 4 : dimensions.width / 4;
 
+		
 		ColorTheme th = Themes.getCurrentTheme();
 
 		if (icon != null) {

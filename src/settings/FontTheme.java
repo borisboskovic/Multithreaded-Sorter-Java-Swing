@@ -8,17 +8,7 @@ public class FontTheme {
 	private Font labelFont;
 	private Font textFieldFont;
 	private Font statusBarFont;
-	
-	private String themeName;
-	private String fontFamily;
-	
-	public String getThemeName() {
-		return themeName;
-	}
-	
-	public String getFontFamily() {
-		return fontFamily;
-	}
+	private Font importantFont;
 	
 	public Font getPanelButtonFont() {
 		return panelButtonFont;
@@ -35,4 +25,33 @@ public class FontTheme {
 	public Font getStatusBarFont() {
 		return statusBarFont;
 	}
+
+	public void setPanelButtonFont(Font panelButtonFont) {
+		this.panelButtonFont = panelButtonFont;
+	}
+
+	public void setMainButtonFont(Font mainButtonFont) {
+		this.mainButtonFont = mainButtonFont;
+	}
+
+	public void setLabelFont(Font labelFont) {
+		this.labelFont = labelFont;
+	}
+
+	public void setTextFieldFont(Font textFieldFont) {
+		this.textFieldFont = textFieldFont;
+	}
+
+	public void setStatusBarFont(Font statusBarFont) {
+		this.statusBarFont = statusBarFont;
+	}
+	
+	public Font getImportantFont() {
+		return importantFont;
+	}
+	
+	public void setImportantFont(Font importantFont) {
+		this.importantFont = importantFont;
+	}
+	
 }

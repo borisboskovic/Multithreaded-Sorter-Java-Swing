@@ -33,6 +33,7 @@ public class Prozor extends JFrame {
 		
 		JPanel panel = new JPanel(new FlowLayout());
 		button = new MaterialButton("Button");
+		panel.setBackground(Color.WHITE);
 		panel.add(button);
 		panel.add(new MaterialButton("Još jedan"));
 		MaterialButton dugme = new MaterialButton(new ImageIcon("C:\\Users\\Boris\\Desktop\\gear.png"),

@@ -1,1 +1,99 @@
-{"themeColor":{"value":-14645249,"falpha":0.0},"mainPanelColor":{"value":-1,"falpha":0.0},"primaryTextColor":{"value":-16777216,"falpha":0.0},"secondaryTextColor":{"value":-1,"falpha":0.0},"separatorColor":{"value":-1,"falpha":0.0},"dangerColor":{"value":-1048576,"falpha":0.0},"sectionColor":{"value":-1513240,"falpha":0.0},"primaryButtonColor":{"value":-14645249,"falpha":0.0},"secondaryButtonColor":{"value":-1048576,"falpha":0.0},"optionalButtonColor":{"value":-3947581,"falpha":0.0},"inputAccentColor":{"value":-14645249,"falpha":0.0},"inputMainColor":{"value":-3947581,"falpha":0.0},"specialInfoColor":{"value":-16777216,"falpha":0.0},"themeName":"default-blue"}
+{
+    "themeColor": {
+        "value": -14645249,
+        "falpha": 0.0
+    },
+    "mainPanelColor": {
+        "value": -1,
+        "falpha": 0.0
+    },
+    "primaryTextColor": {
+        "value": -16777216,
+        "falpha": 0.0
+    },
+    "secondaryTextColor": {
+        "value": -1,
+        "falpha": 0.0
+    },
+    "separatorColor": {
+        "value": -1,
+        "falpha": 0.0
+    },
+    "dangerColor": {
+        "value": -1048576,
+        "falpha": 0.0
+    },
+    "sectionColor": {
+        "value": -1513240,
+        "falpha": 0.0
+    },
+    "primaryButtonColor": {
+        "value": -14645249,
+        "falpha": 0.0
+    },
+    "secondaryButtonColor": {
+        "value": -1048576,
+        "falpha": 0.0
+    },
+    "optionalButtonColor": {
+        "value": -3947581,
+        "falpha": 0.0
+    },
+    "inputAccentColor": {
+        "value": -14645249,
+        "falpha": 0.0
+    },
+    "inputMainColor": {
+        "value": -3947581,
+        "falpha": 0.0
+    },
+    "specialInfoColor": {
+        "value": -16777216,
+        "falpha": 0.0
+    },
+    "themeName": "default-blue",
+    "fonts": {
+        "panelButtonFont": {
+            "name": "Roboto Cn",
+            "style": 0,
+            "size": 24,
+            "pointSize": 24.0,
+            "fontSerializedDataVersion": 1
+        },
+        "mainButtonFont": {
+            "name": "Roboto Cn",
+            "style": 0,
+            "size": 24,
+            "pointSize": 24.0,
+            "fontSerializedDataVersion": 1
+        },
+        "labelFont": {
+            "name": "Roboto Cn",
+            "style": 0,
+            "size": 24,
+            "pointSize": 24.0,
+            "fontSerializedDataVersion": 1
+        },
+        "textFieldFont": {
+            "name": "Roboto Cn",
+            "style": 0,
+            "size": 24,
+            "pointSize": 24.0,
+            "fontSerializedDataVersion": 1
+        },
+        "statusBarFont": {
+            "name": "Roboto Cn",
+            "style": 0,
+            "size": 24,
+            "pointSize": 24.0,
+            "fontSerializedDataVersion": 1
+        },
+        "importantFont": {
+            "name": "Roboto Cn",
+            "style": 3,
+            "size": 36,
+            "pointSize": 36.0,
+            "fontSerializedDataVersion": 1
+        }
+    }
+}

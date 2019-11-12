@@ -18,9 +18,19 @@ public class ColorTheme {
 	private Color specialInfoColor;
 	
 	private String themeName;
+	
+	private FontTheme fonts;
 
 	public Color getThemeColor() {
 		return themeColor;
+	}
+	
+	public FontTheme getFonts() {
+		return fonts;
+	}
+	
+	public void setFonts(FontTheme fonts) {
+		this.fonts = fonts;
 	}
 
 	public void setThemeColor(Color themeColor) {
