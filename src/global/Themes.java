@@ -122,7 +122,7 @@ public class Themes {
 		
 		// Postavljanje fontova
 		FontTheme fonts = new FontTheme();
-		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
+		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 20));
 		fonts.setMainButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setTextFieldFont(new Font("Roboto Cn", Font.PLAIN, 24));
