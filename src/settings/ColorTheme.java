@@ -4,77 +4,46 @@ import java.awt.Color;
 
 public class ColorTheme {
 	private Color themeColor;
-	private Color mainPanelColor;
-	private Color primaryTextColor;
-	private Color secondaryTextColor;
-	private Color separatorColor;
-	private Color dangerColor;
+	private Color themeDarkerColor;
+	private Color themeLighterColor;
+
 	private Color sectionColor;
-	private Color primaryButtonColor;
-	private Color secondaryButtonColor;
-	private Color optionalButtonColor;
-	private Color inputAccentColor;
-	private Color inputMainColor;
-	private Color specialInfoColor;
-	
+	private Color backgroundColor;
+
+	private Color textPrimaryColor;
+	private Color textSecondaryColor;
+
+	private Color accentColor;
+	private Color accentLighterColor;
+	private Color specialColor;
+
 	private String themeName;
-	
+
+	private String backgroundImageUrl = null;
 	private FontTheme fonts;
 
 	public Color getThemeColor() {
 		return themeColor;
-	}
-	
-	public FontTheme getFonts() {
-		return fonts;
-	}
-	
-	public void setFonts(FontTheme fonts) {
-		this.fonts = fonts;
 	}
 
 	public void setThemeColor(Color themeColor) {
 		this.themeColor = themeColor;
 	}
 
-	public Color getMainPanelColor() {
-		return mainPanelColor;
+	public Color getThemeDarkerColor() {
+		return themeDarkerColor;
 	}
 
-	public void setMainPanelColor(Color mainPanelColor) {
-		this.mainPanelColor = mainPanelColor;
+	public void setThemeDarkerColor(Color themeDarkerColor) {
+		this.themeDarkerColor = themeDarkerColor;
 	}
 
-	public Color getPrimaryTextColor() {
-		return primaryTextColor;
+	public Color getThemeLighterColor() {
+		return themeLighterColor;
 	}
 
-	public void setPrimaryTextColor(Color primaryTextColor) {
-		this.primaryTextColor = primaryTextColor;
-	}
-
-	public Color getSecondaryTextColor() {
-		return secondaryTextColor;
-	}
-
-	public void setSecondaryTextColor(Color secondaryTextColor) {
-		this.secondaryTextColor = secondaryTextColor;
-	}
-
-	public Color getSeparatorColor() {
-		return separatorColor;
-	}
-
-	public void setSeparatorColor(Color separatorColor) {
-		this.separatorColor = separatorColor;
-	}
-
-	public Color getDangerColor() {
-		return dangerColor;
-	}
-
-	public void setDangerColor(Color dangerColor) {
-		this.dangerColor = dangerColor;
+	public void setThemeLighterColor(Color themeLighterColor) {
+		this.themeLighterColor = themeLighterColor;
 	}
 
 	public Color getSectionColor() {
@@ -85,52 +54,52 @@ public class ColorTheme {
 		this.sectionColor = sectionColor;
 	}
 
-	public Color getPrimaryButtonColor() {
-		return primaryButtonColor;
+	public Color getBackgroundColor() {
+		return backgroundColor;
 	}
 
-	public void setPrimaryButtonColor(Color primaryButtonColor) {
-		this.primaryButtonColor = primaryButtonColor;
+	public void setBackgroundColor(Color backgroundColor) {
+		this.backgroundColor = backgroundColor;
 	}
 
-	public Color getSecondaryButtonColor() {
-		return secondaryButtonColor;
+	public Color getTextPrimaryColor() {
+		return textPrimaryColor;
 	}
 
-	public void setSecondaryButtonColor(Color secondaryButtonColor) {
-		this.secondaryButtonColor = secondaryButtonColor;
+	public void setTextPrimaryColor(Color textPrimaryColor) {
+		this.textPrimaryColor = textPrimaryColor;
 	}
 
-	public Color getOptionalButtonColor() {
-		return optionalButtonColor;
+	public Color getTextSecondaryColor() {
+		return textSecondaryColor;
 	}
 
-	public void setOptionalButtonColor(Color optionalButtonColor) {
-		this.optionalButtonColor = optionalButtonColor;
+	public void setTextSecondaryColor(Color textSecondaryColor) {
+		this.textSecondaryColor = textSecondaryColor;
 	}
 
-	public Color getInputAccentColor() {
-		return inputAccentColor;
+	public Color getAccentColor() {
+		return accentColor;
 	}
 
-	public void setInputAccentColor(Color inputAccentColor) {
-		this.inputAccentColor = inputAccentColor;
+	public void setAccentColor(Color accentColor) {
+		this.accentColor = accentColor;
 	}
 
-	public Color getInputMainColor() {
-		return inputMainColor;
+	public Color getAccentLighterColor() {
+		return accentLighterColor;
 	}
 
-	public void setInputMainColor(Color inputMainColor) {
-		this.inputMainColor = inputMainColor;
+	public void setAccentLighterColor(Color accentLighterColor) {
+		this.accentLighterColor = accentLighterColor;
 	}
 
-	public Color getSpecialInfoColor() {
-		return specialInfoColor;
+	public Color getSpecialColor() {
+		return specialColor;
 	}
 
-	public void setSpecialInfoColor(Color specialInfoColor) {
-		this.specialInfoColor = specialInfoColor;
+	public void setSpecialColor(Color specialColor) {
+		this.specialColor = specialColor;
 	}
 
 	public String getThemeName() {
@@ -140,6 +109,20 @@ public class ColorTheme {
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
 	}
-	
-	
+
+	public String getBackgroundImageUrl() {
+		return backgroundImageUrl;
+	}
+
+	public void setBackgroundImageUrl(String backgroundImageUrl) {
+		this.backgroundImageUrl = backgroundImageUrl;
+	}
+
+	public FontTheme getFonts() {
+		return fonts;
+	}
+
+	public void setFonts(FontTheme fonts) {
+		this.fonts = fonts;
+	}
 }

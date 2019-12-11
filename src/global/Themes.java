@@ -41,8 +41,6 @@ public class Themes {
 		getFromFile();
 	}
 
-	
-
 	private static void getFromFile() {
 		registerFonts();
 		theme = null;
@@ -58,7 +56,6 @@ public class Themes {
 			BufferedReader reader = null;
 
 			for (File th : themes) {
-				System.out.println(th);
 				reader = new BufferedReader(new FileReader(th));
 				Gson gson = new GsonBuilder().create();
 				ColorTheme temp = gson.fromJson(reader, ColorTheme.class);
@@ -102,39 +99,40 @@ public class Themes {
 			}
 		}
 	}
-	
-	
+
 	public static void generateDefaultTheme() {
 		ColorTheme defaultTheme = new ColorTheme();
 
-		defaultTheme.setThemeName("default-blue");
-		defaultTheme.setThemeColor(new Color(32, 135, 255));
-		defaultTheme.setSecondaryTextColor(Color.WHITE);
-		defaultTheme.setSeparatorColor(Color.WHITE);
-		defaultTheme.setDangerColor(new Color(240, 0, 0));
-		defaultTheme.setSectionColor(new Color(232, 232, 232));
-		defaultTheme.setPrimaryButtonColor(new Color(32, 135, 255));
-		defaultTheme.setSecondaryButtonColor(new Color(240, 0, 0));
-		defaultTheme.setInputAccentColor(new Color(32, 135, 255));
-		defaultTheme.setInputMainColor(new Color(195, 195, 195));
-		defaultTheme.setOptionalButtonColor(new Color(195, 195, 195));
-		defaultTheme.setSpecialInfoColor(Color.BLACK);
-		defaultTheme.setMainPanelColor(Color.WHITE);
-		defaultTheme.setPrimaryTextColor(Color.BLACK);
+		defaultTheme.setThemeColor(new Color(92, 92, 92));
+		defaultTheme.setThemeDarkerColor(new Color(58, 58, 58));
+		defaultTheme.setThemeLighterColor(new Color(117, 117, 117));
 
-		//Postavljanje fontova
+		defaultTheme.setSectionColor(new Color(197, 197, 197));
+		defaultTheme.setBackgroundColor(Color.WHITE);
+
+		defaultTheme.setTextPrimaryColor(Color.BLACK);
+		defaultTheme.setTextSecondaryColor(Color.WHITE);
+
+		defaultTheme.setAccentColor(new Color(255, 140, 0));
+		defaultTheme.setAccentLighterColor(new Color(255, 170, 0));
+		defaultTheme.setSpecialColor(Color.BLACK);
+
+		defaultTheme.setThemeName("default-gray");
+		defaultTheme.setBackgroundImageUrl("resources/images/numbers.png");
+		
+		// Postavljanje fontova
 		FontTheme fonts = new FontTheme();
 		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setMainButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setTextFieldFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setStatusBarFont(new Font("Roboto Cn", Font.PLAIN, 24));
-		fonts.setImportantFont(new Font("Roboto Cn", Font.BOLD|Font.ITALIC, 36));
-		
+		fonts.setImportantFont(new Font("Roboto Cn", Font.BOLD | Font.ITALIC, 36));
+
 		defaultTheme.setFonts(fonts);
 		Themes.theme = defaultTheme;
 
-		//Zapis u fajl
+		// Zapis u fajl
 		Gson gson = new GsonBuilder().create();
 		try {
 			BufferedWriter writer = new BufferedWriter(

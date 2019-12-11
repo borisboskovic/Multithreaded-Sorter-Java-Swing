@@ -1,57 +1,46 @@
 {
     "themeColor": {
-        "value": -14645249,
+        "value": -10724260,
         "falpha": 0.0
     },
-    "mainPanelColor": {
-        "value": -1,
+    "themeDarkerColor": {
+        "value": -12961222,
         "falpha": 0.0
     },
-    "primaryTextColor": {
-        "value": -16777216,
-        "falpha": 0.0
-    },
-    "secondaryTextColor": {
-        "value": -1,
-        "falpha": 0.0
-    },
-    "separatorColor": {
-        "value": -1,
-        "falpha": 0.0
-    },
-    "dangerColor": {
-        "value": -1048576,
+    "themeLighterColor": {
+        "value": -9079435,
         "falpha": 0.0
     },
     "sectionColor": {
-        "value": -1513240,
+        "value": -3815995,
         "falpha": 0.0
     },
-    "primaryButtonColor": {
-        "value": -14645249,
+    "backgroundColor": {
+        "value": -1,
         "falpha": 0.0
     },
-    "secondaryButtonColor": {
-        "value": -1048576,
-        "falpha": 0.0
-    },
-    "optionalButtonColor": {
-        "value": -3947581,
-        "falpha": 0.0
-    },
-    "inputAccentColor": {
-        "value": -14645249,
-        "falpha": 0.0
-    },
-    "inputMainColor": {
-        "value": -3947581,
-        "falpha": 0.0
-    },
-    "specialInfoColor": {
+    "textPrimaryColor": {
         "value": -16777216,
         "falpha": 0.0
     },
-    "themeName": "default-blue",
+    "textSecondaryColor": {
+        "value": -1,
+        "falpha": 0.0
+    },
+    "accentColor": {
+        "value": -29696,
+        "falpha": 0.0
+    },
+    "accentLighterColor": {
+        "value": -22016,
+        "falpha": 0.0
+    },
+    "specialColor": {
+        "value": -16777216,
+        "falpha": 0.0
+    },
+    "themeName": "default-gray",
+    "backgroundImageUrl": "resources/images/numbers.png",
     "fonts": {
         "panelButtonFont": {
             "name": "Roboto Cn",

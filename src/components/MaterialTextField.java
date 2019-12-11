@@ -27,9 +27,9 @@ public class MaterialTextField extends JTextField {
 //		BorderFactory.createMatteBorder(0, 0, 1, 0, Themes.getCurrentTheme().getThemeColor()),
 //		BorderFactory.createEmptyBorder(5, 10, 0, 10)));
 		
-		setBackground(Themes.getCurrentTheme().getInputMainColor());
-		setCaretColor(Themes.getCurrentTheme().getPrimaryTextColor());
-		setForeground(Themes.getCurrentTheme().getPrimaryTextColor());
+//		setBackground(Themes.getCurrentTheme().getInputMainColor());
+//		setCaretColor(Themes.getCurrentTheme().getPrimaryTextColor());
+//		setForeground(Themes.getCurrentTheme().getPrimaryTextColor());
 		setCaretPosition(0);
 	}
 

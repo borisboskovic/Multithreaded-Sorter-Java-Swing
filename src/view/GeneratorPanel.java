@@ -69,7 +69,7 @@ public class GeneratorPanel extends JPanel {
 	private void setUpButtonPanel(JPanel buttonPanel) {
 		buttonPanel.setBackground(new Color(0,0,0,0));
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
-		delete = new MaterialButton("Ukloni", MaterialButton.SECONDARY_BUTTON);
+		delete = new MaterialButton("Ukloni");
 		buttonPanel.add(delete);
 	}
 
