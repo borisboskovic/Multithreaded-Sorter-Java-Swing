@@ -38,14 +38,14 @@ public class PanelButton extends JButton {
 		setFont(font);
 		this.text = text;
 		this.addMouseListener(mouseListener);
-		this.active=false;
+		this.active = false;
+		setOpaque(false);
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		graphics2d.clearRect(0, 0, getSize().width, getSize().height);
 		ColorTheme theme = Themes.getCurrentTheme();
 		graphics2d.setFont(font);
 
@@ -66,7 +66,7 @@ public class PanelButton extends JButton {
 		}
 
 		graphics2d.setColor(bg);
-		graphics2d.fillRect(0, 0, getSize().width-edge, getSize().height);
+		graphics2d.fillRect(0, 0, getSize().width - edge, getSize().height);
 
 		drawText(graphics2d, theme.getTextSecondaryColor());
 	}

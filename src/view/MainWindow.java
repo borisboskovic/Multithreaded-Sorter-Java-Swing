@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
 
+import components.ImageBackgroundContentPane;
 import global.Themes;
 import model.SideMenuModel;
 
@@ -31,6 +32,7 @@ public class MainWindow extends JFrame {
 		//Side Menu Component
 		SideMenuView sideMenu=new SideMenuView(new SideMenuModel());
 		sideMenu.setPreferredSize(new Dimension(250, 1000));
+		sideMenu.setEdge(15);
 		
 		setLayout(new BorderLayout());
 		add(sideMenu, BorderLayout.WEST);

@@ -1,4 +1,4 @@
-package view;
+package components;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,6 +15,6 @@ public class ImageBackgroundContentPane extends JComponent {
 	protected void paintComponent(Graphics g) {
 		Image bgImage=Toolkit.getDefaultToolkit().getImage(Themes.getCurrentTheme().getBackgroundImageUrl());
 		((Graphics2D)g).drawImage(bgImage, 0, 0, getSize().width, getSize().height, this);
-//		super.paintComponent(g);
+//		super.paintComponent(g);	//TODO: Ovo obrisati ako ne bude trebalo
 	}
 }

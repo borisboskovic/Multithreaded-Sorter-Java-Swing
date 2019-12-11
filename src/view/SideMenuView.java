@@ -1,16 +1,12 @@
 package view;
 
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import components.PanelButton;
@@ -24,7 +20,6 @@ public class SideMenuView extends JPanel {
 
 	public SideMenuView(SideMenuModel model) {
 		this.model = model;
-		setBackground(Themes.getCurrentTheme().getThemeColor());
 		this.setLayout(new GridLayout(0, 1));
 		add(Box.createVerticalGlue());
 		add(Box.createVerticalGlue());
@@ -35,13 +30,15 @@ public class SideMenuView extends JPanel {
 		add(Box.createVerticalGlue());
 		add(Box.createVerticalGlue());
 		edge = 0;
+		setOpaque(false);
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
 		Graphics2D graphics2d = (Graphics2D) g;
-		graphics2d.clearRect(getSize().width - edge, 0, getSize().width - edge, getSize().height);
+		g.setColor(Themes.getCurrentTheme().getThemeColor());
+		graphics2d.fillRect(0, 0, getSize().width - edge, getSize().height);
+		super.paint(g);
 	}
 
 	public int getEdge() {
