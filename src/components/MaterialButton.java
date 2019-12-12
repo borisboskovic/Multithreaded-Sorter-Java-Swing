@@ -38,6 +38,7 @@ public class MaterialButton extends JButton {
 		this.btnColor = Themes.getCurrentTheme().getAccentColor();
 		this.addMouseListener(mouseListener);
 		this.addFocusListener(focusListener);
+		setOpaque(false);
 	}
 
 	public MaterialButton(String text, Color btnColor) {
@@ -46,6 +47,7 @@ public class MaterialButton extends JButton {
 		this.btnColor = btnColor;
 		this.addMouseListener(mouseListener);
 		this.addFocusListener(focusListener);
+		setOpaque(false);
 	}
 
 	@Override

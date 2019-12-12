@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.JPanel;
 
 import components.PanelButton;
+import controller.SideMenuController;
 import global.Themes;
 import model.SideMenuModel;
 
@@ -31,6 +32,7 @@ public class SideMenuView extends JPanel {
 		add(Box.createVerticalGlue());
 		edge = 0;
 		setOpaque(false);
+		new SideMenuController(model, this);
 	}
 
 	@Override
