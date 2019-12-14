@@ -15,7 +15,7 @@ import javax.swing.border.Border;
 
 import components.ImageBackgroundContentPane;
 import global.Themes;
-import model.SideMenuModel;
+import model.PanelSwitchingModel;
 
 public class MainWindow extends JFrame {
 
@@ -30,7 +30,7 @@ public class MainWindow extends JFrame {
 		setContentPane(new ImageBackgroundContentPane());
 		
 		//Side Menu Component
-		SideMenuView sideMenu=new SideMenuView(new SideMenuModel());
+		SideMenuView sideMenu=new SideMenuView(new PanelSwitchingModel());
 		sideMenu.setPreferredSize(new Dimension(250, 1000));
 		sideMenu.setEdge(15);
 		
