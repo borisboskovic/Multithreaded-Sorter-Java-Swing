@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
@@ -12,20 +11,23 @@ import javax.swing.JPanel;
 import components.PanelButton;
 import controller.SideMenuController;
 import global.Themes;
-import model.SideMenuModel;
+import model.PanelSwitchingModel;
 
-public class SideMenuView extends JPanel {
+@SuppressWarnings("serial")
+public class SideMenuView extends JPanel implements ObserverInterface {
 
-	private SideMenuModel model;
 	private int edge;
 
-	public SideMenuView(SideMenuModel model) {
-		this.model = model;
+	public SideMenuView(PanelSwitchingModel model) {
+		model.addObserver(this);
 		this.setLayout(new GridLayout(0, 1));
 		add(Box.createVerticalGlue());
 		add(Box.createVerticalGlue());
-		for (PanelButton button : model.getButtons()) {
+		for (int i = 0; i < model.getButtons().size(); i++) {
+			PanelButton button = model.getButtons().get(i);
 			button.setPreferredSize(new Dimension(getSize().width, 100));
+			if (i == model.getActive())
+				button.setPressed(true);
 			add(button);
 		}
 		add(Box.createVerticalGlue());
@@ -49,6 +51,12 @@ public class SideMenuView extends JPanel {
 
 	public void setEdge(int edge) {
 		this.edge = edge;
+	}
+
+	@Override
+	public void update() {
+		
+		repaint();
 	}
 
 }

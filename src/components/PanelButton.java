@@ -1,3 +1,12 @@
+/**
+ * Klasa nasledjuje klasu JButton i mijenja izgled dugmeta u zavisnosti od
+ * trenutno koristene teme u aplikaciji. Posjeduje property active u zavisnosti
+ * od cijeg stanja se dugme moze iscrtati na jedan od dva nacina. Takodje
+ * postavlja mouse hover efekat ukoliko dugme nije aktivno.
+ * 
+ * @author Boris Boskovic
+ */
+
 package components;
 
 import java.awt.Color;
@@ -26,7 +35,7 @@ public class PanelButton extends JButton {
 	private boolean mousePressed = false;
 
 	private String text;
-	private Boolean active;
+	private Boolean pressed;
 
 	public PanelButton(String text) {
 		super(text);
@@ -34,7 +43,7 @@ public class PanelButton extends JButton {
 		setFont(font);
 		this.text = text;
 		this.addMouseListener(mouseListener);
-		this.active = false;
+		this.pressed = false;
 		setOpaque(false);
 	}
 
@@ -53,7 +62,7 @@ public class PanelButton extends JButton {
 		} else {
 			bg = theme.getThemeColor();
 		}
-		if (active) {
+		if (pressed) {
 			bg = theme.getThemeDarkerColor();
 			int[] xPoints = { getSize().width - edge, getSize().width, getSize().width - edge };
 			int[] yPoints = { 0, getSize().height / 2, getSize().height };
@@ -87,12 +96,12 @@ public class PanelButton extends JButton {
 		}
 	}
 
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setPressed(Boolean pressed) {
+		this.pressed = pressed;
 	}
 
-	public Boolean getActive() {
-		return active;
+	public Boolean isPressed() {
+		return pressed;
 	}
 	
 	private MouseListener mouseListener = new MouseListener() {
@@ -121,8 +130,6 @@ public class PanelButton extends JButton {
 
 		@Override
 		public void mouseClicked(java.awt.event.MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 	};
 
