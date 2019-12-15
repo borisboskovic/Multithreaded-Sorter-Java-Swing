@@ -114,6 +114,7 @@ public class Themes {
 		defaultTheme.setTextSecondaryColor(Color.WHITE);
 
 		defaultTheme.setAccentColor(new Color(255, 140, 0));
+		defaultTheme.setAccentColor(new Color(3,102,214));
 		defaultTheme.setAccentLighterColor(new Color(255, 170, 0));
 		defaultTheme.setSpecialColor(Color.BLACK);
 
@@ -124,10 +125,11 @@ public class Themes {
 		FontTheme fonts = new FontTheme();
 		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 20));
 		fonts.setMainButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
-		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 24));
-		fonts.setTextFieldFont(new Font("Roboto Cn", Font.PLAIN, 24));
-		fonts.setStatusBarFont(new Font("Roboto Cn", Font.PLAIN, 24));
+		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 22));
+		fonts.setTextFieldFont(new Font("Roboto Cn", Font.PLAIN, 20));
+		fonts.setStatusBarFont(new Font("Roboto Cn", Font.PLAIN, 20));
 		fonts.setImportantFont(new Font("Roboto Cn", Font.BOLD | Font.ITALIC, 36));
+		fonts.setNoteFont(new Font("Roboto Cn", Font.ITALIC, 16));
 
 		defaultTheme.setFonts(fonts);
 		Themes.theme = defaultTheme;

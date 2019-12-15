@@ -21,15 +21,13 @@ public class MaterialTextField extends JTextField {
 
 	private void applyStyle() {
 		setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createLineBorder(Themes.getCurrentTheme().getThemeColor(), 0),
+				BorderFactory.createMatteBorder(0, 0, 2, 0, Themes.getCurrentTheme().getThemeColor()),
 				BorderFactory.createEmptyBorder(5, 10, 0, 10)));
-//		setBorder(BorderFactory.createCompoundBorder(
-//		BorderFactory.createMatteBorder(0, 0, 1, 0, Themes.getCurrentTheme().getThemeColor()),
-//		BorderFactory.createEmptyBorder(5, 10, 0, 10)));
-		
-//		setBackground(Themes.getCurrentTheme().getInputMainColor());
-//		setCaretColor(Themes.getCurrentTheme().getPrimaryTextColor());
-//		setForeground(Themes.getCurrentTheme().getPrimaryTextColor());
+
+		setBackground(Themes.getCurrentTheme().getThemeColor());
+		setForeground(Themes.getCurrentTheme().getTextSecondaryColor());
+		setCaretColor(Themes.getCurrentTheme().getTextSecondaryColor());
+
 		setCaretPosition(0);
 	}
 

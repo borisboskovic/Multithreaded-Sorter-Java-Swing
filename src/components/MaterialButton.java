@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.Stroke;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -28,7 +30,6 @@ public class MaterialButton extends JButton {
 
 	private boolean hover = false;
 	private boolean mousePressed = false;
-	private boolean isFocused = false;
 
 	private Color btnColor = null;
 
@@ -37,7 +38,6 @@ public class MaterialButton extends JButton {
 		setFont(Themes.getCurrentTheme().getFonts().getMainButtonFont());
 		this.btnColor = Themes.getCurrentTheme().getAccentColor();
 		this.addMouseListener(mouseListener);
-		this.addFocusListener(focusListener);
 		setOpaque(false);
 	}
 
@@ -46,7 +46,6 @@ public class MaterialButton extends JButton {
 		setFont(Themes.getCurrentTheme().getFonts().getMainButtonFont());
 		this.btnColor = btnColor;
 		this.addMouseListener(mouseListener);
-		this.addFocusListener(focusListener);
 		setOpaque(false);
 	}
 
@@ -55,7 +54,7 @@ public class MaterialButton extends JButton {
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setFont(this.getFont()); // TODO: Da li je ovo zaista potrebno?
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		graphics2d.setColor(this.getParent().getBackground());
+		graphics2d.setColor(Themes.getCurrentTheme().getSectionColor());
 		graphics2d.clearRect(0, 0, getSize().width, getSize().height);
 		Dimension dimensions = this.getPreferredSize();
 		graphics2d.fillRect(0, 0, dimensions.width, dimensions.height);
@@ -70,19 +69,26 @@ public class MaterialButton extends JButton {
 			graphics2d.setColor(th.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
-		}else {
+		} else {
 			graphics2d.setColor(btnColor);
 			graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
 			graphics2d.setColor(th.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
-			
+
 		}
 
-		if (isFocused) {
+		if (isFocusOwner()) {
 			graphics2d.setColor(th.getSpecialColor());
-			graphics2d.fillOval(dimensions.width - 10, dimensions.height - 10, 8, 8);
+			float[] dash = new float[] { 1, 2 };
+			int margin = 3;
+			Stroke stroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10f, dash, 0f);
+			graphics2d.setStroke(stroke);
+			graphics2d.setColor(th.getTextSecondaryColor());
+			graphics2d.drawRoundRect(margin, margin, getSize().width - margin * 2, getSize().height - margin * 2,
+					margin * 2, margin * 2);
 		}
+
 	}
 
 	private Point getTextPosition(Font font) {
@@ -125,19 +131,6 @@ public class MaterialButton extends JButton {
 		public void mouseClicked(java.awt.event.MouseEvent e) {
 			// TODO Auto-generated method stub
 
-		}
-	};
-
-	private FocusListener focusListener = new FocusListener() {
-
-		@Override
-		public void focusLost(FocusEvent e) {
-			MaterialButton.this.isFocused = false;
-		}
-
-		@Override
-		public void focusGained(FocusEvent e) {
-			MaterialButton.this.isFocused = true;
 		}
 	};
 

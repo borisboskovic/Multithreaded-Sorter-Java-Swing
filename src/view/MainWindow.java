@@ -37,6 +37,7 @@ public class MainWindow extends JFrame {
 		setLayout(new BorderLayout());
 		add(sideMenu, BorderLayout.WEST);
 		
+		add(new GeneratorPanel(), BorderLayout.CENTER);
 		
 		setVisible(true);
 	}

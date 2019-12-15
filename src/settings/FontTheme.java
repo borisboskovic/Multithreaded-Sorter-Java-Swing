@@ -9,6 +9,7 @@ public class FontTheme {
 	private Font textFieldFont;
 	private Font statusBarFont;
 	private Font importantFont;
+	private Font noteFont;
 	
 	public Font getPanelButtonFont() {
 		return panelButtonFont;
@@ -26,6 +27,10 @@ public class FontTheme {
 		return statusBarFont;
 	}
 
+	public Font getNoteFont() {
+		return noteFont;
+	}
+	
 	public void setPanelButtonFont(Font panelButtonFont) {
 		this.panelButtonFont = panelButtonFont;
 	}
@@ -54,4 +59,7 @@ public class FontTheme {
 		this.importantFont = importantFont;
 	}
 	
+	public void setNoteFont(Font noteFont) {
+		this.noteFont = noteFont;
+	}
 }
