@@ -1,7 +1,7 @@
 package main;
 
 import global.Themes;
-import model.GeneratorModel;
+import model.GeneratorSectionModel;
 import view.MainWindow;
 
 public class MainClass{

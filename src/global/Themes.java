@@ -125,11 +125,11 @@ public class Themes {
 		FontTheme fonts = new FontTheme();
 		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 20));
 		fonts.setMainButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
-		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 22));
-		fonts.setTextFieldFont(new Font("Roboto Cn", Font.PLAIN, 20));
-		fonts.setStatusBarFont(new Font("Roboto Cn", Font.PLAIN, 20));
+		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 20));
+		fonts.setTextFieldFont(new Font("Roboto Cn", Font.PLAIN, 18));
+		fonts.setStatusBarFont(new Font("Roboto Cn", Font.PLAIN, 18));
 		fonts.setImportantFont(new Font("Roboto Cn", Font.BOLD | Font.ITALIC, 36));
-		fonts.setNoteFont(new Font("Roboto Cn", Font.ITALIC, 16));
+		fonts.setNoteFont(new Font("Roboto Cn", Font.ITALIC, 14));
 
 		defaultTheme.setFonts(fonts);
 		Themes.theme = defaultTheme;

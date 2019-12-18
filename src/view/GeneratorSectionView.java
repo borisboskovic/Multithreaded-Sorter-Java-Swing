@@ -22,10 +22,12 @@ import javax.swing.SwingConstants;
 import components.MaterialButton;
 import components.MaterialTextField;
 import global.Themes;
-import model.GeneratorModel;
+import model.GeneratorSectionModel;
 
 @SuppressWarnings("serial")
-public class GeneratorSection extends JPanel {
+public class GeneratorSectionView extends JPanel {
+
+	private GeneratorSectionModel model;
 
 	private JTextField location;
 	private JTextField ammount;
@@ -35,7 +37,9 @@ public class GeneratorSection extends JPanel {
 	private JButton delete;
 	private JLabel number;
 
-	public GeneratorSection(GeneratorModel model) {
+	public GeneratorSectionView(GeneratorSectionModel model) {
+		this.model = model;
+
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
 		setLayout(mainLayout);
 
@@ -49,25 +53,24 @@ public class GeneratorSection extends JPanel {
 		ammountRow.setLayout(ammountLayout);
 		setUpAmmountRow(ammountRow);
 
-		JPanel messageRow=new JPanel(new GridLayout(1,1));
-		JLabel message=new JLabel(model.getMessage());
+		JPanel messageRow = new JPanel(new GridLayout(1, 1));
+		JLabel message = new JLabel(model.getMessage());
 		message.setFont(Themes.getCurrentTheme().getFonts().getNoteFont());
 		messageRow.setBackground(Themes.getCurrentTheme().getSectionColor());
 		messageRow.add(message);
-		
+
 		JPanel inputPanel = new JPanel();
 		BoxLayout inputLayout = new BoxLayout(inputPanel, BoxLayout.PAGE_AXIS);
-		inputPanel.setBackground(new Color(0,0,0,0));
+		inputPanel.setBackground(new Color(0, 0, 0, 0));
 		inputPanel.setLayout(inputLayout);
 		inputPanel.add(Box.createVerticalStrut(40));
 		inputPanel.add(locationRow);
 		inputPanel.add(Box.createVerticalStrut(20));
 		inputPanel.add(ammountRow);
-		
+
 		inputPanel.add(Box.createVerticalStrut(20));
 		inputPanel.add(messageRow);
-		inputPanel.add(Box.createVerticalStrut(40));
-		
+		inputPanel.add(Box.createVerticalStrut(10));
 
 		JPanel numberPanel = new JPanel();
 		setUpNumberPanel(numberPanel);
@@ -84,7 +87,7 @@ public class GeneratorSection extends JPanel {
 	}
 
 	private void setUpButtonPanel(JPanel buttonPanel) {
-		buttonPanel.setBackground(new Color(0,0,0,0));
+		buttonPanel.setBackground(new Color(0, 0, 0, 0));
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 		delete = new MaterialButton("Ukloni");
 		buttonPanel.add(Box.createVerticalStrut(40));
@@ -93,8 +96,8 @@ public class GeneratorSection extends JPanel {
 	}
 
 	private void setUpNumberPanel(JPanel numberPanel) {
-		numberPanel.setBackground(new Color(0,0,0,0));
-		number = new JLabel("2");
+		numberPanel.setBackground(new Color(0, 0, 0, 0));
+		number = new JLabel(String.valueOf(model.getSectionNumber()));
 		number.setFont(Themes.getCurrentTheme().getFonts().getImportantFont());
 		number.setHorizontalAlignment(SwingConstants.RIGHT);
 		numberPanel.add(number);
@@ -102,7 +105,7 @@ public class GeneratorSection extends JPanel {
 	}
 
 	private void setUpLocationRow(JPanel locationRow) {
-		locationRow.setBackground(new Color(0,0,0,0));
+		locationRow.setBackground(new Color(0, 0, 0, 0));
 		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
 		JLabel locationLbl = new JLabel("Lokacija:");
 		locationLbl.setFont(labelFont);
@@ -119,7 +122,7 @@ public class GeneratorSection extends JPanel {
 	}
 
 	private void setUpAmmountRow(JPanel ammountRow) {
-		ammountRow.setBackground(new Color(0,0,0,0));
+		ammountRow.setBackground(new Color(0, 0, 0, 0));
 		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
 		JLabel ammountLbl = new JLabel("Kolièina:");
 		JLabel fromLbl = new JLabel("Od:");
