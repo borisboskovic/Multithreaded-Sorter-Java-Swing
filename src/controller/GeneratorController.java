@@ -22,7 +22,8 @@ public class GeneratorController {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			model.getGenerators().add(new GeneratorSectionModel());
+			model.addGenerator(new GeneratorSectionModel());
+			model.notifyObservers();
 		}
 	};
 	

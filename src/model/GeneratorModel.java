@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import view.ObserverInterface;
 
 public class GeneratorModel implements SubjectInterface{
-
+	private ArrayList<ObserverInterface> observers=null;
 	private ArrayList<GeneratorSectionModel> generators;
 
 	public GeneratorModel() {
@@ -15,26 +15,33 @@ public class GeneratorModel implements SubjectInterface{
 		generators.add(model);
 	}
 
+	public void addGenerator(GeneratorSectionModel generator) {
+		generator.setSectionNumber(generators.size()+1);
+		generators.add(generator);
+		
+	}
+	
 	public ArrayList<GeneratorSectionModel> getGenerators() {
 		return generators;
 	}
 
 	@Override
 	public void addObserver(ObserverInterface observer) {
-		// TODO Auto-generated method stub
-		
+		if(observers==null)
+			observers=new ArrayList<>();
+		observers.add(observer);
 	}
 
 	@Override
 	public void removeObserver(ObserverInterface observer) {
-		// TODO Auto-generated method stub
-		
+		observers.remove(observer);
 	}
 
 	@Override
 	public void notifyObservers() {
-		// TODO Auto-generated method stub
-		
+		for(ObserverInterface o : observers) {
+			o.update();
+		}
 	}
 	
 }

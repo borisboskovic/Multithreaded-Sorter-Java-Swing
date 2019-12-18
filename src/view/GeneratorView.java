@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,6 +20,7 @@ import javax.swing.SwingConstants;
 import components.CustomScrollBar;
 import components.MaterialButton;
 import components.VerticallyScrollablePanel;
+import controller.GeneratorController;
 import global.Themes;
 import model.GeneratorModel;
 import model.GeneratorSectionModel;
@@ -28,56 +30,58 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 
 	private GeneratorModel model;
 	private JPanel sectionsPanel;
+	private JScrollPane scrollPane;
 	private JButton plus;
 	private JButton generate;
 
 	public GeneratorView(GeneratorModel model) {
 		this.model = model;
+		model.addObserver(this);
 
-		BoxLayout bLayout=new BoxLayout(this, BoxLayout.PAGE_AXIS);
-		setLayout(bLayout);
-
-		setUpSections();
+		setLayout(new BorderLayout());
 		
-		JScrollPane scrollPane = new JScrollPane(sectionsPanel);
+		setUpSections();
+		setUpButtons();
+
+		scrollPane = new JScrollPane(sectionsPanel);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(null);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.getVerticalScrollBar().setUI(new CustomScrollBar());
 		scrollPane.getVerticalScrollBar().setUnitIncrement(32);
-		
-		add(scrollPane);
-		setUpButtons();
 
+		add(scrollPane, BorderLayout.CENTER);
 		setOpaque(false);
+
+		new GeneratorController(model, this);
 	}
 
 	private void setUpButtons() {
-		JPanel buttonPanel=new JPanel();
+		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
 		buttonPanel.setOpaque(false);
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 0));
-		
-		Font fnt=Themes.getCurrentTheme().getFonts().getMainButtonFont();
-		Font large=new Font(fnt.getName(), fnt.getStyle(), 32);
+
+		Font fnt = Themes.getCurrentTheme().getFonts().getMainButtonFont();
+		Font large = new Font(fnt.getName(), fnt.getStyle(), 32);
 		this.plus = new MaterialButton(" + ");
 		this.plus.setFont(large);
 		this.generate = new MaterialButton("Generisi");
 		this.generate.setFont(large);
-		
+
 		buttonPanel.add(plus);
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(generate);
-		
-		add(buttonPanel);
+
+		add(buttonPanel, BorderLayout.SOUTH);
 	}
-	
+
 	private void setUpSections() {
 		sectionsPanel = new VerticallyScrollablePanel();
 		BoxLayout sectionsLayout = new BoxLayout(sectionsPanel, BoxLayout.PAGE_AXIS);
 		sectionsPanel.setLayout(sectionsLayout);
-		
+
 		for (GeneratorSectionModel generator : model.getGenerators()) {
 			GeneratorSectionView section = new GeneratorSectionView(generator);
 			JPanel panel = new JPanel();
@@ -94,14 +98,18 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 	public JButton getPlus() {
 		return plus;
 	}
-	
+
 	public JButton getGenerate() {
 		return generate;
 	}
 
 	@Override
 	public void update() {
+		setUpSections();
+		scrollPane.setViewportView(sectionsPanel);
+		scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
+		revalidate();
 		repaint();
 	}
-	
+
 }
