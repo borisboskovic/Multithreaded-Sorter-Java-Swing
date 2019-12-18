@@ -11,9 +11,6 @@ public class GeneratorModel {
 		generators.add(new GeneratorSectionModel(1));
 		generators.add(new GeneratorSectionModel(2));
 		generators.add(new GeneratorSectionModel(3));
-		generators.add(new GeneratorSectionModel(4));
-		generators.add(new GeneratorSectionModel(5));
-		generators.add(new GeneratorSectionModel(6));
 	}
 
 	public ArrayList<GeneratorSectionModel> getGenerators() {
