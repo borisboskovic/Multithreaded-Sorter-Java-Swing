@@ -1,18 +1,15 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,6 +36,7 @@ public class GeneratorSectionView extends JPanel {
 
 	public GeneratorSectionView(GeneratorSectionModel model) {
 		this.model = model;
+		setBackground(Themes.getCurrentTheme().getSectionColor());
 
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
 		setLayout(mainLayout);
@@ -61,7 +59,7 @@ public class GeneratorSectionView extends JPanel {
 
 		JPanel inputPanel = new JPanel();
 		BoxLayout inputLayout = new BoxLayout(inputPanel, BoxLayout.PAGE_AXIS);
-		inputPanel.setBackground(new Color(0, 0, 0, 0));
+		inputPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
 		inputPanel.setLayout(inputLayout);
 		inputPanel.add(Box.createVerticalStrut(40));
 		inputPanel.add(locationRow);
@@ -87,16 +85,17 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpButtonPanel(JPanel buttonPanel) {
-		buttonPanel.setBackground(new Color(0, 0, 0, 0));
+		buttonPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 		delete = new MaterialButton("Ukloni");
+		delete.addActionListener(deletingListener);
 		buttonPanel.add(Box.createVerticalStrut(40));
 		buttonPanel.add(delete);
 		buttonPanel.add(Box.createVerticalGlue());
 	}
 
 	private void setUpNumberPanel(JPanel numberPanel) {
-		numberPanel.setBackground(new Color(0, 0, 0, 0));
+		numberPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
 		number = new JLabel(String.valueOf(model.getSectionNumber()));
 		number.setFont(Themes.getCurrentTheme().getFonts().getImportantFont());
 		number.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -105,7 +104,7 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpLocationRow(JPanel locationRow) {
-		locationRow.setBackground(new Color(0, 0, 0, 0));
+		locationRow.setBackground(Themes.getCurrentTheme().getSectionColor());
 		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
 		JLabel locationLbl = new JLabel("Lokacija:");
 		locationLbl.setFont(labelFont);
@@ -122,7 +121,7 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpAmmountRow(JPanel ammountRow) {
-		ammountRow.setBackground(new Color(0, 0, 0, 0));
+		ammountRow.setBackground(Themes.getCurrentTheme().getSectionColor());
 		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
 		JLabel ammountLbl = new JLabel("Kolièina:");
 		JLabel fromLbl = new JLabel("Od:");
@@ -159,4 +158,12 @@ public class GeneratorSectionView extends JPanel {
 		super.paint(g);
 	}
 
+	private ActionListener deletingListener=new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("kliknuo si");
+		}
+	};
+	
 }

@@ -2,19 +2,39 @@ package model;
 
 import java.util.ArrayList;
 
-public class GeneratorModel {
+import view.ObserverInterface;
+
+public class GeneratorModel implements SubjectInterface{
 
 	private ArrayList<GeneratorSectionModel> generators;
 
 	public GeneratorModel() {
 		generators = new ArrayList<>();
-		generators.add(new GeneratorSectionModel(1));
-		generators.add(new GeneratorSectionModel(2));
-		generators.add(new GeneratorSectionModel(3));
+		GeneratorSectionModel model=new GeneratorSectionModel();
+		model.setSectionNumber(1);
+		generators.add(model);
 	}
 
 	public ArrayList<GeneratorSectionModel> getGenerators() {
 		return generators;
+	}
+
+	@Override
+	public void addObserver(ObserverInterface observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObserver(ObserverInterface observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void notifyObservers() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

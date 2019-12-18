@@ -25,8 +25,7 @@ public class GeneratorSectionModel {
 	private String message;
 	private int sectionNumber;
 
-	public GeneratorSectionModel(int sectionNumber) {
-		this.sectionNumber = sectionNumber;
+	public GeneratorSectionModel() {
 		this.message = "Test 123 Ovdje ce biti ispisana neka poruka u slucaju greske!";
 	}
 

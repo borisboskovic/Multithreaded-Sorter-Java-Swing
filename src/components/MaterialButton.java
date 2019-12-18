@@ -54,10 +54,8 @@ public class MaterialButton extends JButton {
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setFont(this.getFont()); // TODO: Da li je ovo zaista potrebno?
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		graphics2d.setColor(Themes.getCurrentTheme().getSectionColor());
-		graphics2d.clearRect(0, 0, getSize().width, getSize().height);
 		Dimension dimensions = this.getPreferredSize();
-		graphics2d.fillRect(0, 0, dimensions.width, dimensions.height);
+		
 		int borderRadius = (dimensions.width > dimensions.height) ? dimensions.height / 4 : dimensions.width / 4;
 
 		ColorTheme th = Themes.getCurrentTheme();
@@ -75,7 +73,6 @@ public class MaterialButton extends JButton {
 			graphics2d.setColor(th.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
-
 		}
 
 		if (isFocusOwner()) {
@@ -99,7 +96,7 @@ public class MaterialButton extends JButton {
 		}
 		int lineHeight = fm.getHeight();
 		int x = getSize().width / 2 - lineWidth / 2;
-		int y = getPreferredSize().height / 2 + lineHeight / 4 + lineHeight / 8;
+		int y = getPreferredSize().height / 2 + lineHeight / 4 + lineHeight / 16;
 		return new Point(x, y);
 	}
 
