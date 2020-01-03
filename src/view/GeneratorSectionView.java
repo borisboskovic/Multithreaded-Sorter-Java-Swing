@@ -1,16 +1,22 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,7 +32,7 @@ public class GeneratorSectionView extends JPanel {
 
 	private GeneratorSectionModel model;
 
-	private JTextField location;
+	private JTextField path;
 	private JTextField ammount;
 	private JTextField from;
 	private JTextField to;
@@ -41,10 +47,10 @@ public class GeneratorSectionView extends JPanel {
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
 		setLayout(mainLayout);
 
-		JPanel locationRow = new JPanel();
-		BoxLayout locationLayout = new BoxLayout(locationRow, BoxLayout.LINE_AXIS);
-		locationRow.setLayout(locationLayout);
-		setUpLocationRow(locationRow);
+		JPanel pathRow = new JPanel();
+		BoxLayout pathLayout = new BoxLayout(pathRow, BoxLayout.LINE_AXIS);
+		pathRow.setLayout(pathLayout);
+		setUpPathRow(pathRow);
 
 		JPanel ammountRow = new JPanel();
 		BoxLayout ammountLayout = new BoxLayout(ammountRow, BoxLayout.LINE_AXIS);
@@ -62,7 +68,7 @@ public class GeneratorSectionView extends JPanel {
 		inputPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
 		inputPanel.setLayout(inputLayout);
 		inputPanel.add(Box.createVerticalStrut(40));
-		inputPanel.add(locationRow);
+		inputPanel.add(pathRow);
 		inputPanel.add(Box.createVerticalStrut(20));
 		inputPanel.add(ammountRow);
 
@@ -103,21 +109,24 @@ public class GeneratorSectionView extends JPanel {
 
 	}
 
-	private void setUpLocationRow(JPanel locationRow) {
-		locationRow.setBackground(Themes.getCurrentTheme().getSectionColor());
+	private void setUpPathRow(JPanel pathRow) {
+		pathRow.setBackground(Themes.getCurrentTheme().getSectionColor());
 		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
-		JLabel locationLbl = new JLabel("Lokacija:");
-		locationLbl.setFont(labelFont);
-		this.location = new MaterialTextField(512);
+		// TODO: lokalizacija
+		JLabel pathLbl = new JLabel("Lokacija:");
+		pathLbl.setFont(labelFont);
+		this.path = new MaterialTextField(512);
+		path.setText(model.getPath());
 		this.browse = new MaterialButton("...");
+		browse.addActionListener(browseListener);
 
-		locationRow.add(Box.createHorizontalStrut(10));
-		locationRow.add(locationLbl);
-		locationRow.add(Box.createHorizontalStrut(10));
-		locationRow.add(location);
-		locationRow.add(Box.createHorizontalStrut(10));
-		locationRow.add(browse);
-		locationRow.add(Box.createHorizontalStrut(10));
+		pathRow.add(Box.createHorizontalStrut(10));
+		pathRow.add(pathLbl);
+		pathRow.add(Box.createHorizontalStrut(10));
+		pathRow.add(path);
+		pathRow.add(Box.createHorizontalStrut(10));
+		pathRow.add(browse);
+		pathRow.add(Box.createHorizontalStrut(10));
 	}
 
 	private void setUpAmmountRow(JPanel ammountRow) {
@@ -131,8 +140,11 @@ public class GeneratorSectionView extends JPanel {
 		toLbl.setFont(labelFont);
 
 		ammount = new MaterialTextField(64);
+		ammount.setText(String.valueOf(model.getAmmount()));
 		from = new MaterialTextField(64);
+		from.setText(String.valueOf(model.getFrom()));
 		to = new MaterialTextField(64);
+		to.setText(String.valueOf(model.getTo()));
 
 		ammountRow.add(Box.createHorizontalStrut(10));
 		ammountRow.add(ammountLbl);
@@ -158,12 +170,49 @@ public class GeneratorSectionView extends JPanel {
 		super.paint(g);
 	}
 
-	private ActionListener deletingListener=new ActionListener() {
-		
+	private ActionListener deletingListener = new ActionListener() {
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("kliknuo si");
 		}
 	};
-	
+
+	private ActionListener browseListener = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setPreferredSize(new Dimension(800, 600));
+			
+			int returnValue = fileChooser.showSaveDialog(GeneratorSectionView.this);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				GeneratorSectionView.this.path.setText(fileChooser.getSelectedFile().getPath().toString());
+			}
+		}
+	};
+
+	public void updateModel() {
+		model.setPath(path.getText());
+		model.setAmmount(Integer.valueOf(ammount.getText()));
+		model.setFrom(Integer.valueOf(from.getText()));
+		model.setTo(Integer.valueOf(to.getText()));
+	}
+
+	public JTextField getPath() {
+		return path;
+	}
+
+	public JTextField getAmmount() {
+		return ammount;
+	}
+
+	public JTextField getFrom() {
+		return from;
+	}
+
+	public JTextField getTo() {
+		return to;
+	}
+
 }
