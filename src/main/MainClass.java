@@ -2,6 +2,7 @@ package main;
 
 import global.Themes;
 import model.GeneratorSectionModel;
+import model.InfoModel;
 import view.MainWindow;
 
 public class MainClass{
@@ -10,15 +11,9 @@ public class MainClass{
 		Themes.generateDefaultTheme();
 		
 		new MainWindow();
+		
 		//TODO: Add about and help sections
 		//TODO: Add Font family selection to settings
-		
-//		GeneratorModel model=new GeneratorModel();
-//		model.setLocation("C:\\Users\\Boris\\Desktop\\RandomNumbers\\numbers.txt");
-//		model.setAmmount(50);
-//		model.setFrom(4);
-//		model.setTo(10);
-//		model.generate();
 		
 	}
 

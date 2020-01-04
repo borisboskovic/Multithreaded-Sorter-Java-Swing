@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GeneratorSectionModel {
-	private String location;
+	private String path;
 	private int ammount;
 	private int from;
 	private int to;
@@ -36,7 +36,7 @@ public class GeneratorSectionModel {
 	 */
 	public void generate() {
 		// Kreriranje foldera i fajla
-		Path filePath = Paths.get(location);
+		Path filePath = Paths.get(path);
 		File dir = Paths.get(filePath.getRoot().toString(), filePath.subpath(0, filePath.getNameCount() - 1).toString())
 				.toFile();
 		if (!filePath.toFile().exists()) {
@@ -80,10 +80,10 @@ public class GeneratorSectionModel {
 		return true;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setPath(String path) {
+		this.path = path;
 	}
-
+	
 	public void setAmmount(int ammount) {
 		this.ammount = ammount;
 	}
@@ -94,6 +94,22 @@ public class GeneratorSectionModel {
 
 	public void setTo(int to) {
 		this.to = to;
+	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public int getAmmount() {
+		return ammount;
+	}
+
+	public int getFrom() {
+		return from;
+	}
+
+	public int getTo() {
+		return to;
 	}
 
 	public String getMessage() {

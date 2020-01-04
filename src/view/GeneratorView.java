@@ -1,21 +1,21 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
 
 import components.CustomScrollBar;
 import components.MaterialButton;
@@ -84,6 +84,10 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 
 		for (GeneratorSectionModel generator : model.getGenerators()) {
 			GeneratorSectionView section = new GeneratorSectionView(generator);
+			section.getPath().setText(generator.getPath());
+			section.getAmmount().setText(String.valueOf(generator.getAmmount()));
+			section.getFrom().setText(String.valueOf(generator.getFrom()));
+			section.getTo().setText(String.valueOf(generator.getTo()));
 			JPanel panel = new JPanel();
 			panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 			panel.setMaximumSize(new Dimension(2000, 230));
@@ -103,6 +107,14 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		return generate;
 	}
 
+	public void updateModels() {
+		Component[] components= sectionsPanel.getComponents();
+		for(Component cmp : components) {
+			GeneratorSectionView section = (GeneratorSectionView)((JPanel)cmp).getComponent(0);
+			section.updateModel();
+		}
+	}
+	
 	@Override
 	public void update() {
 		setUpSections();

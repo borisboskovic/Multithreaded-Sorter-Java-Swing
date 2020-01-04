@@ -16,6 +16,7 @@ import javax.swing.border.Border;
 import components.ImageBackgroundContentPane;
 import global.Themes;
 import model.GeneratorModel;
+import model.InfoModel;
 import model.PanelSwitchingModel;
 
 public class MainWindow extends JFrame {
@@ -38,7 +39,8 @@ public class MainWindow extends JFrame {
 		setLayout(new BorderLayout());
 		add(sideMenu, BorderLayout.WEST);
 		
-		add(new GeneratorView(new GeneratorModel()), BorderLayout.CENTER);
+//		add(new GeneratorView(new GeneratorModel()), BorderLayout.CENTER);
+		add(new InfoView(new InfoModel()), BorderLayout.CENTER);
 		
 		setVisible(true);
 	}
