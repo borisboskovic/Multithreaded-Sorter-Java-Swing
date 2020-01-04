@@ -110,7 +110,7 @@ public class Themes {
 		defaultTheme.setSectionColor(new Color(197, 197, 197));
 		defaultTheme.setBackgroundColor(Color.WHITE);
 
-		defaultTheme.setTextPrimaryColor(Color.BLACK);
+		defaultTheme.setTextPrimaryColor(new Color(50, 50, 50));
 		defaultTheme.setTextSecondaryColor(Color.WHITE);
 
 		defaultTheme.setAccentColor(new Color(255, 140, 0));
