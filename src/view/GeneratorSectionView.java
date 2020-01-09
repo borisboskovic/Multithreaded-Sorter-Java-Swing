@@ -25,6 +25,7 @@ import javax.swing.SwingConstants;
 import components.MaterialButton;
 import components.MaterialTextField;
 import global.Themes;
+import model.GeneratorModel;
 import model.GeneratorSectionModel;
 
 @SuppressWarnings("serial")
@@ -174,9 +175,12 @@ public class GeneratorSectionView extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("kliknuo si");
-			model=null;
-			GeneratorView gvView =(GeneratorView)(GeneratorSectionView.this.getParent());
+			GeneratorView gView = (GeneratorView) (GeneratorSectionView.this.getParent().getParent().getParent()
+					.getParent().getParent());
+			
+			GeneratorModel gModel=gView.getModel();
+			gModel.getGenerators().remove(model);
+			gModel.notifyObservers();
 		}
 	};
 
@@ -186,7 +190,7 @@ public class GeneratorSectionView extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setPreferredSize(new Dimension(800, 600));
-			
+
 			int returnValue = fileChooser.showSaveDialog(GeneratorSectionView.this);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				GeneratorSectionView.this.path.setText(fileChooser.getSelectedFile().getPath().toString());

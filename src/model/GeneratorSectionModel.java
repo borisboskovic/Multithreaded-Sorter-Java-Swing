@@ -26,7 +26,7 @@ public class GeneratorSectionModel {
 	private int sectionNumber;
 
 	public GeneratorSectionModel() {
-		this.message = "Test 123 Ovdje ce biti ispisana neka poruka u slucaju greske!";
+		this.message = " ";
 	}
 
 	/**
@@ -45,11 +45,12 @@ public class GeneratorSectionModel {
 				Files.createFile(filePath);
 			} catch (IOException e) {
 				// TODO: Lokalizacija
+				e.printStackTrace();
 				this.message = "Greska! Pristup fajl sistemu trenutno nije moguc. Pokusajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
 			}
 		}
 		// Generisanje brojeva
-		if (message.equals("")) {
+		if (message.equals(" ")) {
 			ArrayList<Integer> numbers = new ArrayList<>();
 			Random rand = new Random(System.currentTimeMillis());
 			for (int i = 0; i < ammount; i++) {
@@ -62,6 +63,7 @@ public class GeneratorSectionModel {
 				for (Integer i : numbers) {
 					out.write(i + ", ");
 				}
+				this.message = "File successfully created.";
 				out.close();
 			} catch (IOException e) {
 				this.message = "Greska! Pristup fajl sistemu trenutno nije moguc. Pokusajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
@@ -83,7 +85,7 @@ public class GeneratorSectionModel {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
+
 	public void setAmmount(int ammount) {
 		this.ammount = ammount;
 	}
@@ -95,7 +97,7 @@ public class GeneratorSectionModel {
 	public void setTo(int to) {
 		this.to = to;
 	}
-	
+
 	public String getPath() {
 		return path;
 	}
@@ -115,7 +117,7 @@ public class GeneratorSectionModel {
 	public String getMessage() {
 		return message;
 	}
-	
+
 	public int getSectionNumber() {
 		return sectionNumber;
 	}
@@ -123,5 +125,5 @@ public class GeneratorSectionModel {
 	public void setSectionNumber(int sectionNumber) {
 		this.sectionNumber = sectionNumber;
 	}
-	
+
 }

@@ -16,6 +16,7 @@ public class MainClass{
 		//TODO: Add about and help sections
 		//TODO: Add Font family selection to settings
 		//TODO: Uskladiti dugmad i panele tako da nema IndexOutOfBounds Exception
+		//TODO: Uraditi validaciju podataka u generatoru
 	}
 
 }

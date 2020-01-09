@@ -22,6 +22,7 @@ public class GeneratorController {
 		this.model = model;
 		this.view = view;
 		view.getPlus().addActionListener(addButtonListener);
+		view.getGenerate().addActionListener(generateButtonListener);
 	}
 
 	private ActionListener addButtonListener = new ActionListener() {
@@ -30,14 +31,17 @@ public class GeneratorController {
 		public void actionPerformed(ActionEvent e) {
 			view.updateModels();
 			GeneratorSectionModel newSection = new GeneratorSectionModel();
-			if (model.getGenerators().get(model.getGenerators().size() - 1).validate()) {
-				GeneratorSectionModel previousSection = model.getGenerators().get(model.getGenerators().size() - 1);
-				if (!previousSection.getPath().equals(""))
-					newSection.setPath(copyPath(previousSection.getPath()));
-				newSection.setAmmount(previousSection.getAmmount());
-				newSection.setFrom(previousSection.getFrom());
-				newSection.setTo(previousSection.getTo());
-			}
+			
+			if (model.getGenerators().size() > 0)
+				if (model.getGenerators().get(model.getGenerators().size() - 1).validate()) {
+					GeneratorSectionModel previousSection = model.getGenerators().get(model.getGenerators().size() - 1);
+					if (!previousSection.getPath().equals(""))
+						newSection.setPath(copyPath(previousSection.getPath()));
+					newSection.setAmmount(previousSection.getAmmount());
+					newSection.setFrom(previousSection.getFrom());
+					newSection.setTo(previousSection.getTo());
+				}
+			
 			model.addGenerator(newSection);
 			model.notifyObservers();
 		}
@@ -66,6 +70,11 @@ public class GeneratorController {
 			return path.getParent() + File.separator + newFilename;
 		}
 
+	};
+	
+	private ActionListener generateButtonListener =(e)->{
+		model.generateAll();
+		model.notifyObservers();
 	};
 
 }

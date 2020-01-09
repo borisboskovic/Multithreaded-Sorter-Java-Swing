@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import view.GeneratorSectionView;
 import view.ObserverInterface;
 
 public class GeneratorModel implements SubjectInterface{
@@ -39,9 +40,18 @@ public class GeneratorModel implements SubjectInterface{
 
 	@Override
 	public void notifyObservers() {
+		for(int i=0; i<generators.size(); i++) {
+			generators.get(i).setSectionNumber(i+1);
+		}
+		
 		for(ObserverInterface o : observers) {
 			o.update();
 		}
+	}
+	
+	public void generateAll() {
+		for(GeneratorSectionModel sectionModel : generators)
+			sectionModel.generate();
 	}
 	
 }

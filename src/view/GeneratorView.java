@@ -124,4 +124,8 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		repaint();
 	}
 
+	public GeneratorModel getModel() {
+		return model;
+	}
+	
 }
