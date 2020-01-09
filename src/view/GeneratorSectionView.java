@@ -175,6 +175,8 @@ public class GeneratorSectionView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("kliknuo si");
+			model=null;
+			GeneratorView gvView =(GeneratorView)(GeneratorSectionView.this.getParent());
 		}
 	};
 

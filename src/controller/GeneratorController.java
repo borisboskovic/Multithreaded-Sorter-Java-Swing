@@ -31,8 +31,9 @@ public class GeneratorController {
 			view.updateModels();
 			GeneratorSectionModel newSection = new GeneratorSectionModel();
 			if (model.getGenerators().get(model.getGenerators().size() - 1).validate()) {
-				GeneratorSectionModel previousSection=model.getGenerators().get(model.getGenerators().size() - 1);
-				newSection.setPath(copyPath(previousSection.getPath()));
+				GeneratorSectionModel previousSection = model.getGenerators().get(model.getGenerators().size() - 1);
+				if (!previousSection.getPath().equals(""))
+					newSection.setPath(copyPath(previousSection.getPath()));
 				newSection.setAmmount(previousSection.getAmmount());
 				newSection.setFrom(previousSection.getFrom());
 				newSection.setTo(previousSection.getTo());
@@ -46,7 +47,7 @@ public class GeneratorController {
 			String oldFileName = path.getFileName().toString();
 			Pattern pattern = Pattern.compile("([\\w\\ ]+)([\\(\\d\\)]*)(\\.[\\w\\d]+)");
 			Matcher matcher = pattern.matcher(oldFileName);
-			String newFilename="";
+			String newFilename = "";
 			while (matcher.find()) {
 				String fileName = matcher.group(1);
 				fileName = fileName.trim();
@@ -62,9 +63,9 @@ public class GeneratorController {
 					newFilename = fileName + " (1)" + extension;
 				}
 			}
-			return path.getParent()+File.separator+newFilename;
+			return path.getParent() + File.separator + newFilename;
 		}
-		
+
 	};
 
 }

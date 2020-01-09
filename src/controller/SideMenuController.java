@@ -15,17 +15,21 @@ public class SideMenuController {
 	public SideMenuController(PanelSwitchingModel model, SideMenuView view) {
 		this.model = model;
 		this.view = view;
-		for(PanelButton button:model.getButtons()) {
+		for (PanelButton button : model.getButtons()) {
 			button.addActionListener(activeButtonSwitcher);
 		}
 	}
-	
-	private ActionListener activeButtonSwitcher=new ActionListener() {
-		
+
+	private ActionListener activeButtonSwitcher = new ActionListener() {
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			model.setActive(model.getButtons().indexOf((PanelButton)e.getSource()));
-			model.notifyObservers();
+			int curentindex = model.getActive();
+			int newIndex = model.getButtons().indexOf((PanelButton) e.getSource());
+			if (curentindex != newIndex) {
+				model.setActive(model.getButtons().indexOf((PanelButton) e.getSource()));
+				model.notifyObservers();
+			}
 		}
 	};
 

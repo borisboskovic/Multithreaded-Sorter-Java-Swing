@@ -1,27 +1,34 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Insets;
+import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.border.Border;
+import javax.swing.JPanel;
 
 import components.ImageBackgroundContentPane;
-import global.Themes;
 import model.GeneratorModel;
 import model.InfoModel;
 import model.PanelSwitchingModel;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements ObserverInterface {
 
-	public MainWindow() {
+	private ArrayList<JPanel> views;
+
+	private JPanel mainPanel;
+	private PanelSwitchingModel model;
+
+	public MainWindow(PanelSwitchingModel model) {
+		this.model = model;
+		this.model.addObserver(this);
+
+		this.views = new ArrayList<>();
+		this.views.add(new InfoView(new InfoModel()));
+		this.views.add(new GeneratorView(new GeneratorModel()));
+
+		mainPanel = views.get(0);
+
 		setTitle("Multithreaded sorter - by Milica M. & Boris B.");
 		setSize(new Dimension(1366, 768));
 		setMinimumSize(new Dimension(1024, 576));
@@ -30,20 +37,26 @@ public class MainWindow extends JFrame {
 		setIconImage(getToolkit().getImage("resources/images/icon.png"));
 
 		setContentPane(new ImageBackgroundContentPane());
-		
-		//Side Menu Component
-		SideMenuView sideMenu=new SideMenuView(new PanelSwitchingModel());
+
+		// Side Menu Component
+		SideMenuView sideMenu = new SideMenuView(model);
 		sideMenu.setPreferredSize(new Dimension(250, 1000));
 		sideMenu.setEdge(15);
-		
 		setLayout(new BorderLayout());
 		add(sideMenu, BorderLayout.WEST);
-		
-//		add(new GeneratorView(new GeneratorModel()), BorderLayout.CENTER);
-		add(new InfoView(new InfoModel()), BorderLayout.CENTER);
-		
+
+		add(mainPanel, BorderLayout.CENTER);
+
 		setVisible(true);
 	}
-	
+
+	@Override
+	public void update() {
+		this.remove(mainPanel);
+		this.mainPanel = views.get(model.getActive());
+		this.add(mainPanel);
+		this.revalidate();
+		this.repaint();
+	}
 
 }
