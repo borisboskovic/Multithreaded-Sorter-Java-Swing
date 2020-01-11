@@ -21,6 +21,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import components.MaterialButton;
 import components.MaterialTextField;
@@ -117,7 +121,8 @@ public class GeneratorSectionView extends JPanel {
 		JLabel pathLbl = new JLabel("Lokacija:");
 		pathLbl.setFont(labelFont);
 		this.path = new MaterialTextField(512);
-		path.setText(model.getPath());
+		this.path.setText(model.getPath());
+		this.path.getDocument().addDocumentListener(textChanged);
 		this.browse = new MaterialButton("...");
 		browse.addActionListener(browseListener);
 
@@ -142,10 +147,13 @@ public class GeneratorSectionView extends JPanel {
 
 		ammount = new MaterialTextField(64);
 		ammount.setText(String.valueOf(model.getAmmount()));
+		ammount.getDocument().addDocumentListener(textChanged);
 		from = new MaterialTextField(64);
 		from.setText(String.valueOf(model.getFrom()));
+		from.getDocument().addDocumentListener(textChanged);
 		to = new MaterialTextField(64);
 		to.setText(String.valueOf(model.getTo()));
+		to.getDocument().addDocumentListener(textChanged);
 
 		ammountRow.add(Box.createHorizontalStrut(10));
 		ammountRow.add(ammountLbl);
@@ -198,11 +206,31 @@ public class GeneratorSectionView extends JPanel {
 		}
 	};
 
+	private DocumentListener textChanged = new DocumentListener() {
+		
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			updateModel();
+		}
+		
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			updateModel();
+		}
+		
+		@Override
+		public void changedUpdate(DocumentEvent e) {
+			updateModel();
+		}
+	};
+	
 	public void updateModel() {
 		model.setPath(path.getText());
-		model.setAmmount(Integer.valueOf(ammount.getText()));
-		model.setFrom(Integer.valueOf(from.getText()));
-		model.setTo(Integer.valueOf(to.getText()));
+		try {
+			model.setAmmount(Integer.valueOf(ammount.getText()));
+			model.setFrom(Integer.valueOf(from.getText()));
+			model.setTo(Integer.valueOf(to.getText()));			
+		} catch (NumberFormatException e) {}
 	}
 
 	public JTextField getPath() {

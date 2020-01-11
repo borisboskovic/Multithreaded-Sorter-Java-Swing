@@ -31,7 +31,7 @@ public class GeneratorController {
 		public void actionPerformed(ActionEvent e) {
 			view.updateModels();
 			GeneratorSectionModel newSection = new GeneratorSectionModel();
-			
+
 			if (model.getGenerators().size() > 0)
 				if (model.getGenerators().get(model.getGenerators().size() - 1).validate()) {
 					GeneratorSectionModel previousSection = model.getGenerators().get(model.getGenerators().size() - 1);
@@ -41,38 +41,42 @@ public class GeneratorController {
 					newSection.setFrom(previousSection.getFrom());
 					newSection.setTo(previousSection.getTo());
 				}
-			
+
 			model.addGenerator(newSection);
 			model.notifyObservers();
 		}
 
 		private String copyPath(String oldPath) {
 			Path path = Paths.get(oldPath);
-			String oldFileName = path.getFileName().toString();
-			Pattern pattern = Pattern.compile("([\\w\\ ]+)([\\(\\d\\)]*)(\\.[\\w\\d]+)");
-			Matcher matcher = pattern.matcher(oldFileName);
-			String newFilename = "";
-			while (matcher.find()) {
-				String fileName = matcher.group(1);
-				fileName = fileName.trim();
-				String number = matcher.group(2);
-				String extension = matcher.group(3);
-				if (number.length() > 0) {
-					number = number.substring(1, number.length() - 1);
-					int num = Integer.valueOf(number);
-					num++;
-					number = String.valueOf(num);
-					newFilename = fileName + " (" + number + ")" + extension;
-				} else {
-					newFilename = fileName + " (1)" + extension;
-				}
+			Pattern pattern1 = Pattern.compile("(.+)(\\s\\((\\d+)\\))(\\.[\\d\\w]+)");
+			Matcher matcher1 = pattern1.matcher(path.toString());
+			Pattern pattern2 = Pattern.compile("(.+)(\\s\\((\\d+)\\))$");
+			Matcher matcher2 = pattern2.matcher(path.toString());
+			Pattern pattern3 = Pattern.compile("(.+)(\\..+)");
+			Matcher matcher3 = pattern3.matcher(path.toString());
+			Pattern pattern4 = Pattern.compile("(.+)");
+			Matcher matcher4 = pattern4.matcher(path.toString());
+
+			if (matcher1.matches()) {
+				int number = Integer.valueOf(matcher1.group(3));
+				number++;
+				return matcher1.group(1) + " (" + number + ")" + matcher1.group(4);
+			}else if(matcher2.matches()) {
+				int number = Integer.valueOf(matcher2.group(3));
+				number++;
+				return matcher2.group(1) + " (" + number + ").txt";
+			}else if(matcher3.matches()) {
+				return matcher3.group(1)+" (1)"+matcher3.group(2);
+			}else if(matcher4.matches()) {
+				return matcher4.group(1)+" (1).txt";
 			}
-			return path.getParent() + File.separator + newFilename;
+
+			return "";
 		}
 
 	};
-	
-	private ActionListener generateButtonListener =(e)->{
+
+	private ActionListener generateButtonListener = (e) -> {
 		model.generateAll();
 		model.notifyObservers();
 	};
