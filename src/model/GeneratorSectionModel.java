@@ -77,7 +77,10 @@ public class GeneratorSectionModel {
 	 * @return true ukoliko su parametri ispravni
 	 */
 	public Boolean validate() {
-		// TODO: Uraditi validaciju parametara
+		if (ammount < 0 || from > to) {
+			message = "Greska! Uneseni podaci nisu ispravni.";
+			return false;
+		}
 		return true;
 	}
 

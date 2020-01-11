@@ -54,7 +54,8 @@ public class GeneratorModel implements SubjectInterface {
 
 	public void generateAll() {
 		for (GeneratorSectionModel sectionModel : generators)
-			sectionModel.generate();
+			if (sectionModel.validate())
+				sectionModel.generate();
 	}
 
 }

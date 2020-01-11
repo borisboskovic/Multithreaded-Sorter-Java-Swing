@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import components.MaterialButton;
 import components.MaterialTextField;
@@ -192,6 +193,9 @@ public class GeneratorSectionView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("TXT files", "txt");
+			fileChooser.addChoosableFileFilter(fileFilter);
 			fileChooser.setPreferredSize(new Dimension(800, 600));
 
 			int returnValue = fileChooser.showSaveDialog(GeneratorSectionView.this);
