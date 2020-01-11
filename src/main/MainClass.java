@@ -16,6 +16,7 @@ public class MainClass{
 		//TODO: Uskladiti dugmad i panele tako da nema IndexOutOfBounds Exception
 		//TODO: Uraditi validaciju podataka u generatoru
 		//TODO: Provjeri da li sortiranje radi sa negativnim brojevima
+		//TODO: Dodaj konzolu, ispisuj poruke, text area readonly
 	}
 
 }

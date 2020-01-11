@@ -36,6 +36,11 @@ public class GeneratorSectionModel {
 	 */
 	public void generate() {
 		// Kreriranje foldera i fajla
+		if(path.equals("")) {
+			//TODO: Lokalizacija
+			this.message="Greska! Niste unijeli putanju fajla.";
+			return;
+		}
 		Path filePath = Paths.get(path);
 		File dir = Paths.get(filePath.getRoot().toString(), filePath.subpath(0, filePath.getNameCount() - 1).toString())
 				.toFile();
