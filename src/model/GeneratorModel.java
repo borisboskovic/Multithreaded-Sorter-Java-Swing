@@ -22,6 +22,10 @@ public class GeneratorModel implements SubjectInterface{
 		
 	}
 	
+	public void clearGenerators() {
+		generators=new ArrayList<>();
+	}
+	
 	public ArrayList<GeneratorSectionModel> getGenerators() {
 		return generators;
 	}

@@ -6,6 +6,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,7 @@ public class GeneratorController {
 		this.view = view;
 		view.getPlus().addActionListener(addButtonListener);
 		view.getGenerate().addActionListener(generateButtonListener);
+		view.getClear().addActionListener(clearButtonListener);
 	}
 
 	private ActionListener addButtonListener = new ActionListener() {
@@ -76,6 +78,11 @@ public class GeneratorController {
 
 	};
 
+	private ActionListener clearButtonListener=(e)->{
+		model.clearGenerators();
+		model.notifyObservers();
+	};
+	
 	private ActionListener generateButtonListener = (e) -> {
 		model.generateAll();
 		model.notifyObservers();

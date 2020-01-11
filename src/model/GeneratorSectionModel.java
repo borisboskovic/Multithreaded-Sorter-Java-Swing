@@ -45,7 +45,6 @@ public class GeneratorSectionModel {
 				Files.createFile(filePath);
 			} catch (IOException e) {
 				// TODO: Lokalizacija
-				e.printStackTrace();
 				this.message = "Greska! Pristup fajl sistemu trenutno nije moguc. Pokusajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
 			}
 		}

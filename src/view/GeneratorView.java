@@ -33,6 +33,7 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 	private JScrollPane scrollPane;
 	private JButton plus;
 	private JButton generate;
+	private JButton clear;
 
 	public GeneratorView(GeneratorModel model) {
 		this.model = model;
@@ -69,8 +70,12 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		this.plus.setFont(large);
 		this.generate = new MaterialButton("Generisi");
 		this.generate.setFont(large);
+		this.clear=new MaterialButton(" X ");
+		this.clear.setFont(large);
 
 		buttonPanel.add(plus);
+		buttonPanel.add(Box.createHorizontalStrut(20));
+		buttonPanel.add(clear);
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(generate);
 
@@ -103,6 +108,10 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		return plus;
 	}
 
+	public JButton getClear() {
+		return clear;
+	}
+	
 	public JButton getGenerate() {
 		return generate;
 	}
