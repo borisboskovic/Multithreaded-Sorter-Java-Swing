@@ -1,14 +1,11 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,13 +13,10 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -65,6 +59,7 @@ public class GeneratorSectionView extends JPanel {
 		JPanel messageRow = new JPanel(new GridLayout(1, 1));
 		JLabel message = new JLabel(model.getMessage());
 		message.setFont(Themes.getCurrentTheme().getFonts().getNoteFont());
+		message.setForeground(Themes.getCurrentTheme().getAccentColor());
 		messageRow.setBackground(Themes.getCurrentTheme().getSectionColor());
 		messageRow.add(message);
 
@@ -185,8 +180,8 @@ public class GeneratorSectionView extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			GeneratorView gView = (GeneratorView) (GeneratorSectionView.this.getParent().getParent().getParent()
 					.getParent().getParent());
-			
-			GeneratorModel gModel=gView.getModel();
+
+			GeneratorModel gModel = gView.getModel();
 			gModel.getGenerators().remove(model);
 			gModel.notifyObservers();
 		}
@@ -207,30 +202,31 @@ public class GeneratorSectionView extends JPanel {
 	};
 
 	private DocumentListener textChanged = new DocumentListener() {
-		
+
 		@Override
 		public void removeUpdate(DocumentEvent e) {
 			updateModel();
 		}
-		
+
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			updateModel();
 		}
-		
+
 		@Override
 		public void changedUpdate(DocumentEvent e) {
 			updateModel();
 		}
 	};
-	
+
 	public void updateModel() {
 		model.setPath(path.getText());
 		try {
 			model.setAmmount(Integer.valueOf(ammount.getText()));
 			model.setFrom(Integer.valueOf(from.getText()));
-			model.setTo(Integer.valueOf(to.getText()));			
-		} catch (NumberFormatException e) {}
+			model.setTo(Integer.valueOf(to.getText()));
+		} catch (NumberFormatException e) {
+		}
 	}
 
 	public JTextField getPath() {

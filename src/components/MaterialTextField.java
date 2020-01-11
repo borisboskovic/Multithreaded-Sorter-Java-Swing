@@ -2,6 +2,8 @@ package components;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
@@ -19,6 +21,7 @@ public class MaterialTextField extends JTextField {
 		font = Themes.getCurrentTheme().getFonts().getTextFieldFont();
 		setFont(font);
 		applyStyle();
+		this.addFocusListener(selectOnFocus);
 	}
 
 	private void applyStyle() {
@@ -34,9 +37,21 @@ public class MaterialTextField extends JTextField {
 		setSelectedTextColor(theme.getTextSecondaryColor());
 
 		setCaretPosition(0);
-		
+
 		setMinimumSize(new Dimension(0, 50));
 		setSize(new Dimension(0, 50));
 	}
+
+	private FocusListener selectOnFocus = new FocusListener() {
+
+		@Override
+		public void focusLost(FocusEvent e) {
+		}
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			MaterialTextField.this.selectAll();
+		}
+	};
 
 }

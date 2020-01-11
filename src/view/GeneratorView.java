@@ -6,13 +6,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -40,7 +38,7 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		model.addObserver(this);
 
 		setLayout(new BorderLayout());
-		
+
 		setUpSections();
 		setUpButtons();
 
@@ -70,7 +68,7 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		this.plus.setFont(large);
 		this.generate = new MaterialButton("Generisi");
 		this.generate.setFont(large);
-		this.clear=new MaterialButton(" X ");
+		this.clear = new MaterialButton(" X ");
 		this.clear.setFont(large);
 
 		buttonPanel.add(plus);
@@ -111,19 +109,19 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 	public JButton getClear() {
 		return clear;
 	}
-	
+
 	public JButton getGenerate() {
 		return generate;
 	}
 
 	public void updateModels() {
-		Component[] components= sectionsPanel.getComponents();
-		for(Component cmp : components) {
-			GeneratorSectionView section = (GeneratorSectionView)((JPanel)cmp).getComponent(0);
+		Component[] components = sectionsPanel.getComponents();
+		for (Component cmp : components) {
+			GeneratorSectionView section = (GeneratorSectionView) ((JPanel) cmp).getComponent(0);
 			section.updateModel();
 		}
 	}
-	
+
 	@Override
 	public void update() {
 		setUpSections();
@@ -136,5 +134,5 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 	public GeneratorModel getModel() {
 		return model;
 	}
-	
+
 }

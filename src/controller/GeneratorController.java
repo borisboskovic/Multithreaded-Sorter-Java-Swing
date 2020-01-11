@@ -2,11 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,14 +60,14 @@ public class GeneratorController {
 				int number = Integer.valueOf(matcher1.group(3));
 				number++;
 				return matcher1.group(1) + " (" + number + ")" + matcher1.group(4);
-			}else if(matcher2.matches()) {
+			} else if (matcher2.matches()) {
 				int number = Integer.valueOf(matcher2.group(3));
 				number++;
 				return matcher2.group(1) + " (" + number + ").txt";
-			}else if(matcher3.matches()) {
-				return matcher3.group(1)+" (1)"+matcher3.group(2);
-			}else if(matcher4.matches()) {
-				return matcher4.group(1)+" (1).txt";
+			} else if (matcher3.matches()) {
+				return matcher3.group(1) + " (1)" + matcher3.group(2);
+			} else if (matcher4.matches()) {
+				return matcher4.group(1) + " (1).txt";
 			}
 
 			return "";
@@ -78,11 +75,11 @@ public class GeneratorController {
 
 	};
 
-	private ActionListener clearButtonListener=(e)->{
+	private ActionListener clearButtonListener = (e) -> {
 		model.clearGenerators();
 		model.notifyObservers();
 	};
-	
+
 	private ActionListener generateButtonListener = (e) -> {
 		model.generateAll();
 		model.notifyObservers();
