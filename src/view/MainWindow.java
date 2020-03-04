@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import components.ImageBackgroundContentPane;
 import model.GeneratorModel;
 import model.InfoModel;
+import model.MultiFileSorterModel;
 import model.PanelSwitchingModel;
 
 public class MainWindow extends JFrame implements ObserverInterface {
@@ -26,6 +27,7 @@ public class MainWindow extends JFrame implements ObserverInterface {
 		this.views = new ArrayList<>();
 		this.views.add(new InfoView(new InfoModel()));
 		this.views.add(new GeneratorView(new GeneratorModel()));
+		this.views.add(new MultiFileSorterView(new MultiFileSorterModel()));
 
 		mainPanel = views.get(0);
 
