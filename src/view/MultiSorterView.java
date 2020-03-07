@@ -31,14 +31,16 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 	private JButton addButton;
 	private JButton removeButton;
 	private JButton sortButton;
+	private JScrollPane scrollPane;
 
 	public MultiSorterView(MultiSorterModel model) {
 		this.model = model;
+		model.addObserver(this);
 		setLayout(new BorderLayout());
 
 		setUpSections();
 
-		JScrollPane scrollPane = new JScrollPane(sectionsPanel);
+		scrollPane = new JScrollPane(sectionsPanel);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(null);
@@ -99,8 +101,11 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
+		setUpSections();
+		scrollPane.setViewportView(sectionsPanel);
+		scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
+		revalidate();
+		repaint();
 	}
 
 	public JButton getAddButton() {
@@ -115,6 +120,8 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 		return sortButton;
 	}
 
-	
+	public MultiSorterModel getModel() {
+		return model;
+	}
 	
 }

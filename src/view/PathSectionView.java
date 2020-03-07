@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -43,6 +45,7 @@ public class PathSectionView extends JPanel {
 		setUpMainSection();
 		add(Box.createHorizontalStrut(20));
 		setUpRemoveButton();
+		remove.addActionListener(removeBtnListener);
 
 		setOpaque(false);
 	}
@@ -115,4 +118,15 @@ public class PathSectionView extends JPanel {
 		graphics2d.fillRoundRect(0, 0, getSize().width, getSize().height, 50, 50);
 		super.paint(g);
 	}
+
+	private ActionListener removeBtnListener = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			MultiSorterView parentView = (MultiSorterView) (getParent().getParent().getParent().getParent()
+					.getParent());
+			parentView.getModel().removeFile(model);
+			parentView.getModel().notifyObservers();
+		}
+	};
 }

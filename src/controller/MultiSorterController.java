@@ -20,6 +20,7 @@ public class MultiSorterController {
 		this.model = model;
 		this.view = view;
 		view.getAddButton().addActionListener(addBtnListener);
+		view.getRemoveButton().addActionListener(removeBtnListener);
 	}
 
 	private ActionListener addBtnListener = new ActionListener() {
@@ -33,12 +34,20 @@ public class MultiSorterController {
 			fileChooser.addChoosableFileFilter(fileFilter);
 			fileChooser.setMultiSelectionEnabled(true);
 			int returnValue = fileChooser.showOpenDialog(view);
-			
-			if(returnValue==JFileChooser.APPROVE_OPTION) {
-				File[] selectedFiles = fileChooser.getSelectedFiles();
-				for(File file : selectedFiles)
-					System.out.println(file);
+
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				model.addFiles(fileChooser.getSelectedFiles());
+				model.notifyObservers();
 			}
+		}
+	};
+	
+	private ActionListener removeBtnListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			model.removeAllFiles();
+			model.notifyObservers();
 		}
 	};
 
