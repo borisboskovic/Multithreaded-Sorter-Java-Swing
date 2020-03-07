@@ -78,7 +78,6 @@ public class PathSectionView extends JPanel {
 		pathLabel.setFont(theme.getFonts().getLabelFont());
 		MaterialTextField pathTxtField = new MaterialTextField(512);
 		pathTxtField.setText(model.getPath());
-//		pathTxtField.setBackground(Color.WHITE);
 		JLabel messageLabel = new JLabel(model.getMessage());
 		messageLabel.setFont(theme.getFonts().getNoteFont());
 		messageLabel.setForeground(theme.getAccentColor());
@@ -87,6 +86,7 @@ public class PathSectionView extends JPanel {
 		BoxLayout upperRowLayout = new BoxLayout(upperRow, BoxLayout.LINE_AXIS);
 		upperRow.setLayout(upperRowLayout);
 		upperRow.add(pathLabel);
+		upperRow.add(Box.createHorizontalStrut(5));
 		upperRow.add(pathTxtField);
 		upperRow.setOpaque(false);
 
