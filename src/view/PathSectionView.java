@@ -94,17 +94,17 @@ public class PathSectionView extends JPanel {
 		upperRow.setOpaque(false);
 
 		JPanel lowerRow = new JPanel();
-		lowerRow.setLayout(new GridLayout(1, 1));
+		lowerRow.setLayout(new FlowLayout(FlowLayout.LEFT));
 		lowerRow.add(messageLabel);
-		lowerRow.setAlignmentX(Component.LEFT_ALIGNMENT);
 		lowerRow.setOpaque(false);
 
+//		mainSection.add(Box.createVerticalStrut(20));
 		mainSection.add(upperRow);
 		mainSection.add(Box.createVerticalStrut(10));
 		mainSection.add(lowerRow);
 		mainSection.setOpaque(false);
 
-		Border mainSectionBorder = BorderFactory.createEmptyBorder(20, 0, 10, 0);
+		Border mainSectionBorder = BorderFactory.createEmptyBorder(45, 0, 10, 0);
 		mainSection.setBorder(mainSectionBorder);
 
 		this.add(mainSection);

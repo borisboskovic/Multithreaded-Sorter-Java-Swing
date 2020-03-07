@@ -16,7 +16,7 @@ public class MultiSorterModel implements SubjectInterface {
 	public MultiSorterModel() {
 		this.pathModels = new ArrayList<>();
 		this.observers = new ArrayList<>();
-		pathModels.add(new PathSectionModel(1, "C:\\Putanja\\bla.exe"));
+		pathModels.add(new PathSectionModel(1, "Boris Boskovic"));
 	}
 
 	public ArrayList<PathSectionModel> getPathModels() {

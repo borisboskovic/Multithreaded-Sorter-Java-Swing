@@ -5,11 +5,15 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -19,6 +23,7 @@ import components.CustomScrollBar;
 import components.MaterialButton;
 import components.VerticallyScrollablePanel;
 import controller.MultiSorterController;
+import global.Algorithms;
 import global.Themes;
 import model.MultiSorterModel;
 import model.PathSectionModel;
@@ -66,7 +71,7 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 			PathSectionView pathSection = new PathSectionView(model.getPathModels().get(i));
 			JPanel panel = new JPanel();
 			panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-			panel.setMaximumSize(new Dimension(2000, 130));
+			panel.setMaximumSize(new Dimension(2000, 170));
 			panel.setLayout(new GridLayout(1, 1));
 			panel.setOpaque(false);
 			panel.add(pathSection);
@@ -97,6 +102,12 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(sortButton);
 		this.add(buttonPanel, BorderLayout.SOUTH);
+
+
+		//------------------------------------------------------
+		JComboBox<String> cBox = new JComboBox<>(Algorithms.getInstance().getList());
+		buttonPanel.add(cBox);
+		
 	}
 
 	@Override
