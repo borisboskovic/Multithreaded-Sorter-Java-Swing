@@ -2,32 +2,28 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
 
 import components.CustomScrollBar;
 import components.MaterialButton;
+import components.MaterialComboBox;
 import components.VerticallyScrollablePanel;
 import controller.MultiSorterController;
 import global.Algorithms;
 import global.Themes;
 import model.MultiSorterModel;
-import model.PathSectionModel;
 
+@SuppressWarnings("serial")
 public class MultiSorterView extends JPanel implements ObserverInterface {
 
 	private MultiSorterModel model;
@@ -37,6 +33,7 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 	private JButton removeButton;
 	private JButton sortButton;
 	private JScrollPane scrollPane;
+	private JComboBox<String> comboBox;
 
 	public MultiSorterView(MultiSorterModel model) {
 		this.model = model;
@@ -84,8 +81,9 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 	private void addButtons() {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 0));
+		BoxLayout bl=new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS);
+		buttonPanel.setLayout(bl);
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 20));
 
 		Font fnt = Themes.getCurrentTheme().getFonts().getMainButtonFont();
 		Font large = new Font(fnt.getName(), fnt.getStyle(), 32);
@@ -99,15 +97,14 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 		buttonPanel.add(addButton);
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(removeButton);
+
+		comboBox = new MaterialComboBox<>(Algorithms.getInstance().getList());
+		buttonPanel.add(Box.createHorizontalGlue());
+		buttonPanel.add(comboBox);
 		buttonPanel.add(Box.createHorizontalStrut(20));
 		buttonPanel.add(sortButton);
+
 		this.add(buttonPanel, BorderLayout.SOUTH);
-
-
-		//------------------------------------------------------
-		JComboBox<String> cBox = new JComboBox<>(Algorithms.getInstance().getList());
-		buttonPanel.add(cBox);
-		
 	}
 
 	@Override
@@ -127,10 +124,14 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 		return removeButton;
 	}
 
+	public JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+	
 	public JButton getSortButton() {
 		return sortButton;
 	}
-
+	
 	public MultiSorterModel getModel() {
 		return model;
 	}

@@ -98,7 +98,6 @@ public class PathSectionView extends JPanel {
 		lowerRow.add(messageLabel);
 		lowerRow.setOpaque(false);
 
-//		mainSection.add(Box.createVerticalStrut(20));
 		mainSection.add(upperRow);
 		mainSection.add(Box.createVerticalStrut(10));
 		mainSection.add(lowerRow);
