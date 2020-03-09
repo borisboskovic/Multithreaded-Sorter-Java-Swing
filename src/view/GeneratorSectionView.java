@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -200,7 +202,11 @@ public class GeneratorSectionView extends JPanel {
 
 			int returnValue = fileChooser.showSaveDialog(GeneratorSectionView.this);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				GeneratorSectionView.this.path.setText(fileChooser.getSelectedFile().getPath().toString());
+				Pattern pattern = Pattern.compile(".*\\.txt");
+				String selectedFile = fileChooser.getSelectedFile().getPath().toString();
+				Matcher matcher = pattern.matcher(selectedFile);
+				selectedFile = (matcher.find()) ? selectedFile : selectedFile + ".txt";
+				GeneratorSectionView.this.path.setText(selectedFile);
 			}
 		}
 	};
