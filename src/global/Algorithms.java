@@ -1,8 +1,8 @@
 package global;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
+import algorithm.QuickSort;
 import algorithm.SortingAlgorithm;
 
 public class Algorithms {
@@ -29,12 +29,12 @@ public class Algorithms {
 		return list;
 	}
 
-	/*
-	 * public SortingAlgorithm createAlgorithm(String name) {
-	 * if(name.equals(list.get(0))) { return new }else if(name.equals(list.get(1)))
-	 * { return new }
-	 * 
-	 * //TODO: dodati algoritme }
-	 */
+	// TODO: dodati algoritme }
+	public SortingAlgorithm createAlgorithm(String name) {
+		if (name.equals(list.get(0)))
+			return new QuickSort();
+		else
+			return null;
+	}
 
 }
