@@ -15,10 +15,6 @@ public class QuickSort implements SortingAlgorithm, Runnable {
 	private int up;
 	Boolean done = false;
 
-	public QuickSort() {
-
-	}
-
 	/** @param array */
 	public QuickSort(ArrayList<Integer> array) {
 		this.array = array;

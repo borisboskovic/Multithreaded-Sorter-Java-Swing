@@ -1,5 +1,6 @@
 package global;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import algorithm.QuickSort;
@@ -30,9 +31,9 @@ public class Algorithms {
 	}
 
 	// TODO: dodati algoritme }
-	public SortingAlgorithm createAlgorithm(String name) {
+	public SortingAlgorithm createAlgorithm(String name, ArrayList<Integer> array) {
 		if (name.equals(list.get(0)))
-			return new QuickSort();
+			return new QuickSort(array);
 		else
 			return null;
 	}
