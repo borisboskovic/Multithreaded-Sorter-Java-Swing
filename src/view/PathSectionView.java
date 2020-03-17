@@ -31,12 +31,14 @@ public class PathSectionView extends JPanel {
 	private PathSectionModel model;
 
 	private JLabel number;
+	private JLabel messageLabel;
 	private JButton remove;
 	private ColorTheme theme;
 
 	public PathSectionView(PathSectionModel model) {
 		this.theme = Themes.getCurrentTheme();
 		this.model = model;
+		this.model.setView(this);
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
 		setLayout(mainLayout);
 
@@ -81,7 +83,7 @@ public class PathSectionView extends JPanel {
 		pathLabel.setFont(theme.getFonts().getLabelFont());
 		MaterialTextField pathTxtField = new MaterialTextField(512);
 		pathTxtField.setText(model.getPath());
-		JLabel messageLabel = new JLabel(model.getMessage());
+		messageLabel = new JLabel(model.getMessage());
 		messageLabel.setFont(theme.getFonts().getNoteFont());
 		messageLabel.setForeground(theme.getAccentColor());
 
@@ -116,6 +118,10 @@ public class PathSectionView extends JPanel {
 		graphics2d.setColor(theme.getSectionColor());
 		graphics2d.fillRoundRect(0, 0, getSize().width, getSize().height, 50, 50);
 		super.paint(g);
+	}
+
+	public void update() {
+		messageLabel.setText(model.getMessage());
 	}
 
 	private ActionListener removeBtnListener = new ActionListener() {
