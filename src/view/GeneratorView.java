@@ -19,9 +19,9 @@ import components.CustomScrollBar;
 import components.MaterialButton;
 import components.VerticallyScrollablePanel;
 import controller.GeneratorController;
-import global.Themes;
 import model.GeneratorModel;
 import model.GeneratorSectionModel;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class GeneratorView extends JPanel implements ObserverInterface {

@@ -85,4 +85,9 @@ public class QuickSort implements SortingAlgorithm, Runnable {
 		down = 0;
 		up = array.size() - 1;
 	}
+
+	@Override
+	public ArrayList<Integer> getArray() {
+		return this.array;
+	}
 }

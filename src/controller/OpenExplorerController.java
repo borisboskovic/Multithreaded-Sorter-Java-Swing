@@ -3,21 +3,17 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.nio.file.Path;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import model.InfoModel.Disk;
 
 public class OpenExplorerController implements MouseListener {
 
-	private JLabel view;
 	private Disk model;
 
 	public OpenExplorerController(JLabel view, Disk model) {
 		this.model = model;
-		this.view = view;
 		view.addMouseListener(this);
 	}
 

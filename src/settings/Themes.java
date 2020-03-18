@@ -3,7 +3,7 @@
  * Purpose: Singleton klasa Themes. Pri kreiranju dohvata sve teme i registruje
  * 		izabranu temu
  *****************************************************************************/
-package global;
+package settings;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,9 +20,6 @@ import java.util.HashMap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import settings.ColorTheme;
-import settings.FontTheme;
 
 public class Themes {
 	private static ColorTheme theme = null;

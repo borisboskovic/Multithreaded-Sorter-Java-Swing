@@ -28,8 +28,8 @@ import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 
-import global.Themes;
 import settings.ColorTheme;
+import settings.Themes;
 import view.SideMenuView;
 
 @SuppressWarnings("serial")

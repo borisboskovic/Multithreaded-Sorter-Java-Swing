@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -37,8 +36,8 @@ import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.ui.RectangleInsets;
 
 import components.MaterialButton;
-import global.Themes;
 import settings.ColorTheme;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class LineChartWindow extends JFrame {
@@ -124,7 +123,7 @@ public class LineChartWindow extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setAcceptAllFileFilterUsed(false);
-			FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("PNG Immages", "png");
+			FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("PNG Images", "png");
 			fileChooser.addChoosableFileFilter(fileFilter);
 			fileChooser.setPreferredSize(new Dimension(800, 600));
 

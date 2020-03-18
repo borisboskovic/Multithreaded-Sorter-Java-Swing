@@ -3,7 +3,6 @@ package controller;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -21,6 +20,7 @@ public class MultiSorterController {
 		this.view = view;
 		view.getAddButton().addActionListener(addBtnListener);
 		view.getRemoveButton().addActionListener(removeBtnListener);
+		view.getSortButton().addActionListener(sortBtnListener);
 	}
 
 	private ActionListener addBtnListener = new ActionListener() {
@@ -41,13 +41,23 @@ public class MultiSorterController {
 			}
 		}
 	};
-	
+
 	private ActionListener removeBtnListener = new ActionListener() {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			model.removeAllFiles();
 			model.notifyObservers();
+		}
+	};
+
+	private ActionListener sortBtnListener = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			model.setAlgorithmName(view.getComboBox().getSelectedItem().toString());
+			Thread multiSorterThread = new Thread(model);
+			multiSorterThread.start();
 		}
 	};
 

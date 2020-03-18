@@ -8,8 +8,8 @@ import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
-import global.Themes;
 import settings.ColorTheme;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class MaterialTextField extends JTextField {

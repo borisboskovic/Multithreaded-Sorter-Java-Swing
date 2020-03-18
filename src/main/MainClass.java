@@ -1,7 +1,7 @@
 package main;
 
-import global.Themes;
 import model.PanelSwitchingModel;
+import settings.Themes;
 import view.MainWindow;
 
 public class MainClass{
