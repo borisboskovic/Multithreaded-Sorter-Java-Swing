@@ -18,6 +18,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +28,7 @@ import helpers.ArrayWithPath;
 import settings.Themes;
 
 @SuppressWarnings("serial")
-public class SorterFinishWindow extends JFrame {
+public class SorterFinishWindow extends JDialog {
 	private ArrayList<ArrayWithPath> arrays;
 	private JButton yes;
 	private JButton no;
@@ -96,6 +97,7 @@ public class SorterFinishWindow extends JFrame {
 		setLocation(new Point(scrnSize.width / 2 - getSize().width / 2, scrnSize.height / 2 - getSize().height / 2));
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setModal(true);
 		setVisible(true);
 	}
 

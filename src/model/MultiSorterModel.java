@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import org.jfree.data.xy.DefaultXYDataset;
@@ -160,9 +161,9 @@ public class MultiSorterModel implements SubjectInterface, Runnable {
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries(algorithmName, results);
 		progressWindow.dispose();
+		new SorterFinishWindow(arraysCollection, algorithms.size() + "/" + pathModels.size() + " files sorted");
 		new LineChartWindow(dataset, "Vrijeme sortiranja u zavisnosti od kolièine podataka", "Kolièina podataka",
 				"Vrijeme [ms]"); // TODO: Lokalizacija
-		new SorterFinishWindow(arraysCollection, algorithms.size() + "/" + pathModels.size() + " files sorted");
 	}
 
 	public void setAlgorithmName(String algorithmName) {
