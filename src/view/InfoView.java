@@ -25,8 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import controller.OpenExplorerController;
-import global.Themes;
 import model.InfoModel;
+import settings.Themes;
 
 public class InfoView extends JPanel {
 

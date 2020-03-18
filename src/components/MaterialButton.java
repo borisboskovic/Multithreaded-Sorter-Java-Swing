@@ -22,8 +22,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import global.Themes;
 import settings.ColorTheme;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class MaterialButton extends JButton {

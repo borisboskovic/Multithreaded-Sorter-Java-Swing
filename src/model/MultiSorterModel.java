@@ -10,12 +10,17 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
+
 import org.jfree.data.xy.DefaultXYDataset;
 
 import algorithm.SortingAlgorithm;
-import global.Algorithms;
+import helpers.ArrayWithPath;
+import settings.Algorithms;
 import view.LineChartWindow;
+import view.MultiSorterProgressWindow;
 import view.ObserverInterface;
+import view.SorterFinishWindow;
 
 public class MultiSorterModel implements SubjectInterface, Runnable {
 
@@ -83,11 +88,15 @@ public class MultiSorterModel implements SubjectInterface, Runnable {
 
 	@Override
 	public void run() {
-		ArrayList<ArrayList<Integer>> arraysCollection = new ArrayList<>();
+		ArrayList<ArrayWithPath> arraysCollection = new ArrayList<>();
+
+		MultiSorterProgressWindow progressWindow = new MultiSorterProgressWindow();
+		progressWindow.setDescription("Loading data from files...");
 
 		// Reading from files
 		for (PathSectionModel sectionModel : pathModels) {
 			try {
+				progressWindow.setProgress((pathModels.indexOf(sectionModel) + 1) + "/" + pathModels.size());
 				BufferedReader in = new BufferedReader(new FileReader(sectionModel.getPath()));
 				Pattern pattern = Pattern.compile("\\d+");
 				ArrayList<Integer> array = new ArrayList<>();
@@ -98,7 +107,7 @@ public class MultiSorterModel implements SubjectInterface, Runnable {
 					}
 				}
 				in.close();
-				arraysCollection.add(array);
+				arraysCollection.add(new ArrayWithPath(array, sectionModel.getPath()));
 			} catch (FileNotFoundException e) {
 				sectionModel.setMessage("ERROR! File not found."); // TODO: Lokalizacija
 				sectionModel.updateView();
@@ -109,21 +118,39 @@ public class MultiSorterModel implements SubjectInterface, Runnable {
 		}
 
 		// Ordering arrays by size
-		arraysCollection.sort(Comparator.comparing(ArrayList::size));
+		Comparator<ArrayWithPath> comparator = new Comparator<ArrayWithPath>() {
+			@Override
+			public int compare(ArrayWithPath o1, ArrayWithPath o2) {
+				return Integer.valueOf(o1.getArray().size()).compareTo(Integer.valueOf(o2.getArray().size()));
+			}
+		};
+		arraysCollection.sort(comparator);
 
 		// Creating sorters
 		ArrayList<SortingAlgorithm> algorithms = new ArrayList<>();
-		for (ArrayList<Integer> array : arraysCollection) {
-			algorithms.add(Algorithms.getInstance().createAlgorithm(algorithmName, array));
+		for (ArrayWithPath arrayWithPath : arraysCollection) {
+			algorithms.add(Algorithms.getInstance().createAlgorithm(algorithmName, arrayWithPath.getArray()));
+		}
+
+		if (algorithms.size() == 0) {
+			progressWindow.dispose();
+			JOptionPane.showMessageDialog(progressWindow, "There are no files to sort.", "",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
 		}
 
 		// Sorting and geting results
 		ArrayList<Integer> ammounts = new ArrayList<>();
 		ArrayList<Long> times = new ArrayList<>();
+		progressWindow.setDescription("Sorting data...");
+		progressWindow.setProgress("1/" + algorithms.size());
 		for (SortingAlgorithm algorithm : algorithms) {
+			progressWindow.setProgress((algorithms.indexOf(algorithm) + 1) + "/" + algorithms.size());
 			times.add(algorithm.sort(null));
 			ammounts.add(algorithm.getArray().size());
 		}
+		progressWindow.setProgress(" ");
+		progressWindow.setDescription("Creating graph...");
 		double[][] results = new double[2][ammounts.size()];
 		for (int i = 0; i < ammounts.size(); i++) {
 			results[0][i] = ammounts.get(i);
@@ -132,8 +159,10 @@ public class MultiSorterModel implements SubjectInterface, Runnable {
 
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries(algorithmName, results);
+		progressWindow.dispose();
 		new LineChartWindow(dataset, "Vrijeme sortiranja u zavisnosti od kolièine podataka", "Kolièina podataka",
 				"Vrijeme [ms]"); // TODO: Lokalizacija
+		new SorterFinishWindow(arraysCollection, algorithms.size() + "/" + pathModels.size() + " files sorted");
 	}
 
 	public void setAlgorithmName(String algorithmName) {

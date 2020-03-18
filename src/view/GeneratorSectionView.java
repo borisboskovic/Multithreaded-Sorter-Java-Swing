@@ -25,9 +25,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import components.MaterialButton;
 import components.MaterialTextField;
-import global.Themes;
 import model.GeneratorModel;
 import model.GeneratorSectionModel;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class GeneratorSectionView extends JPanel {

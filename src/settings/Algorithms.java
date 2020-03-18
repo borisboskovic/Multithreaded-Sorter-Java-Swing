@@ -1,4 +1,4 @@
-package global;
+package settings;
 
 import java.util.ArrayList;
 import java.util.Vector;

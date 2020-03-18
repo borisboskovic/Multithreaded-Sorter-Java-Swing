@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import global.Themes;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class MultiSorterProgressWindow extends JFrame {
@@ -75,10 +75,5 @@ public class MultiSorterProgressWindow extends JFrame {
 	public void setDescription(String description) {
 		this.description.setText(description);
 	}
-	
-//	public void refresh() {
-//		revalidate();
-//		repaint();
-//	}
 	
 }

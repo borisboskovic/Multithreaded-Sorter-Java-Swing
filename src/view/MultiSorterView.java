@@ -19,9 +19,9 @@ import components.MaterialButton;
 import components.MaterialComboBox;
 import components.VerticallyScrollablePanel;
 import controller.MultiSorterController;
-import global.Algorithms;
-import global.Themes;
 import model.MultiSorterModel;
+import settings.Algorithms;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class MultiSorterView extends JPanel implements ObserverInterface {

@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 
 import components.PanelButton;
 import controller.SideMenuController;
-import global.Themes;
 import model.PanelSwitchingModel;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class SideMenuView extends JPanel implements ObserverInterface {

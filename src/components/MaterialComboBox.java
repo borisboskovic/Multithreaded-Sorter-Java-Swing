@@ -15,8 +15,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
-import global.Themes;
 import settings.ColorTheme;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class MaterialComboBox<E> extends JComboBox<E>{

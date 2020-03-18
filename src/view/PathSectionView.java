@@ -1,12 +1,8 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,13 +13,16 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import components.MaterialButton;
 import components.MaterialTextField;
-import global.Themes;
 import model.PathSectionModel;
 import settings.ColorTheme;
+import settings.Themes;
 
 @SuppressWarnings("serial")
 public class PathSectionView extends JPanel {
@@ -33,6 +32,7 @@ public class PathSectionView extends JPanel {
 	private JLabel number;
 	private JLabel messageLabel;
 	private JButton remove;
+	private JTextField pathTxtField;
 	private ColorTheme theme;
 
 	public PathSectionView(PathSectionModel model) {
@@ -81,8 +81,9 @@ public class PathSectionView extends JPanel {
 
 		JLabel pathLabel = new JLabel("Path:"); // TODO: Lokalizacija
 		pathLabel.setFont(theme.getFonts().getLabelFont());
-		MaterialTextField pathTxtField = new MaterialTextField(512);
+		pathTxtField = new MaterialTextField(512);
 		pathTxtField.setText(model.getPath());
+		pathTxtField.getDocument().addDocumentListener(textChangeListener);
 		messageLabel = new JLabel(model.getMessage());
 		messageLabel.setFont(theme.getFonts().getNoteFont());
 		messageLabel.setForeground(theme.getAccentColor());
@@ -134,4 +135,23 @@ public class PathSectionView extends JPanel {
 			parentView.getModel().notifyObservers();
 		}
 	};
+	
+	private DocumentListener textChangeListener = new DocumentListener() {
+		
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			PathSectionView.this.model.setPath(PathSectionView.this.pathTxtField.getText());
+		}
+		
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			PathSectionView.this.model.setPath(PathSectionView.this.pathTxtField.getText());
+		}
+		
+		@Override
+		public void changedUpdate(DocumentEvent e) {
+			PathSectionView.this.model.setPath(PathSectionView.this.pathTxtField.getText());
+		}
+	};
+	
 }

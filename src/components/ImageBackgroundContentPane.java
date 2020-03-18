@@ -7,7 +7,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JComponent;
 
-import global.Themes;
+import settings.Themes;
 
 public class ImageBackgroundContentPane extends JComponent {
 

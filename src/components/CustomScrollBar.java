@@ -9,8 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 
-import global.Themes;
 import settings.ColorTheme;
+import settings.Themes;
 
 public class CustomScrollBar extends MetalScrollBarUI {
 
