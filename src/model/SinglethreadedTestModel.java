@@ -19,18 +19,18 @@ import algorithm.SortingAlgorithm;
 import helpers.ArrayWithPath;
 import settings.Algorithms;
 import view.LineChartWindow;
-import view.MultiSorterProgressWindow;
+import view.SorterProgressWindow;
 import view.ObserverInterface;
 import view.SorterFinishWindow;
 
-public class MultiSorterModel implements SubjectInterface, Runnable {
+public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 
 	private ArrayList<ObserverInterface> observers;
 
 	private String algorithmName = "";
 	private ArrayList<PathSectionModel> pathModels = null;
 
-	public MultiSorterModel() {
+	public SinglethreadedTestModel() {
 		this.pathModels = new ArrayList<>();
 		this.observers = new ArrayList<>();
 	}
@@ -91,7 +91,7 @@ public class MultiSorterModel implements SubjectInterface, Runnable {
 	public void run() {
 		ArrayList<ArrayWithPath> arraysCollection = new ArrayList<>();
 
-		MultiSorterProgressWindow progressWindow = new MultiSorterProgressWindow();
+		SorterProgressWindow progressWindow = new SorterProgressWindow();
 		progressWindow.setDescription("Loading data from files...");
 
 		// Reading from files

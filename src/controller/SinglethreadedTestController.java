@@ -7,15 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.MultiSorterModel;
-import view.MultiSorterView;
+import model.SinglethreadedTestModel;
+import view.SinglethreadedTestView;
 
-public class MultiSorterController {
+public class SinglethreadedTestController {
 
-	private MultiSorterModel model;
-	private MultiSorterView view;
+	private SinglethreadedTestModel model;
+	private SinglethreadedTestView view;
 
-	public MultiSorterController(MultiSorterModel model, MultiSorterView view) {
+	public SinglethreadedTestController(SinglethreadedTestModel model, SinglethreadedTestView view) {
 		this.model = model;
 		this.view = view;
 		view.getAddButton().addActionListener(addBtnListener);

@@ -18,15 +18,15 @@ import components.CustomScrollBar;
 import components.MaterialButton;
 import components.MaterialComboBox;
 import components.VerticallyScrollablePanel;
-import controller.MultiSorterController;
-import model.MultiSorterModel;
+import controller.SinglethreadedTestController;
+import model.SinglethreadedTestModel;
 import settings.Algorithms;
 import settings.Themes;
 
 @SuppressWarnings("serial")
-public class MultiSorterView extends JPanel implements ObserverInterface {
+public class SinglethreadedTestView extends JPanel implements ObserverInterface {
 
-	private MultiSorterModel model;
+	private SinglethreadedTestModel model;
 	private VerticallyScrollablePanel sectionsPanel;
 
 	private JButton addButton;
@@ -35,7 +35,7 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 	private JScrollPane scrollPane;
 	private JComboBox<String> comboBox;
 
-	public MultiSorterView(MultiSorterModel model) {
+	public SinglethreadedTestView(SinglethreadedTestModel model) {
 		this.model = model;
 		model.addObserver(this);
 		setLayout(new BorderLayout());
@@ -55,7 +55,7 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 
 		setOpaque(false);
 		
-		new MultiSorterController(model, this);
+		new SinglethreadedTestController(model, this);
 	}
 
 	private void setUpSections() {
@@ -132,7 +132,7 @@ public class MultiSorterView extends JPanel implements ObserverInterface {
 		return sortButton;
 	}
 	
-	public MultiSorterModel getModel() {
+	public SinglethreadedTestModel getModel() {
 		return model;
 	}
 	

@@ -129,7 +129,7 @@ public class PathSectionView extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			MultiSorterView parentView = (MultiSorterView) (getParent().getParent().getParent().getParent()
+			SinglethreadedTestView parentView = (SinglethreadedTestView) (getParent().getParent().getParent().getParent()
 					.getParent());
 			parentView.getModel().removeFile(model);
 			parentView.getModel().notifyObservers();

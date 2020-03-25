@@ -18,13 +18,13 @@ import javax.swing.JPanel;
 import settings.Themes;
 
 @SuppressWarnings("serial")
-public class MultiSorterProgressWindow extends JFrame {
+public class SorterProgressWindow extends JFrame {
 
 	private JLabel loader;
 	private JLabel progress;
 	private JLabel description;
 
-	public MultiSorterProgressWindow() {
+	public SorterProgressWindow() {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);

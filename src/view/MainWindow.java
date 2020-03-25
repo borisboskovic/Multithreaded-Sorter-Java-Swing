@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 import components.ImageBackgroundContentPane;
 import model.GeneratorModel;
 import model.InfoModel;
-import model.MultiSorterModel;
+import model.MultithreadedTestModel;
+import model.SinglethreadedTestModel;
 import model.PanelSwitchingModel;
 
 public class MainWindow extends JFrame implements ObserverInterface {
@@ -27,7 +28,8 @@ public class MainWindow extends JFrame implements ObserverInterface {
 		this.views = new ArrayList<>();
 		this.views.add(new InfoView(new InfoModel()));
 		this.views.add(new GeneratorView(new GeneratorModel()));
-		this.views.add(new MultiSorterView(new MultiSorterModel()));
+		this.views.add(new SinglethreadedTestView(new SinglethreadedTestModel()));
+		this.views.add(new MultithreadedTestView(new MultithreadedTestModel()));
 
 		mainPanel = views.get(0);
 
