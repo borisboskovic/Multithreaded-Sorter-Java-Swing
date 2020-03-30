@@ -7,11 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -19,16 +15,15 @@ import javax.swing.BoxLayout;
 import javax.swing.ComboBoxEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import components.MaterialButton;
 import components.MaterialComboBox;
 import components.MaterialTextField;
+import controller.MultithreadedTestController;
 import model.MultithreadedTestModel;
 import settings.ColorTheme;
 import settings.Themes;
@@ -46,31 +41,30 @@ public class MultithreadedTestView extends JPanel {
 
 	public MultithreadedTestView(MultithreadedTestModel model) {
 		this.model = model;
-
+		
 		BoxLayout containerLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		setLayout(containerLayout);
 		setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 50));
+		setOpaque(false);
 
-		mainPanel = new JPanel();
+		this.mainPanel = new JPanel();
 		BoxLayout mainPanelLayout = new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS);
-		mainPanel.setLayout(mainPanelLayout);
-		mainPanel.setOpaque(false);
-		mainPanel.setMaximumSize(new Dimension(2000, 475));
-		mainPanel.setPreferredSize(new Dimension(2000, 475));
+		this.mainPanel.setLayout(mainPanelLayout);
+		this.mainPanel.setOpaque(false);
+		this.mainPanel.setMaximumSize(new Dimension(2000, 475));
+		this.mainPanel.setPreferredSize(new Dimension(2000, 475));
 
 		ColorTheme th = Themes.getCurrentTheme();
-		mainPanel.add(createPathPanel(th));
-		mainPanel.add(createAmmountPanel(th));
-		mainPanel.add(createNoticePanel(th));
-		mainPanel.add(createBtnPanel(th));
-		
-		this.browseBtn.addActionListener(browseBtnListener);
+		this.mainPanel.add(createPathPanel(th));
+		this.mainPanel.add(createAmmountPanel(th));
+		this.mainPanel.add(createNoticePanel(th));
+		this.mainPanel.add(createBtnPanel(th));
 
 		add(Box.createVerticalGlue());
 		add(mainPanel);
 		add(Box.createVerticalGlue());
 
-		setOpaque(false);
+		new MultithreadedTestController(model, this);
 	}
 
 	private JPanel createPathPanel(ColorTheme th) {
@@ -152,6 +146,7 @@ public class MultithreadedTestView extends JPanel {
 		this.minFilesPerThread = new MaterialTextField(3);
 		this.minFilesPerThread.setFont(lblFont);
 		this.minFilesPerThread.setMaximumSize(new Dimension(100, 100));
+		this.minFilesPerThread.setText("1");
 
 		JPanel container = new JPanel();
 		container.setBorder(BorderFactory.createEmptyBorder(20, 100, 25, 100));
@@ -207,6 +202,22 @@ public class MultithreadedTestView extends JPanel {
 		return panel;
 	}
 
+	public JTextField getPath() {
+		return path;
+	}
+	
+	public JButton getSortBtn() {
+		return sortBtn;
+	}
+	
+	public JButton getBrowseBtn() {
+		return browseBtn;
+	}
+	
+	public JTextField getMinFilesPerThread() {
+		return minFilesPerThread;
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
@@ -215,24 +226,5 @@ public class MultithreadedTestView extends JPanel {
 		graphics2d.fillRoundRect(mainPanel.getLocation().x, mainPanel.getLocation().y, mainPanel.getSize().width,
 				mainPanel.getSize().height, 50, 50);
 		super.paint(g);
-	}
-
-	private ActionListener browseBtnListener = new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setAcceptAllFileFilterUsed(false);
-			FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("TXT files", "txt");
-			fileChooser.addChoosableFileFilter(fileFilter);
-			fileChooser.setPreferredSize(new Dimension(800, 600));
-
-			int returnValue = fileChooser.showSaveDialog(MultithreadedTestView.this);
-			if (returnValue == JFileChooser.APPROVE_OPTION) {
-				String selectedFile = fileChooser.getSelectedFile().getPath().toString();
-				MultithreadedTestView.this.path.setText(selectedFile);
-			}
-		}
-	};
-	
+	}	
 }
