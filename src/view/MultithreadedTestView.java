@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -8,7 +7,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -16,9 +19,11 @@ import javax.swing.BoxLayout;
 import javax.swing.ComboBoxEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import components.MaterialButton;
@@ -37,25 +42,33 @@ public class MultithreadedTestView extends JPanel {
 	private JComboBox<Integer> maxThreads;
 	private JTextField minFilesPerThread;
 	private JButton sortBtn;
+	private JPanel mainPanel;
 
 	public MultithreadedTestView(MultithreadedTestModel model) {
 		this.model = model;
 
-		setLayout(new GridLayout(1, 1));
+		BoxLayout containerLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
+		setLayout(containerLayout);
+		setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 50));
 
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		BoxLayout mainPanelLayout = new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS);
 		mainPanel.setLayout(mainPanelLayout);
 		mainPanel.setOpaque(false);
-		mainPanel.setMaximumSize(new Dimension(2000, 500));
+		mainPanel.setMaximumSize(new Dimension(2000, 475));
+		mainPanel.setPreferredSize(new Dimension(2000, 475));
 
 		ColorTheme th = Themes.getCurrentTheme();
 		mainPanel.add(createPathPanel(th));
 		mainPanel.add(createAmmountPanel(th));
 		mainPanel.add(createNoticePanel(th));
 		mainPanel.add(createBtnPanel(th));
+		
+		this.browseBtn.addActionListener(browseBtnListener);
 
+		add(Box.createVerticalGlue());
 		add(mainPanel);
+		add(Box.createVerticalGlue());
 
 		setOpaque(false);
 	}
@@ -182,7 +195,7 @@ public class MultithreadedTestView extends JPanel {
 
 	private JPanel createBtnPanel(ColorTheme th) {
 		Font fontLg = new Font(th.getFonts().getMainButtonFont().getName(), Font.TRUETYPE_FONT, 32);
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panel.setMaximumSize(new Dimension(2000, 80));
@@ -193,14 +206,33 @@ public class MultithreadedTestView extends JPanel {
 		panel.add(sortBtn);
 		return panel;
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
-		Graphics2D graphics2d = (Graphics2D)g;
+		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setColor(Themes.getCurrentTheme().getSectionColor());
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		graphics2d.fillRoundRect(0, 0, getSize().width, getSize().height, 50, 50);
+		graphics2d.fillRoundRect(mainPanel.getLocation().x, mainPanel.getLocation().y, mainPanel.getSize().width,
+				mainPanel.getSize().height, 50, 50);
 		super.paint(g);
 	}
 
+	private ActionListener browseBtnListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setAcceptAllFileFilterUsed(false);
+			FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("TXT files", "txt");
+			fileChooser.addChoosableFileFilter(fileFilter);
+			fileChooser.setPreferredSize(new Dimension(800, 600));
+
+			int returnValue = fileChooser.showSaveDialog(MultithreadedTestView.this);
+			if (returnValue == JFileChooser.APPROVE_OPTION) {
+				String selectedFile = fileChooser.getSelectedFile().getPath().toString();
+				MultithreadedTestView.this.path.setText(selectedFile);
+			}
+		}
+	};
+	
 }
