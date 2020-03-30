@@ -52,7 +52,7 @@ public class MultithreadedTestController {
 					JOptionPane.showMessageDialog(view, message, "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					view.setEnabled(false);
-					model.sort(path);
+					model.runTests(path);
 					view.setEnabled(true);
 				}
 			}

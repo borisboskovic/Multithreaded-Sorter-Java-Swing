@@ -17,7 +17,7 @@ public class MultithreadedTestModel {
 	private ArrayList<Integer> array;
 	private MultithreadedTestView view;
 
-	public void sort(String path) {
+	public void runTests(String path) {
 		readDataFromFile(path);
 
 		System.out.println(array.get(0));
