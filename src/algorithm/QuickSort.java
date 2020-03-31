@@ -13,7 +13,7 @@ public class QuickSort implements SortingAlgorithm, Runnable {
 	private ArrayList<Integer> array;
 	private int down;
 	private int up;
-	Boolean done = false;
+	private Boolean done = false;
 
 	/** @param array */
 	public QuickSort(ArrayList<Integer> array) {

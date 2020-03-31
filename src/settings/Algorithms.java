@@ -3,6 +3,8 @@ package settings;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import algorithm.BubbleSort;
+import algorithm.InsertionSort;
 import algorithm.QuickSort;
 import algorithm.SortingAlgorithm;
 
@@ -15,9 +17,9 @@ public class Algorithms {
 	private Algorithms() {
 		list = new Vector<>();
 		list.add("Quick Sort");
-		list.add("Test 1 2 3");
 		list.add("Bubble Sort");
 		list.add("Insertion Sort");
+		list.add("Add ...");
 	};
 
 	public static Algorithms getInstance() {
@@ -34,6 +36,10 @@ public class Algorithms {
 	public SortingAlgorithm createAlgorithm(String name, ArrayList<Integer> array) {
 		if (name.equals(list.get(0)))
 			return new QuickSort(array);
+		else if (name.equals(list.get(1)))
+			return new BubbleSort(array);
+		else if (name.equals(list.get(2)))
+			return new InsertionSort(array);
 		else
 			return null;
 	}
