@@ -25,6 +25,7 @@ import components.MaterialComboBox;
 import components.MaterialTextField;
 import controller.MultithreadedTestController;
 import model.MultithreadedTestModel;
+import settings.Algorithms;
 import settings.ColorTheme;
 import settings.Themes;
 
@@ -34,6 +35,7 @@ public class MultithreadedTestView extends JPanel {
 
 	private JTextField path;
 	private JButton browseBtn;
+	private JComboBox<String> algorithm;
 	private JComboBox<Integer> maxThreads;
 	private JTextField minFilesPerThread;
 	private JButton sortBtn;
@@ -41,7 +43,7 @@ public class MultithreadedTestView extends JPanel {
 
 	public MultithreadedTestView(MultithreadedTestModel model) {
 		this.model = model;
-		
+
 		BoxLayout containerLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		setLayout(containerLayout);
 		setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 50));
@@ -51,12 +53,14 @@ public class MultithreadedTestView extends JPanel {
 		BoxLayout mainPanelLayout = new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS);
 		this.mainPanel.setLayout(mainPanelLayout);
 		this.mainPanel.setOpaque(false);
-		this.mainPanel.setMaximumSize(new Dimension(2000, 475));
-		this.mainPanel.setPreferredSize(new Dimension(2000, 475));
+		this.mainPanel.setMaximumSize(new Dimension(2000, 500));
+		this.mainPanel.setPreferredSize(new Dimension(2000, 500));
 
 		ColorTheme th = Themes.getCurrentTheme();
 		this.mainPanel.add(createPathPanel(th));
 		this.mainPanel.add(createAmmountPanel(th));
+		this.mainPanel.add(Box.createVerticalStrut(20));
+		this.mainPanel.add(createAlgorithmPanel(th));
 		this.mainPanel.add(createNoticePanel(th));
 		this.mainPanel.add(createBtnPanel(th));
 
@@ -92,6 +96,48 @@ public class MultithreadedTestView extends JPanel {
 		panel.add(browseBtn);
 		container.add(panel);
 		return container;
+	}
+
+	private JPanel createAlgorithmPanel(ColorTheme th) {
+		Font lblFont = th.getFonts().getLabelFont();
+
+		JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		panel.setMaximumSize(new Dimension(2000, 100));
+		panel.setOpaque(false);
+
+		JLabel label = new JLabel("Algorithm: ");
+		label.setFont(lblFont);
+
+		this.algorithm = new MaterialComboBox<>(Algorithms.getInstance().getList());
+		this.algorithm.setFont(lblFont);
+		this.algorithm.setPreferredSize(new Dimension(300, 46));
+		this.algorithm.setUI(new BasicComboBoxUI() {
+
+			@Override
+			protected JButton createArrowButton() {
+				JButton b = super.createArrowButton();
+				b = new JButton("\u02c5");
+				b.setFont(lblFont);
+				b.setBackground(th.getAccentColor());
+				b.setForeground(th.getTextSecondaryColor());
+				b.setBorderPainted(false);
+				return b;
+
+			}
+		});
+
+		ComboBoxEditor editor = this.algorithm.getEditor();
+		JPanel editorPanel = (JPanel) editor.getEditorComponent();
+		editorPanel.setFont(lblFont);
+		JLabel editorLabel = (JLabel) editorPanel.getComponent(0);
+		editorLabel.setFont(lblFont);
+		editorLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+		editorPanel.setLayout(new GridLayout(1, 1));
+		this.algorithm.setEditor(editor);
+
+		panel.add(label);
+		panel.add(algorithm);
+		return panel;
 	}
 
 	private JPanel createAmmountPanel(ColorTheme th) {
@@ -205,19 +251,19 @@ public class MultithreadedTestView extends JPanel {
 	public JTextField getPath() {
 		return path;
 	}
-	
+
 	public JButton getSortBtn() {
 		return sortBtn;
 	}
-	
+
 	public JButton getBrowseBtn() {
 		return browseBtn;
 	}
-	
+
 	public JTextField getMinFilesPerThread() {
 		return minFilesPerThread;
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
@@ -226,5 +272,5 @@ public class MultithreadedTestView extends JPanel {
 		graphics2d.fillRoundRect(mainPanel.getLocation().x, mainPanel.getLocation().y, mainPanel.getSize().width,
 				mainPanel.getSize().height, 50, 50);
 		super.paint(g);
-	}	
+	}
 }
