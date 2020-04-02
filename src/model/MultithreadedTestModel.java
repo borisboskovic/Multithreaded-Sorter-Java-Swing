@@ -16,8 +16,12 @@ public class MultithreadedTestModel {
 
 	private ArrayList<Integer> array;
 	private MultithreadedTestView view;
+	private int maxThreads;
+	private int minFilesPerThread;
+	private String algorithmName;
+	private String path;
 
-	public void runTests(String path) {
+	public void runTests() {
 		readDataFromFile(path);
 
 		System.out.println(array.get(0));
@@ -26,6 +30,22 @@ public class MultithreadedTestModel {
 
 	public void setView(MultithreadedTestView view) {
 		this.view = view;
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	public void setAlgorithmName(String algorithmName) {
+		this.algorithmName = algorithmName;
+	}
+	
+	public void setMaxThreads(int maxThreads) {
+		this.maxThreads = maxThreads;
+	}
+	
+	public void setMinFilesPerThread(int minFilesPerThread) {
+		this.minFilesPerThread = minFilesPerThread;
 	}
 
 	private void readDataFromFile(String path) {

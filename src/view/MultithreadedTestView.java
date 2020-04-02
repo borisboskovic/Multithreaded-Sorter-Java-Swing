@@ -252,6 +252,10 @@ public class MultithreadedTestView extends JPanel {
 		return path;
 	}
 
+	public JComboBox<String> getAlgorithm() {
+		return algorithm;
+	}
+
 	public JButton getSortBtn() {
 		return sortBtn;
 	}
@@ -272,5 +276,12 @@ public class MultithreadedTestView extends JPanel {
 		graphics2d.fillRoundRect(mainPanel.getLocation().x, mainPanel.getLocation().y, mainPanel.getSize().width,
 				mainPanel.getSize().height, 50, 50);
 		super.paint(g);
+	}
+
+	public void updateModel() {
+		model.setPath(path.getText());
+		model.setAlgorithmName(algorithm.getSelectedItem().toString());
+		model.setMaxThreads(Integer.valueOf(maxThreads.getSelectedItem().toString()));
+		model.setMinFilesPerThread(Integer.valueOf(minFilesPerThread.getText()));
 	}
 }

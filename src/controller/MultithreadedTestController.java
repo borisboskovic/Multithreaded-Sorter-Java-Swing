@@ -38,6 +38,7 @@ public class MultithreadedTestController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String path = view.getPath().getText();
+			String algorithmName=view.getAlgorithm().getSelectedItem().toString();
 
 			String message1 = "Plesae enter file path.";
 			String message2 = "Can't open file.";
@@ -52,7 +53,8 @@ public class MultithreadedTestController {
 					JOptionPane.showMessageDialog(view, message, "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					view.setEnabled(false);
-					model.runTests(path);
+					view.updateModel();
+					model.runTests();
 					view.setEnabled(true);
 				}
 			}
