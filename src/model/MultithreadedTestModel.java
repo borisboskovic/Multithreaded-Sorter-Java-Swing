@@ -21,29 +21,36 @@ public class MultithreadedTestModel {
 	private String algorithmName;
 	private String path;
 
+	private ArrayList<ParallelSorterModel> sorters;
+
 	public void runTests() {
 		readDataFromFile(path);
+		createSorters();
 
-		System.out.println(array.get(0));
-		System.out.println(array.get(array.size() - 1));
+	}
+
+	public void createSorters() {
+		sorters = new ArrayList<>();
+		for (int i = 1; i <= maxThreads; i *= 2)
+			sorters.add(new ParallelSorterModel(array, i, maxThreads * minFilesPerThread / i, algorithmName));
 	}
 
 	public void setView(MultithreadedTestView view) {
 		this.view = view;
 	}
-	
+
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
+
 	public void setAlgorithmName(String algorithmName) {
 		this.algorithmName = algorithmName;
 	}
-	
+
 	public void setMaxThreads(int maxThreads) {
 		this.maxThreads = maxThreads;
 	}
-	
+
 	public void setMinFilesPerThread(int minFilesPerThread) {
 		this.minFilesPerThread = minFilesPerThread;
 	}
