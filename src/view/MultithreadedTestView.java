@@ -43,7 +43,6 @@ public class MultithreadedTestView extends JPanel {
 
 	public MultithreadedTestView(MultithreadedTestModel model) {
 		this.model = model;
-		this.model.setView(this);
 
 		BoxLayout containerLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		setLayout(containerLayout);

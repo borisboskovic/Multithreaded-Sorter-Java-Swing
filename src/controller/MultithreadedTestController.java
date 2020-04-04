@@ -38,7 +38,6 @@ public class MultithreadedTestController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String path = view.getPath().getText();
-			String algorithmName=view.getAlgorithm().getSelectedItem().toString();
 
 			String message1 = "Plesae enter file path.";
 			String message2 = "Can't open file.";
@@ -49,13 +48,12 @@ public class MultithreadedTestController {
 			else {
 				if (!validateNumOfFiles()) {
 					String message = "For minimum files per thread please choose a value between 1 and "
-							+ model.FILES_LIMIT;
+							+ MultithreadedTestModel.FILES_LIMIT;
 					JOptionPane.showMessageDialog(view, message, "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					view.setEnabled(false);
 					view.updateModel();
-					model.runTests();
-					view.setEnabled(true);
+					Thread thread = new Thread(model);
+					thread.start();
 				}
 			}
 		}

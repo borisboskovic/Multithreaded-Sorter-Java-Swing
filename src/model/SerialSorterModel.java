@@ -12,7 +12,7 @@ public class SerialSorterModel implements Runnable {
 	public SerialSorterModel(ArrayList<Integer> array, int numOfFiles, String algorithmName) {
 		sorters = new ArrayList<>();
 		for (int i = 0; i < numOfFiles; i++)
-			sorters.add(Algorithms.getInstance().createAlgorithm(algorithmName, array));
+			sorters.add(Algorithms.getInstance().createAlgorithm(algorithmName, new ArrayList<>(array)));
 	}
 
 	
@@ -24,7 +24,7 @@ public class SerialSorterModel implements Runnable {
 
 	@Override
 	public void run() {
-		
+		sort();
 	}
 	
 }
