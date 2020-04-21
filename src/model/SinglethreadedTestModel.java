@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,6 +30,9 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 
 	private String algorithmName = "";
 	private ArrayList<PathSectionModel> pathModels = null;
+	private boolean exit = false;
+
+	private SorterProgressWindow progressWindow;
 
 	public SinglethreadedTestModel() {
 		this.pathModels = new ArrayList<>();
@@ -90,8 +95,16 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 	public void run() {
 		ArrayList<ArrayWithPath> arraysCollection = new ArrayList<>();
 
-		SorterProgressWindow progressWindow = new SorterProgressWindow();
+		progressWindow = new SorterProgressWindow();
 		progressWindow.setDescription("Loading data from files...");
+		progressWindow.getAbort().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				exit = true;
+				progressWindow.dispose();
+			}
+		});
 
 		// Reading from files
 		for (PathSectionModel sectionModel : pathModels) {
@@ -145,6 +158,8 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		progressWindow.setDescription("Sorting data...");
 		progressWindow.setProgress("1/" + algorithms.size());
 		for (SortingAlgorithm algorithm : algorithms) {
+			if (exit)
+				return;
 			progressWindow.setProgress((algorithms.indexOf(algorithm) + 1) + "/" + algorithms.size());
 			times.add(algorithm.sort(null));
 			ammounts.add(algorithm.getArray().size());
