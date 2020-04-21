@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,9 +23,12 @@ public class MultithreadedTestModel implements Runnable {
 	private int minFilesPerThread;
 	private String algorithmName;
 	private String path;
+	private boolean exit = false;
 
 	private ArrayList<Integer> array;
 	private ArrayList<ParallelSorterModel> sorters;
+
+	private SorterProgressWindow progressWindow;
 
 	public void createSorters() {
 		sorters = new ArrayList<>();
@@ -67,20 +72,29 @@ public class MultithreadedTestModel implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Runing tests...");
-		SorterProgressWindow progressWindow = new SorterProgressWindow();
+		progressWindow = new SorterProgressWindow();
+		progressWindow.getAbort().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				exit = true;
+				progressWindow.dispose();
+			}
+		});
 		progressWindow.setDescription("Reading data from file..."); // TODO: Lokalizacija
 		readDataFromFile(path);
 		progressWindow.setDescription("Creating sorters...");
 		createSorters();
 		progressWindow.setDescription("Running tests...");
 		ArrayList<Long> times = new ArrayList<>();
-	
-		for(int i=0; i<sorters.size(); i++) {
-			progressWindow.setProgress((i+1)+"/"+sorters.size());
+
+		for (int i = 0; i < sorters.size(); i++) {
+			if (exit)
+				return;
+			progressWindow.setProgress((i + 1) + "/" + sorters.size());
 			times.add(sorters.get(i).sort());
 		}
-		
+
 		progressWindow.setDescription("Creating graph...");
 		double data[][] = new double[2][sorters.size()];
 		for (int i = 0; i < sorters.size(); i++) {

@@ -8,13 +8,16 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import components.MaterialButton;
 import settings.Themes;
 
 @SuppressWarnings("serial")
@@ -23,6 +26,7 @@ public class SorterProgressWindow extends JFrame {
 	private JLabel loader;
 	private JLabel progress;
 	private JLabel description;
+	private JButton abort;
 
 	public SorterProgressWindow() {
 		JPanel panel = new JPanel();
@@ -54,10 +58,16 @@ public class SorterProgressWindow extends JFrame {
 		descriptionPanel.setBackground(Color.WHITE);
 		descriptionPanel.add(description);
 		
+		abort=new MaterialButton("Abort");
+		JPanel abortPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
+		abortPanel.setOpaque(false);
+		abortPanel.add(abort);
+		
 		panel.add(Box.createVerticalGlue());
 		panel.add(loaderPanel);
 		panel.add(progressPanel);
 		panel.add(descriptionPanel);
+		panel.add(abortPanel);
 
 		add(panel);
 		setSize(new Dimension(640, 480));
@@ -66,6 +76,10 @@ public class SorterProgressWindow extends JFrame {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
+	}
+	
+	public JButton getAbort() {
+		return abort;
 	}
 
 	public void setProgress(String progress) {
