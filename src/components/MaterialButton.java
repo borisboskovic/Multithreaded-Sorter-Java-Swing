@@ -73,18 +73,6 @@ public class MaterialButton extends JButton {
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
 		}
-
-		if (isFocusOwner()) {
-			graphics2d.setColor(theme.getSpecialColor());
-			float[] dash = new float[] { 1, 2 };
-			int margin = 3;
-			Stroke stroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10f, dash, 0f);
-			graphics2d.setStroke(stroke);
-			graphics2d.setColor(theme.getTextSecondaryColor());
-			graphics2d.drawRoundRect(margin, margin, getSize().width - margin * 2, getSize().height - margin * 2,
-					margin * 2, margin * 2);
-		}
-
 	}
 
 	private Point getTextPosition(Font font) {

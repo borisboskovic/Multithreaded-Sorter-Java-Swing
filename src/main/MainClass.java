@@ -8,10 +8,8 @@ import view.MainWindow;
 public class MainClass {
 
 	public static void main(String[] args) {
-
-		new MainWindow(new PanelSwitchingModel());
 		
-//		Context.writeDefaultFontSettings();
+		new MainWindow(new PanelSwitchingModel());
 
 		// TODO: Add about and help sections
 		// TODO: Add Font family selection to settings

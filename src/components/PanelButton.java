@@ -76,19 +76,6 @@ public class PanelButton extends JButton {
 		graphics2d.fillRect(0, 0, getSize().width - edge, getSize().height);
 
 		drawText(graphics2d, theme.getTextSecondaryColor());
-
-		if (pressed)
-			return;
-		if (isFocusOwner()) {
-			graphics2d.setColor(theme.getSpecialColor());
-			float[] dash = new float[] { 1, 2 };
-			int margin = 5;
-			Stroke stroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10f, dash, 0f);
-			graphics2d.setStroke(stroke);
-			graphics2d.setColor(theme.getTextSecondaryColor());
-			graphics2d.drawRoundRect(margin, margin, getSize().width - margin * 2 - edge, getSize().height - margin * 2,
-					margin * 2, margin * 2);
-		}
 	}
 
 	private void drawText(Graphics2D graphics2d, Color color) {

@@ -1,5 +1,6 @@
 package settings;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -43,6 +44,7 @@ public class Context {
 			preferences = gson.fromJson(reader, Preferences.class);
 			reader.close();
 		} catch (IOException e) {
+			writeDefaultPreferences();
 		}
 	}
 
@@ -58,6 +60,9 @@ public class Context {
 			colorTheme = gson.fromJson(reader, ColorTheme.class);
 			reader.close();
 		} catch (IOException e) {
+			preferences.setThemeName("default-gray");
+			writeDefaultTheme();
+			e.printStackTrace();
 		}
 	}
 
@@ -72,15 +77,14 @@ public class Context {
 			fonts = gson.fromJson(reader, FontTheme.class);
 			reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			writeDefaultFontSettings();
 		}
 	}
 
 	/**
 	 * Registers user fonts to graphical ennvironment
 	 */
-	public static void registerFonts() {
+	public void registerFonts() {
 		File fontsDirectory = new File("resources//fonts");
 		File[] fontFiles = fontsDirectory.listFiles();
 
@@ -111,29 +115,52 @@ public class Context {
 	/**
 	 * Writes default preferences to file
 	 */
-	public static void writeDefaultPreferences() {
-		Preferences pref = new Preferences();
-		pref.setThemeName("default-gray");
-		pref.setLanguage("english");
-		pref.setSplineRenderer(false);
-		pref.setMaxThreadsAllowed(32);
-		pref.setFilesLimit(5);
+	public void writeDefaultPreferences() {
+		preferences = new Preferences();
+		preferences.setThemeName("default-gray");
+		preferences.setLanguage("english");
+		preferences.setSplineRenderer(false);
+		preferences.setMaxThreadsAllowed(32);
+		preferences.setFilesLimit(5);
 
 		Gson gson = new GsonBuilder().create();
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("preferences" + File.separator + "current.json"));
-			gson.toJson(pref, writer);
+			gson.toJson(preferences, writer);
 			writer.close();
 		} catch (IOException e) {
 		}
 	}
 
-	public static void writeDefaultTheme() {
+	public void writeDefaultTheme() {
+		colorTheme = new ColorTheme();
+		colorTheme.setThemeColor(new Color(92, 92, 92));
+		colorTheme.setThemeDarkerColor(new Color(58, 58, 58));
+		colorTheme.setThemeLighterColor(new Color(117, 117, 117));
+		colorTheme.setSectionColor(new Color(197, 197, 197));
+		colorTheme.setBackgroundColor(Color.WHITE);
+		colorTheme.setTextPrimaryColor(new Color(50, 50, 50));
+		colorTheme.setTextSecondaryColor(Color.WHITE);
+		colorTheme.setAccentColor(new Color(255, 140, 0));
+		colorTheme.setAccentColor(new Color(3, 102, 214));
+		colorTheme.setAccentLighterColor(new Color(255, 170, 0));
+		colorTheme.setSpecialColor(Color.BLACK);
 
+		colorTheme.setThemeName("default-gray");
+		colorTheme.setBackgroundImageUrl("resources/images/numbers.png");
+
+		Gson gson = new GsonBuilder().create();
+		try {
+			BufferedWriter writer = new BufferedWriter(
+					new FileWriter("resources" + File.separator + "themes" + File.separator + "default-gray.json"));
+			gson.toJson(colorTheme, writer);
+			writer.close();
+		} catch (IOException e) {
+		}
 	}
 
-	public static void writeDefaultFontSettings() {
-		FontTheme fonts = new FontTheme();
+	public void writeDefaultFontSettings() {
+		fonts = new FontTheme();
 		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 20));
 		fonts.setMainButtonFont(new Font("Roboto Cn", Font.PLAIN, 24));
 		fonts.setLabelFont(new Font("Roboto Cn", Font.PLAIN, 20));
@@ -149,7 +176,6 @@ public class Context {
 			gson.toJson(fonts, writer);
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
