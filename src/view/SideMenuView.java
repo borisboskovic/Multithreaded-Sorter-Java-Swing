@@ -11,15 +11,17 @@ import javax.swing.JPanel;
 import components.PanelButton;
 import controller.SideMenuController;
 import model.PanelSwitchingModel;
-import settings.Themes;
+import settings.ColorTheme;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class SideMenuView extends JPanel implements ObserverInterface {
-
+	private ColorTheme theme;
 	private int edge;
 
 	public SideMenuView(PanelSwitchingModel model) {
 		model.addObserver(this);
+		this.theme=Context.getContext().getColorTheme();
 		this.setLayout(new GridLayout(0, 1));
 		add(Box.createVerticalGlue());
 		add(Box.createVerticalGlue());
@@ -40,7 +42,7 @@ public class SideMenuView extends JPanel implements ObserverInterface {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
-		g.setColor(Themes.getCurrentTheme().getThemeColor());
+		g.setColor(theme.getThemeColor());
 		graphics2d.fillRect(0, 0, getSize().width - edge, getSize().height);
 		super.paint(g);
 	}

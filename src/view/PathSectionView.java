@@ -22,7 +22,7 @@ import components.MaterialButton;
 import components.MaterialTextField;
 import model.PathSectionModel;
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class PathSectionView extends JPanel {
@@ -35,8 +35,9 @@ public class PathSectionView extends JPanel {
 	private JTextField pathTxtField;
 	private ColorTheme theme;
 
+	//Constructor
 	public PathSectionView(PathSectionModel model) {
-		this.theme = Themes.getCurrentTheme();
+		this.theme = Context.getContext().getColorTheme();
 		this.model = model;
 		this.model.setView(this);
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
@@ -55,7 +56,7 @@ public class PathSectionView extends JPanel {
 	private void setUpNumber(int num) {
 		JPanel panel = new JPanel();
 		number = new JLabel(String.valueOf(num));
-		number.setFont(theme.getFonts().getImportantFont());
+		number.setFont(Context.getContext().getFonts().getImportantFont());
 		panel.add(number);
 		panel.setOpaque(false);
 		this.add(panel);
@@ -66,7 +67,7 @@ public class PathSectionView extends JPanel {
 		BoxLayout layout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
 		panel.setLayout(layout);
 		remove = new MaterialButton("Ukloni"); // TODO: Lokalizacija
-		remove.setFont(theme.getFonts().getMainButtonFont());
+		remove.setFont(Context.getContext().getFonts().getMainButtonFont());
 		panel.add(remove);
 		panel.setOpaque(false);
 		Border border = BorderFactory.createEmptyBorder(0, 0, 0, 20);
@@ -80,12 +81,12 @@ public class PathSectionView extends JPanel {
 		mainSection.setLayout(layout);
 
 		JLabel pathLabel = new JLabel("Path:"); // TODO: Lokalizacija
-		pathLabel.setFont(theme.getFonts().getLabelFont());
+		pathLabel.setFont(Context.getContext().getFonts().getLabelFont());
 		pathTxtField = new MaterialTextField(512);
 		pathTxtField.setText(model.getPath());
 		pathTxtField.getDocument().addDocumentListener(textChangeListener);
 		messageLabel = new JLabel(model.getMessage());
-		messageLabel.setFont(theme.getFonts().getNoteFont());
+		messageLabel.setFont(Context.getContext().getFonts().getNoteFont());
 		messageLabel.setForeground(theme.getAccentColor());
 
 		JPanel upperRow = new JPanel();
@@ -129,29 +130,29 @@ public class PathSectionView extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			SinglethreadedTestView parentView = (SinglethreadedTestView) (getParent().getParent().getParent().getParent()
-					.getParent());
+			SinglethreadedTestView parentView = (SinglethreadedTestView) (getParent().getParent().getParent()
+					.getParent().getParent());
 			parentView.getModel().removeFile(model);
 			parentView.getModel().notifyObservers();
 		}
 	};
-	
+
 	private DocumentListener textChangeListener = new DocumentListener() {
-		
+
 		@Override
 		public void removeUpdate(DocumentEvent e) {
 			PathSectionView.this.model.setPath(PathSectionView.this.pathTxtField.getText());
 		}
-		
+
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			PathSectionView.this.model.setPath(PathSectionView.this.pathTxtField.getText());
 		}
-		
+
 		@Override
 		public void changedUpdate(DocumentEvent e) {
 			PathSectionView.this.model.setPath(PathSectionView.this.pathTxtField.getText());
 		}
 	};
-	
+
 }

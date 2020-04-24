@@ -27,7 +27,7 @@ import controller.MultithreadedTestController;
 import model.MultithreadedTestModel;
 import settings.Algorithms;
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class MultithreadedTestView extends JPanel {
@@ -56,7 +56,7 @@ public class MultithreadedTestView extends JPanel {
 		this.mainPanel.setMaximumSize(new Dimension(2000, 500));
 		this.mainPanel.setPreferredSize(new Dimension(2000, 500));
 
-		ColorTheme th = Themes.getCurrentTheme();
+		ColorTheme th = Context.getContext().getColorTheme();
 		this.mainPanel.add(createPathPanel(th));
 		this.mainPanel.add(createAmmountPanel(th));
 		this.mainPanel.add(Box.createVerticalStrut(20));
@@ -72,7 +72,7 @@ public class MultithreadedTestView extends JPanel {
 	}
 
 	private JPanel createPathPanel(ColorTheme th) {
-		Font lblFont = th.getFonts().getLabelFont();
+		Font lblFont = Context.getContext().getFonts().getLabelFont();
 
 		JPanel panel = new JPanel();
 		BoxLayout ly = new BoxLayout(panel, BoxLayout.LINE_AXIS);
@@ -99,7 +99,7 @@ public class MultithreadedTestView extends JPanel {
 	}
 
 	private JPanel createAlgorithmPanel(ColorTheme th) {
-		Font lblFont = th.getFonts().getLabelFont();
+		Font lblFont = Context.getContext().getFonts().getLabelFont();
 
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		panel.setMaximumSize(new Dimension(2000, 100));
@@ -142,7 +142,7 @@ public class MultithreadedTestView extends JPanel {
 
 	private JPanel createAmmountPanel(ColorTheme th) {
 		JPanel panel = new JPanel();
-		Font lblFont = th.getFonts().getLabelFont();
+		Font lblFont = Context.getContext().getFonts().getLabelFont();
 
 		BoxLayout ly = new BoxLayout(panel, BoxLayout.LINE_AXIS);
 		panel.setLayout(ly);
@@ -222,7 +222,7 @@ public class MultithreadedTestView extends JPanel {
 		JLabel label = new JLabel(
 				"<html>* Ovaj tekst treba zamijeniti stvarnim tekstom. Ovaj tekst treba zamijeniti stvarnim tekstom.Ovaj tekst treba zamijeniti stvarnim tekstom.Ovaj tekst treba zamijeniti stvarnim tekstom.Ovaj tekst treba zamijeniti stvarnim tekstom.</html>");
 
-		label.setFont(th.getFonts().getNoteFont());
+		label.setFont(Context.getContext().getFonts().getNoteFont());
 		label.setForeground(th.getAccentColor());
 		panel.add(label);
 
@@ -235,7 +235,7 @@ public class MultithreadedTestView extends JPanel {
 	}
 
 	private JPanel createBtnPanel(ColorTheme th) {
-		Font fontLg = new Font(th.getFonts().getMainButtonFont().getName(), Font.TRUETYPE_FONT, 32);
+		Font fontLg = new Font(Context.getContext().getFonts().getMainButtonFont().getName(), Font.TRUETYPE_FONT, 32);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -271,7 +271,8 @@ public class MultithreadedTestView extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
-		graphics2d.setColor(Themes.getCurrentTheme().getSectionColor());
+		ColorTheme theme = Context.getContext().getColorTheme();
+		graphics2d.setColor(theme.getSectionColor());
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics2d.fillRoundRect(mainPanel.getLocation().x, mainPanel.getLocation().y, mainPanel.getSize().width,
 				mainPanel.getSize().height, 50, 50);

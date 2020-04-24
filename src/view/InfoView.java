@@ -10,13 +10,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.RenderingHints;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.IOException;
 
-import javax.sound.midi.MidiDevice.Info;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -26,8 +21,9 @@ import javax.swing.JProgressBar;
 
 import controller.OpenExplorerController;
 import model.InfoModel;
-import settings.Themes;
+import settings.Context;
 
+@SuppressWarnings("serial")
 public class InfoView extends JPanel {
 
 	private InfoModel model;
@@ -58,7 +54,7 @@ public class InfoView extends JPanel {
 		JLabel coresCount = new JLabel("Number of logical cores: " + model.getCoresCount());
 		JLabel cpu = new JLabel("CPU: " + model.getProcessorName());
 
-		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
+		Font labelFont = Context.getContext().getFonts().getLabelFont();
 		userName.setFont(labelFont);
 		OS_name.setFont(labelFont);
 		OS_version.setFont(labelFont);
@@ -73,7 +69,7 @@ public class InfoView extends JPanel {
 		coresCount.setHorizontalAlignment(JLabel.CENTER);
 		cpu.setHorizontalAlignment(JLabel.CENTER);
 
-		Color labelColor = Themes.getCurrentTheme().getTextPrimaryColor();
+		Color labelColor = Context.getContext().getColorTheme().getTextPrimaryColor();
 		userName.setForeground(labelColor);
 		OS_name.setForeground(labelColor);
 		OS_version.setForeground(labelColor);
@@ -137,7 +133,7 @@ public class InfoView extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
-		graphics2d.setColor(Themes.getCurrentTheme().getSectionColor());
+		graphics2d.setColor(Context.getContext().getColorTheme().getSectionColor());
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		graphics2d.fillRoundRect(padd, padd, getSize().width - 2 * padd, getSize().height - 2 * padd, 50, 50);
 

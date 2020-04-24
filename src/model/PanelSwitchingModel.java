@@ -24,8 +24,8 @@ public class PanelSwitchingModel implements SubjectInterface {
 		PanelButton button2 = new PanelButton("Generate test data");
 		PanelButton button3 = new PanelButton("Singlethreaded test");
 		PanelButton button4 = new PanelButton("Multithreaded test");
-		PanelButton button5 = new PanelButton("Compare performances");
-		PanelButton button6 = new PanelButton("Settings");
+		PanelButton button5 = new PanelButton("Settings");
+		PanelButton button6 = new PanelButton("Help & About");
 
 		// TODO: Dodaj action commands
 

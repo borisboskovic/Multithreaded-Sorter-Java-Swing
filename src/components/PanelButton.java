@@ -18,8 +18,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ import java.util.regex.Pattern;
 import javax.swing.JButton;
 
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
 import view.SideMenuView;
 
 @SuppressWarnings("serial")
@@ -43,7 +41,7 @@ public class PanelButton extends JButton {
 
 	public PanelButton(String text) {
 		super(text);
-		font = Themes.getCurrentTheme().getFonts().getPanelButtonFont();
+		font = Context.getContext().getFonts().getPanelButtonFont();
 		setFont(font);
 		this.text = text;
 		this.addMouseListener(mouseListener);
@@ -55,7 +53,7 @@ public class PanelButton extends JButton {
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		ColorTheme theme = Themes.getCurrentTheme();
+		ColorTheme theme = Context.getContext().getColorTheme();
 		graphics2d.setFont(font);
 
 		Color bg = null;
@@ -78,19 +76,6 @@ public class PanelButton extends JButton {
 		graphics2d.fillRect(0, 0, getSize().width - edge, getSize().height);
 
 		drawText(graphics2d, theme.getTextSecondaryColor());
-		
-		if(pressed)
-			return;
-		if (isFocusOwner()) {
-			graphics2d.setColor(theme.getSpecialColor());
-			float[] dash = new float[] { 1, 2 };
-			int margin = 5;
-			Stroke stroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10f, dash, 0f);
-			graphics2d.setStroke(stroke);
-			graphics2d.setColor(theme.getTextSecondaryColor());
-			graphics2d.drawRoundRect(margin, margin, getSize().width - margin * 2-edge, getSize().height - margin * 2,
-					margin * 2, margin * 2);
-		}
 	}
 
 	private void drawText(Graphics2D graphics2d, Color color) {

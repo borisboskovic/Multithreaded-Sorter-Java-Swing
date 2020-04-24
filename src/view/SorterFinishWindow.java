@@ -25,7 +25,8 @@ import javax.swing.JPanel;
 
 import components.MaterialButton;
 import helpers.ArrayWithPath;
-import settings.Themes;
+import settings.Context;
+import settings.FontTheme;
 
 @SuppressWarnings("serial")
 public class SorterFinishWindow extends JDialog {
@@ -33,10 +34,13 @@ public class SorterFinishWindow extends JDialog {
 	private JButton yes;
 	private JButton no;
 
+	private FontTheme fonts;
+
 	public SorterFinishWindow(ArrayList<ArrayWithPath> arrays, String message) {
 		this.arrays = arrays;
 
-		Font font = Themes.getCurrentTheme().getFonts().getMainButtonFont();
+		this.fonts = Context.getContext().getFonts();
+		Font font = fonts.getMainButtonFont();
 
 		JPanel mainPanel = new JPanel();
 		BoxLayout mainPanelLayout = new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS);
@@ -120,7 +124,7 @@ public class SorterFinishWindow extends JDialog {
 					e1.printStackTrace();
 				}
 			}
-			
+
 			SorterFinishWindow.this.dispose();
 		}
 	};

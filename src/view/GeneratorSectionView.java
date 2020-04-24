@@ -27,7 +27,9 @@ import components.MaterialButton;
 import components.MaterialTextField;
 import model.GeneratorModel;
 import model.GeneratorSectionModel;
-import settings.Themes;
+import settings.ColorTheme;
+import settings.Context;
+import settings.FontTheme;
 
 @SuppressWarnings("serial")
 public class GeneratorSectionView extends JPanel {
@@ -44,7 +46,9 @@ public class GeneratorSectionView extends JPanel {
 
 	public GeneratorSectionView(GeneratorSectionModel model) {
 		this.model = model;
-		setBackground(Themes.getCurrentTheme().getSectionColor());
+		ColorTheme theme=Context.getContext().getColorTheme();
+		FontTheme fonts=Context.getContext().getFonts();
+		setBackground(theme.getSectionColor());
 
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
 		setLayout(mainLayout);
@@ -61,14 +65,14 @@ public class GeneratorSectionView extends JPanel {
 
 		JPanel messageRow = new JPanel(new GridLayout(1, 1));
 		JLabel message = new JLabel(model.getMessage());
-		message.setFont(Themes.getCurrentTheme().getFonts().getNoteFont());
-		message.setForeground(Themes.getCurrentTheme().getAccentColor());
-		messageRow.setBackground(Themes.getCurrentTheme().getSectionColor());
+		message.setFont(fonts.getNoteFont());
+		message.setForeground(theme.getAccentColor());
+		messageRow.setBackground(theme.getSectionColor());
 		messageRow.add(message);
 
 		JPanel inputPanel = new JPanel();
 		BoxLayout inputLayout = new BoxLayout(inputPanel, BoxLayout.PAGE_AXIS);
-		inputPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
+		inputPanel.setBackground(theme.getSectionColor());
 		inputPanel.setLayout(inputLayout);
 		inputPanel.add(Box.createVerticalStrut(40));
 		inputPanel.add(pathRow);
@@ -94,7 +98,8 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpButtonPanel(JPanel buttonPanel) {
-		buttonPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
+		ColorTheme theme=Context.getContext().getColorTheme();
+		buttonPanel.setBackground(theme.getSectionColor());
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 		delete = new MaterialButton("Ukloni");
 		delete.addActionListener(deletingListener);
@@ -104,17 +109,21 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpNumberPanel(JPanel numberPanel) {
-		numberPanel.setBackground(Themes.getCurrentTheme().getSectionColor());
+		ColorTheme theme = Context.getContext().getColorTheme();
+		FontTheme fonts =Context.getContext().getFonts();
+		numberPanel.setBackground(theme.getSectionColor());
 		number = new JLabel(String.valueOf(model.getSectionNumber()));
-		number.setFont(Themes.getCurrentTheme().getFonts().getImportantFont());
+		number.setFont(fonts.getImportantFont());
 		number.setHorizontalAlignment(SwingConstants.RIGHT);
 		numberPanel.add(number);
 
 	}
 
 	private void setUpPathRow(JPanel pathRow) {
-		pathRow.setBackground(Themes.getCurrentTheme().getSectionColor());
-		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
+		ColorTheme theme = Context.getContext().getColorTheme();
+		FontTheme fonts =Context.getContext().getFonts();
+		pathRow.setBackground(theme.getSectionColor());
+		Font labelFont = fonts.getLabelFont();
 		// TODO: lokalizacija
 		JLabel pathLbl = new JLabel("Lokacija:");
 		pathLbl.setFont(labelFont);
@@ -134,8 +143,10 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpAmmountRow(JPanel ammountRow) {
-		ammountRow.setBackground(Themes.getCurrentTheme().getSectionColor());
-		Font labelFont = Themes.getCurrentTheme().getFonts().getLabelFont();
+		ColorTheme theme = Context.getContext().getColorTheme();
+		FontTheme fonts =Context.getContext().getFonts();
+		ammountRow.setBackground(theme.getSectionColor());
+		Font labelFont = fonts.getLabelFont();
 		JLabel ammountLbl = new JLabel("Kolièina:");
 		JLabel fromLbl = new JLabel("Od:");
 		JLabel toLbl = new JLabel("Do");
@@ -172,7 +183,7 @@ public class GeneratorSectionView extends JPanel {
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		graphics2d.setColor(Themes.getCurrentTheme().getSectionColor());
+		graphics2d.setColor(Context.getContext().getColorTheme().getSectionColor());
 		graphics2d.fillRoundRect(0, 0, getSize().width, getSize().height, 50, 50);
 		super.paint(g);
 	}
