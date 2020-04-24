@@ -111,13 +111,13 @@ public class Themes {
 		defaultTheme.setTextSecondaryColor(Color.WHITE);
 
 		defaultTheme.setAccentColor(new Color(255, 140, 0));
-		defaultTheme.setAccentColor(new Color(3,102,214));
+		defaultTheme.setAccentColor(new Color(3, 102, 214));
 		defaultTheme.setAccentLighterColor(new Color(255, 170, 0));
 		defaultTheme.setSpecialColor(Color.BLACK);
 
 		defaultTheme.setThemeName("default-gray");
 		defaultTheme.setBackgroundImageUrl("resources/images/numbers.png");
-		
+
 		// Postavljanje fontova
 		FontTheme fonts = new FontTheme();
 		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 20));
@@ -134,8 +134,8 @@ public class Themes {
 		// Zapis u fajl
 		Gson gson = new GsonBuilder().create();
 		try {
-			BufferedWriter writer = new BufferedWriter(
-					new FileWriter("resources\\themes\\" + defaultTheme.getThemeName() + ".json"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(
+					"resources" + File.separator + "themes" + File.separator + defaultTheme.getThemeName() + ".json"));
 			gson.toJson(defaultTheme, writer);
 			writer.close();
 		} catch (IOException e) {
