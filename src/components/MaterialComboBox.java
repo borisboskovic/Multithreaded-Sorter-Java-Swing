@@ -16,19 +16,23 @@ import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
+import settings.FontTheme;
 
 @SuppressWarnings("serial")
 public class MaterialComboBox<E> extends JComboBox<E> {
+	private ColorTheme theme;
+	private FontTheme fonts;
 
 	public MaterialComboBox(Vector<E> items) {
 		super(items);
-		ColorTheme th = Themes.getCurrentTheme();
-		Font fnt = th.getFonts().getMainButtonFont();
+		this.theme = Context.getContext().getColorTheme();
+		this.fonts = Context.getContext().getFonts();
+		Font fnt = fonts.getMainButtonFont();
 		Font large = new Font(fnt.getName(), fnt.getStyle(), 32);
 		setFont(large);
-		setBackground(th.getThemeColor());
-		setForeground(th.getTextSecondaryColor());
+		setBackground(theme.getThemeColor());
+		setForeground(theme.getTextSecondaryColor());
 
 		setEditor(new CustomComboBoxEditor());
 		setEditable(true);
@@ -40,8 +44,8 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 				JButton b = super.createArrowButton();
 				b = new JButton("\u02c5");
 				b.setFont(large);
-				b.setBackground(th.getAccentColor());
-				b.setForeground(th.getTextSecondaryColor());
+				b.setBackground(theme.getAccentColor());
+				b.setForeground(theme.getTextSecondaryColor());
 				b.setBorderPainted(false);
 				return b;
 			}
@@ -51,8 +55,9 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 
 }
 
+@SuppressWarnings("serial")
 class CustomCellRenderer extends DefaultListCellRenderer {
-
+	private ColorTheme theme = Context.getContext().getColorTheme();
 	private ListCellRenderer defaultRenderer;
 
 	public CustomCellRenderer(ListCellRenderer defaultRenderer) {
@@ -63,11 +68,10 @@ class CustomCellRenderer extends DefaultListCellRenderer {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 		Component c = defaultRenderer.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-		ColorTheme th = Themes.getCurrentTheme();
 		if (c instanceof JLabel) {
 			if (isSelected) {
-				c.setBackground(th.getAccentColor());
-				c.setForeground(th.getTextSecondaryColor());
+				c.setBackground(theme.getAccentColor());
+				c.setForeground(theme.getTextSecondaryColor());
 				((JLabel) c).setBorder(null);
 			} else {
 			}
@@ -85,8 +89,8 @@ class CustomComboBoxEditor extends BasicComboBoxEditor {
 
 	public CustomComboBoxEditor() {
 
-		ColorTheme th = Themes.getCurrentTheme();
-		Font ft = th.getFonts().getMainButtonFont();
+		ColorTheme th = Context.getContext().getColorTheme();
+		Font ft = Context.getContext().getFonts().getMainButtonFont();
 		Font large = new Font(ft.getName(), ft.getStyle(), 32);
 
 		label.setOpaque(false);

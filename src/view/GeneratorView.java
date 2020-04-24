@@ -21,7 +21,7 @@ import components.VerticallyScrollablePanel;
 import controller.GeneratorController;
 import model.GeneratorModel;
 import model.GeneratorSectionModel;
-import settings.Themes;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class GeneratorView extends JPanel implements ObserverInterface {
@@ -62,7 +62,7 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		buttonPanel.setOpaque(false);
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 0));
 
-		Font fnt = Themes.getCurrentTheme().getFonts().getMainButtonFont();
+		Font fnt = Context.getContext().getFonts().getMainButtonFont();
 		Font large = new Font(fnt.getName(), fnt.getStyle(), 32);
 		this.plus = new MaterialButton(" + ");
 		this.plus.setFont(large);

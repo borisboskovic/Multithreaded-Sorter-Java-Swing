@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class MaterialTextField extends JTextField {
@@ -18,14 +18,14 @@ public class MaterialTextField extends JTextField {
 
 	public MaterialTextField(int length) {
 		super(length);
-		font = Themes.getCurrentTheme().getFonts().getTextFieldFont();
+		font = Context.getContext().getFonts().getTextFieldFont();
 		setFont(font);
 		applyStyle();
 		this.addFocusListener(selectOnFocus);
 	}
 
 	private void applyStyle() {
-		ColorTheme theme = Themes.getCurrentTheme();
+		ColorTheme theme = Context.getContext().getColorTheme();
 
 		setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, theme.getThemeColor()),
 				BorderFactory.createEmptyBorder(5, 10, 0, 10)));

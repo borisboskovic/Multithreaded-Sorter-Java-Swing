@@ -10,13 +10,17 @@ import javax.swing.JComponent;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
 
 public class CustomScrollBar extends MetalScrollBarUI {
+	private ColorTheme theme;
+
+	public CustomScrollBar() {
+		this.theme = Context.getContext().getColorTheme();
+	}
 
 	@Override
 	protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
-		ColorTheme theme = Themes.getCurrentTheme();
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setColor(theme.getThemeDarkerColor());
 		graphics2d.fillRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height);
@@ -24,7 +28,6 @@ public class CustomScrollBar extends MetalScrollBarUI {
 
 	@Override
 	protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
-		ColorTheme theme = Themes.getCurrentTheme();
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setColor(theme.getThemeLighterColor());
 		graphics2d.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);

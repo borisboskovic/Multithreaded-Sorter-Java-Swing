@@ -37,7 +37,7 @@ import org.jfree.ui.RectangleInsets;
 
 import components.MaterialButton;
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class LineChartWindow extends JFrame {
@@ -57,7 +57,7 @@ public class LineChartWindow extends JFrame {
 		btnPanel.add(saveBtn);
 		btnPanel.add(Box.createHorizontalStrut(20));
 		btnPanel.add(closeBtn);
-		btnPanel.setBackground(Themes.getCurrentTheme().getTextSecondaryColor());
+		btnPanel.setBackground(Context.getContext().getColorTheme().getTextSecondaryColor());
 		btnPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
 
 		setLayout(new BorderLayout());
@@ -76,7 +76,7 @@ public class LineChartWindow extends JFrame {
 	}
 
 	private void setUpChart(DefaultXYDataset dataSet, String title, String xName, String yName) {
-		ColorTheme th = Themes.getCurrentTheme();
+		ColorTheme th = Context.getContext().getColorTheme();
 
 		JFreeChart chart = ChartFactory.createXYLineChart(title, xName, yName, dataSet, PlotOrientation.VERTICAL, true,
 				true, false);
@@ -84,7 +84,7 @@ public class LineChartWindow extends JFrame {
 		XYPlot plot = (XYPlot) chart.getPlot();
 
 		XYSplineRenderer renderer = new XYSplineRenderer();
-		renderer.setSeriesPaint(0, Themes.getCurrentTheme().getAccentColor());
+		renderer.setSeriesPaint(0, th.getAccentColor());
 		renderer.setSeriesStroke(0, new BasicStroke(3));
 		plot.setRenderer(renderer);
 

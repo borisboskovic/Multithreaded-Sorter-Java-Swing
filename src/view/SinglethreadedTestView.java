@@ -21,11 +21,12 @@ import components.VerticallyScrollablePanel;
 import controller.SinglethreadedTestController;
 import model.SinglethreadedTestModel;
 import settings.Algorithms;
-import settings.Themes;
+import settings.Context;
+import settings.FontTheme;
 
 @SuppressWarnings("serial")
 public class SinglethreadedTestView extends JPanel implements ObserverInterface {
-
+	private FontTheme fonts;
 	private SinglethreadedTestModel model;
 	private VerticallyScrollablePanel sectionsPanel;
 
@@ -37,6 +38,7 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 
 	public SinglethreadedTestView(SinglethreadedTestModel model) {
 		this.model = model;
+		this.fonts = Context.getContext().getFonts();
 		model.addObserver(this);
 		setLayout(new BorderLayout());
 
@@ -54,7 +56,7 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 		addButtons();
 
 		setOpaque(false);
-		
+
 		new SinglethreadedTestController(model, this);
 	}
 
@@ -81,11 +83,11 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 	private void addButtons() {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
-		BoxLayout bl=new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS);
+		BoxLayout bl = new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS);
 		buttonPanel.setLayout(bl);
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 20));
 
-		Font fnt = Themes.getCurrentTheme().getFonts().getMainButtonFont();
+		Font fnt = fonts.getMainButtonFont();
 		Font large = new Font(fnt.getName(), fnt.getStyle(), 32);
 		this.addButton = new MaterialButton(" + ");
 		this.addButton.setFont(large);
@@ -127,13 +129,13 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 	public JComboBox<String> getComboBox() {
 		return comboBox;
 	}
-	
+
 	public JButton getSortButton() {
 		return sortButton;
 	}
-	
+
 	public SinglethreadedTestModel getModel() {
 		return model;
 	}
-	
+
 }

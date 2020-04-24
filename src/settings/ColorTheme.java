@@ -20,7 +20,6 @@ public class ColorTheme {
 	private String themeName;
 
 	private String backgroundImageUrl = null;
-	private FontTheme fonts;
 
 	public Color getThemeColor() {
 		return themeColor;
@@ -116,13 +115,5 @@ public class ColorTheme {
 
 	public void setBackgroundImageUrl(String backgroundImageUrl) {
 		this.backgroundImageUrl = backgroundImageUrl;
-	}
-
-	public FontTheme getFonts() {
-		return fonts;
-	}
-
-	public void setFonts(FontTheme fonts) {
-		this.fonts = fonts;
 	}
 }

@@ -8,22 +8,17 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.Shape;
 import java.awt.Stroke;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import settings.ColorTheme;
-import settings.Themes;
+import settings.Context;
+import settings.FontTheme;
 
 @SuppressWarnings("serial")
 public class MaterialButton extends JButton {
@@ -32,18 +27,24 @@ public class MaterialButton extends JButton {
 	private boolean mousePressed = false;
 
 	private Color btnColor = null;
+	private ColorTheme theme;
+	private FontTheme fonts;
 
 	public MaterialButton(String text) {
 		super(text);
-		setFont(Themes.getCurrentTheme().getFonts().getMainButtonFont());
-		this.btnColor = Themes.getCurrentTheme().getAccentColor();
+		this.theme = Context.getContext().getColorTheme();
+		this.fonts = Context.getContext().getFonts();
+		setFont(fonts.getMainButtonFont());
+		this.btnColor = theme.getAccentColor();
 		this.addMouseListener(mouseListener);
 		setOpaque(false);
 	}
 
 	public MaterialButton(String text, Color btnColor) {
 		super(text);
-		setFont(Themes.getCurrentTheme().getFonts().getMainButtonFont());
+		this.theme = Context.getContext().getColorTheme();
+		this.fonts = Context.getContext().getFonts();
+		setFont(fonts.getMainButtonFont());
 		this.btnColor = btnColor;
 		this.addMouseListener(mouseListener);
 		setOpaque(false);
@@ -55,33 +56,31 @@ public class MaterialButton extends JButton {
 		graphics2d.setFont(this.getFont()); // TODO: Da li je ovo zaista potrebno?
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		Dimension dimensions = this.getPreferredSize();
-		
-		int borderRadius = (dimensions.width > dimensions.height) ? dimensions.height / 4 : dimensions.width / 4;
 
-		ColorTheme th = Themes.getCurrentTheme();
+		int borderRadius = (dimensions.width > dimensions.height) ? dimensions.height / 4 : dimensions.width / 4;
 
 		if (hover && !mousePressed) {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			graphics2d.setColor(lighten(btnColor));
 			graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
-			graphics2d.setColor(th.getTextSecondaryColor());
+			graphics2d.setColor(theme.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
 		} else {
 			graphics2d.setColor(btnColor);
 			graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
-			graphics2d.setColor(th.getTextSecondaryColor());
+			graphics2d.setColor(theme.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
 		}
 
 		if (isFocusOwner()) {
-			graphics2d.setColor(th.getSpecialColor());
+			graphics2d.setColor(theme.getSpecialColor());
 			float[] dash = new float[] { 1, 2 };
 			int margin = 3;
 			Stroke stroke = new BasicStroke(1, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10f, dash, 0f);
 			graphics2d.setStroke(stroke);
-			graphics2d.setColor(th.getTextSecondaryColor());
+			graphics2d.setColor(theme.getTextSecondaryColor());
 			graphics2d.drawRoundRect(margin, margin, getSize().width - margin * 2, getSize().height - margin * 2,
 					margin * 2, margin * 2);
 		}

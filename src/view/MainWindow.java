@@ -14,6 +14,7 @@ import model.MultithreadedTestModel;
 import model.SinglethreadedTestModel;
 import model.PanelSwitchingModel;
 
+@SuppressWarnings("serial")
 public class MainWindow extends JFrame implements ObserverInterface {
 
 	private ArrayList<JPanel> views;

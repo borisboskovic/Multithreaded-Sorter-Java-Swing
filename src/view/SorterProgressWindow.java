@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -18,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.MaterialButton;
-import settings.Themes;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class SorterProgressWindow extends JFrame {
@@ -33,36 +32,36 @@ public class SorterProgressWindow extends JFrame {
 		panel.setBackground(Color.WHITE);
 		BoxLayout boxLayout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
 		panel.setLayout(boxLayout);
-		
-		Font font=Themes.getCurrentTheme().getFonts().getMainButtonFont();
+
+		Font font = Context.getContext().getFonts().getMainButtonFont();
 
 		Image loaderImg = Toolkit.getDefaultToolkit().getImage("resources\\images\\loading-ring.gif");
 		ImageIcon icon = new ImageIcon(loaderImg);
 		loader = new JLabel(icon);
 		loader.setPreferredSize(new Dimension(200, 200));
-		JPanel loaderPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel loaderPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		loaderPanel.setBackground(Color.WHITE);
 		loaderPanel.add(loader);
-		
+
 		progress = new JLabel(" ");
-		progress.setForeground(new Color(44,72,254));
+		progress.setForeground(new Color(44, 72, 254));
 		progress.setFont(font);
 		JPanel progressPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		progressPanel.setBackground(Color.WHITE);
 		progressPanel.add(progress);
-		
+
 		description = new JLabel(" ");
-		description.setForeground(new Color(44,72,254));
+		description.setForeground(new Color(44, 72, 254));
 		description.setFont(font);
-		JPanel descriptionPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
+		JPanel descriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		descriptionPanel.setBackground(Color.WHITE);
 		descriptionPanel.add(description);
-		
-		abort=new MaterialButton("Abort");
-		JPanel abortPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+		abort = new MaterialButton("Abort");
+		JPanel abortPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		abortPanel.setOpaque(false);
 		abortPanel.add(abort);
-		
+
 		panel.add(Box.createVerticalGlue());
 		panel.add(loaderPanel);
 		panel.add(progressPanel);
@@ -77,7 +76,7 @@ public class SorterProgressWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setVisible(true);
 	}
-	
+
 	public JButton getAbort() {
 		return abort;
 	}
@@ -85,9 +84,9 @@ public class SorterProgressWindow extends JFrame {
 	public void setProgress(String progress) {
 		this.progress.setText(progress);
 	}
-	
+
 	public void setDescription(String description) {
 		this.description.setText(description);
 	}
-	
+
 }

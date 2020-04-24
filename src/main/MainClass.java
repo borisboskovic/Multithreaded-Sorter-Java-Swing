@@ -3,15 +3,15 @@ package main;
 import model.PanelSwitchingModel;
 import settings.Context;
 import settings.Preferences;
-import settings.Themes;
 import view.MainWindow;
 
 public class MainClass {
 
 	public static void main(String[] args) {
-		Themes.generateDefaultTheme();
 
 		new MainWindow(new PanelSwitchingModel());
+		
+//		Context.writeDefaultFontSettings();
 
 		// TODO: Add about and help sections
 		// TODO: Add Font family selection to settings
