@@ -28,10 +28,10 @@ public class SettingsController {
 			String selectedTheme = view.getThemesCmbBox().getSelectedItem().toString();
 			model.getPreferences().setThemeName(selectedTheme);
 			context.setColorTheme(model.getThemes().get(selectedTheme));
+			System.out.println(Context.getContext().getPreferences().getThemeName());
 			context.savePreferences();
 			JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(view);
 			topFrame.repaint();
-			System.out.println(topFrame);
 		}
 	};
 }

@@ -22,7 +22,7 @@ public class Context {
 	private FontTheme fonts;
 
 	private Context() {
-		registerFonts();
+		// registerFonts();
 		readPreferences();
 		readTheme();
 		readFonts();
@@ -61,8 +61,8 @@ public class Context {
 			reader.close();
 		} catch (IOException e) {
 			preferences.setThemeName("default-gray");
+			savePreferences();
 			writeDefaultTheme();
-			e.printStackTrace();
 		}
 	}
 
@@ -121,7 +121,7 @@ public class Context {
 		} catch (IOException e) {
 		}
 	}
-	
+
 	/**
 	 * Writes default preferences to file
 	 */
@@ -199,11 +199,11 @@ public class Context {
 	public FontTheme getFonts() {
 		return fonts;
 	}
-	
+
 	public void setPreferences(Preferences preferences) {
 		this.preferences = preferences;
 	}
-	
+
 	public void setColorTheme(ColorTheme colorTheme) {
 		this.colorTheme = colorTheme;
 	}

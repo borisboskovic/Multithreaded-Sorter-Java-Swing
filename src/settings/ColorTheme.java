@@ -14,7 +14,6 @@ public class ColorTheme {
 	private Color textSecondaryColor;
 
 	private Color accentColor;
-	private Color accentLighterColor;
 	private Color specialColor;
 
 	private String themeName;

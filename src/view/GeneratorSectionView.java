@@ -67,12 +67,12 @@ public class GeneratorSectionView extends JPanel {
 		JLabel message = new JLabel(model.getMessage());
 		message.setFont(fonts.getNoteFont());
 		message.setForeground(theme.getAccentColor());
-		messageRow.setBackground(theme.getSectionColor());
+		messageRow.setOpaque(false);
 		messageRow.add(message);
 
 		JPanel inputPanel = new JPanel();
 		BoxLayout inputLayout = new BoxLayout(inputPanel, BoxLayout.PAGE_AXIS);
-		inputPanel.setBackground(theme.getSectionColor());
+		inputPanel.setOpaque(false);
 		inputPanel.setLayout(inputLayout);
 		inputPanel.add(Box.createVerticalStrut(40));
 		inputPanel.add(pathRow);
@@ -99,7 +99,7 @@ public class GeneratorSectionView extends JPanel {
 
 	private void setUpButtonPanel(JPanel buttonPanel) {
 		ColorTheme theme=Context.getContext().getColorTheme();
-		buttonPanel.setBackground(theme.getSectionColor());
+		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 		delete = new MaterialButton("Ukloni");
 		delete.addActionListener(deletingListener);
@@ -111,18 +111,18 @@ public class GeneratorSectionView extends JPanel {
 	private void setUpNumberPanel(JPanel numberPanel) {
 		ColorTheme theme = Context.getContext().getColorTheme();
 		FontTheme fonts =Context.getContext().getFonts();
-		numberPanel.setBackground(theme.getSectionColor());
+		numberPanel.setOpaque(false);
 		number = new JLabel(String.valueOf(model.getSectionNumber()));
+		number.setForeground(theme.getSpecialColor());
 		number.setFont(fonts.getImportantFont());
 		number.setHorizontalAlignment(SwingConstants.RIGHT);
 		numberPanel.add(number);
-
 	}
 
 	private void setUpPathRow(JPanel pathRow) {
 		ColorTheme theme = Context.getContext().getColorTheme();
 		FontTheme fonts =Context.getContext().getFonts();
-		pathRow.setBackground(theme.getSectionColor());
+		pathRow.setOpaque(false);
 		Font labelFont = fonts.getLabelFont();
 		// TODO: lokalizacija
 		JLabel pathLbl = new JLabel("Lokacija:");
@@ -145,11 +145,11 @@ public class GeneratorSectionView extends JPanel {
 	private void setUpAmmountRow(JPanel ammountRow) {
 		ColorTheme theme = Context.getContext().getColorTheme();
 		FontTheme fonts =Context.getContext().getFonts();
-		ammountRow.setBackground(theme.getSectionColor());
+		ammountRow.setOpaque(false);
 		Font labelFont = fonts.getLabelFont();
 		JLabel ammountLbl = new JLabel("Kolièina:");
 		JLabel fromLbl = new JLabel("Od:");
-		JLabel toLbl = new JLabel("Do");
+		JLabel toLbl = new JLabel("Do:");
 		ammountLbl.setFont(labelFont);
 		fromLbl.setFont(labelFont);
 		toLbl.setFont(labelFont);
