@@ -24,7 +24,6 @@ public class MaterialButton extends JButton {
 	private boolean hover = false;
 	private boolean mousePressed = false;
 
-	private Color btnColor = null;
 	private ColorTheme theme;
 	private FontTheme fonts;
 
@@ -33,23 +32,13 @@ public class MaterialButton extends JButton {
 		this.theme = Context.getContext().getColorTheme();
 		this.fonts = Context.getContext().getFonts();
 		setFont(fonts.getMainButtonFont());
-		this.btnColor = theme.getAccentColor();
-		this.addMouseListener(mouseListener);
-		setOpaque(false);
-	}
-
-	public MaterialButton(String text, Color btnColor) {
-		super(text);
-		this.theme = Context.getContext().getColorTheme();
-		this.fonts = Context.getContext().getFonts();
-		setFont(fonts.getMainButtonFont());
-		this.btnColor = btnColor;
 		this.addMouseListener(mouseListener);
 		setOpaque(false);
 	}
 
 	@Override
 	public void paint(Graphics g) {
+		theme = Context.getContext().getColorTheme();
 		Graphics2D graphics2d = (Graphics2D) g;
 		graphics2d.setFont(this.getFont()); // TODO: Da li je ovo zaista potrebno?
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -59,13 +48,13 @@ public class MaterialButton extends JButton {
 
 		if (hover && !mousePressed) {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			graphics2d.setColor(lighten(btnColor));
+			graphics2d.setColor(lighten(theme.getAccentColor()));
 			graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
 			graphics2d.setColor(theme.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());
 			graphics2d.drawString(getText(), p.x, p.y);
 		} else {
-			graphics2d.setColor(btnColor);
+			graphics2d.setColor(theme.getAccentColor());
 			graphics2d.fillRoundRect(0, 0, dimensions.width, dimensions.height, borderRadius, borderRadius);
 			graphics2d.setColor(theme.getTextSecondaryColor());
 			Point p = getTextPosition(getFont());

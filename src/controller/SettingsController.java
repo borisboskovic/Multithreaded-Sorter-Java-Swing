@@ -31,6 +31,7 @@ public class SettingsController {
 			System.out.println(Context.getContext().getPreferences().getThemeName());
 			context.savePreferences();
 			JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(view);
+			topFrame.revalidate();
 			topFrame.repaint();
 		}
 	};

@@ -10,6 +10,7 @@ import components.MaterialButton;
 import components.MaterialComboBox;
 import controller.SettingsController;
 import model.SettingsModel;
+import settings.Context;
 
 @SuppressWarnings("serial")
 public class SettingsView extends JPanel {
@@ -19,10 +20,11 @@ public class SettingsView extends JPanel {
 
 	public SettingsView(SettingsModel model) {
 		Vector<String> themeNames = new Vector<>(model.getThemes().keySet());
-		this.themesCmbBox = new MaterialComboBox<>(themeNames);
+		themesCmbBox = new MaterialComboBox<>(themeNames);
+		themesCmbBox.setSelectedItem(Context.getContext().getColorTheme().getThemeName());
 		add(themesCmbBox);
 
-		this.applyBtn = new MaterialButton("Apply");
+		applyBtn = new MaterialButton("Apply");
 		add(applyBtn);
 		
 		new SettingsController(model, this);

@@ -75,9 +75,9 @@ public class SorterFinishWindow extends JDialog {
 		questionPanel.add(questionLbl);
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		buttonPanel.setBackground(Color.WHITE);
-		yes = new MaterialButton(" Yes ", new Color(44, 72, 254));
+		yes = new MaterialButton(" Yes ");
 		yes.addActionListener(yesBtnListener);
-		no = new MaterialButton(" No ", new Color(44, 72, 254));
+		no = new MaterialButton(" No ");
 		no.addActionListener(noBtnListener);
 		buttonPanel.add(yes);
 		buttonPanel.add(Box.createHorizontalStrut(100));
