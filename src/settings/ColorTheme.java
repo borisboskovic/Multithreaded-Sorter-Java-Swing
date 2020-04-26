@@ -85,14 +85,6 @@ public class ColorTheme {
 		this.accentColor = accentColor;
 	}
 
-	public Color getAccentLighterColor() {
-		return accentLighterColor;
-	}
-
-	public void setAccentLighterColor(Color accentLighterColor) {
-		this.accentLighterColor = accentLighterColor;
-	}
-
 	public Color getSpecialColor() {
 		return specialColor;
 	}

@@ -112,6 +112,16 @@ public class Context {
 		}
 	}
 
+	public void savePreferences() {
+		Gson gson = new GsonBuilder().create();
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("preferences" + File.separator + "current.json"));
+			gson.toJson(preferences, writer);
+			writer.close();
+		} catch (IOException e) {
+		}
+	}
+	
 	/**
 	 * Writes default preferences to file
 	 */
@@ -141,9 +151,7 @@ public class Context {
 		colorTheme.setBackgroundColor(Color.WHITE);
 		colorTheme.setTextPrimaryColor(new Color(50, 50, 50));
 		colorTheme.setTextSecondaryColor(Color.WHITE);
-		colorTheme.setAccentColor(new Color(255, 140, 0));
 		colorTheme.setAccentColor(new Color(3, 102, 214));
-		colorTheme.setAccentLighterColor(new Color(255, 170, 0));
 		colorTheme.setSpecialColor(Color.BLACK);
 
 		colorTheme.setThemeName("default-gray");
@@ -190,5 +198,13 @@ public class Context {
 
 	public FontTheme getFonts() {
 		return fonts;
+	}
+	
+	public void setPreferences(Preferences preferences) {
+		this.preferences = preferences;
+	}
+	
+	public void setColorTheme(ColorTheme colorTheme) {
+		this.colorTheme = colorTheme;
 	}
 }

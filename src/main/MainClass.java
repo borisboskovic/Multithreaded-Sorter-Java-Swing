@@ -1,6 +1,7 @@
 package main;
 
 import model.PanelSwitchingModel;
+import model.SettingsModel;
 import settings.Context;
 import settings.Preferences;
 import view.MainWindow;

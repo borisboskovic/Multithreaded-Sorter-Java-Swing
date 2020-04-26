@@ -41,6 +41,7 @@ public class SideMenuView extends JPanel implements ObserverInterface {
 
 	@Override
 	public void paint(Graphics g) {
+		theme=Context.getContext().getColorTheme();
 		Graphics2D graphics2d = (Graphics2D) g;
 		g.setColor(theme.getThemeColor());
 		graphics2d.fillRect(0, 0, getSize().width - edge, getSize().height);
