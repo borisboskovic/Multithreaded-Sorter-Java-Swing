@@ -31,6 +31,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.renderer.xy.XYSplineRenderer;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.ui.RectangleInsets;
@@ -83,10 +84,18 @@ public class LineChartWindow extends JFrame {
 
 		XYPlot plot = (XYPlot) chart.getPlot();
 
-		XYSplineRenderer renderer = new XYSplineRenderer();
-		renderer.setSeriesPaint(0, th.getAccentColor());
-		renderer.setSeriesStroke(0, new BasicStroke(3));
-		plot.setRenderer(renderer);
+		XYSplineRenderer splineRenderer = new XYSplineRenderer();
+		splineRenderer.setSeriesPaint(0, th.getAccentColor());
+		splineRenderer.setSeriesStroke(0, new BasicStroke(3));
+
+		XYLineAndShapeRenderer lineRenderer = new XYLineAndShapeRenderer();
+		lineRenderer.setSeriesPaint(0, th.getAccentColor());
+		lineRenderer.setSeriesStroke(0, new BasicStroke(3));
+
+		if (Context.getContext().getPreferences().isSplineRenderer())
+			plot.setRenderer(splineRenderer);
+		else
+			plot.setRenderer(lineRenderer);
 
 		Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] { 2, 3 }, 0);
 		plot.setDomainGridlineStroke(dashed);
@@ -112,7 +121,6 @@ public class LineChartWindow extends JFrame {
 		try {
 			ImageIO.write(renderedImage, "png", file);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -43,6 +43,12 @@ public class CustomScrollBar extends MetalScrollBarUI {
 		return createZeroButton();
 	}
 
+	@Override
+	public void paint(Graphics g, JComponent c) {
+		theme = Context.getContext().getColorTheme();
+		super.paint(g, c);
+	}
+
 	private JButton createZeroButton() {
 		JButton button = new JButton("zero button");
 		Dimension zeroDim = new Dimension(0, 0);
