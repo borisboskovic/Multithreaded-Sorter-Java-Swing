@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import algorithm.BubbleSort;
+import algorithm.HeapSort;
 import algorithm.InsertionSort;
+import algorithm.MergeSort;
 import algorithm.QuickSort;
+import algorithm.SelectionSort;
 import algorithm.SortingAlgorithm;
 
 public class Algorithms {
@@ -19,7 +22,9 @@ public class Algorithms {
 		list.add("Quick Sort");
 		list.add("Bubble Sort");
 		list.add("Insertion Sort");
-		list.add("Add ...");
+		list.add("Merge Sort");
+		list.add("Heap Sort");
+		list.add("Selection Sort");
 	};
 
 	public static Algorithms getInstance() {
@@ -32,7 +37,6 @@ public class Algorithms {
 		return list;
 	}
 
-	// TODO: dodati algoritme }
 	public SortingAlgorithm createAlgorithm(String name, ArrayList<Integer> array) {
 		if (name.equals(list.get(0)))
 			return new QuickSort(array);
@@ -40,6 +44,12 @@ public class Algorithms {
 			return new BubbleSort(array);
 		else if (name.equals(list.get(2)))
 			return new InsertionSort(array);
+		else if (name.equals(list.get(3)))
+			return new MergeSort(array);
+		else if (name.equals(list.get(4)))
+			return new HeapSort(array);
+		else if (name.equals(list.get(5)))
+			return new SelectionSort(array);
 		else
 			return null;
 	}

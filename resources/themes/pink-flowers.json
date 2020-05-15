@@ -1,18 +1,18 @@
 {
     "themeColor": {
-        "value": -10724260,
+        "value": -1738057,
         "falpha": 0.0
     },
     "themeDarkerColor": {
-        "value": -12961222,
+        "value": -3922834,
         "falpha": 0.0
     },
     "themeLighterColor": {
-        "value": -9079435,
+        "value": -556092,
         "falpha": 0.0
     },
     "sectionColor": {
-        "value": -3815995,
+        "value": -17171,
         "falpha": 0.0
     },
     "backgroundColor": {
@@ -28,13 +28,13 @@
         "falpha": 0.0
     },
     "accentColor": {
-        "value": -16554282,
+        "value": -10997833,
         "falpha": 0.0
     },
     "specialColor": {
-        "value": -16777216,
+        "value": -1,
         "falpha": 0.0
     },
-    "themeName": "default-gray",
-    "backgroundImageUrl": "resources/images/numbers.png"
+    "themeName": "pink-flowers",
+    "backgroundImageUrl": "resources/images/flowers.jpg"
 }

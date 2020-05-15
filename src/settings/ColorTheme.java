@@ -14,7 +14,6 @@ public class ColorTheme {
 	private Color textSecondaryColor;
 
 	private Color accentColor;
-	private Color accentLighterColor;
 	private Color specialColor;
 
 	private String themeName;
@@ -83,14 +82,6 @@ public class ColorTheme {
 
 	public void setAccentColor(Color accentColor) {
 		this.accentColor = accentColor;
-	}
-
-	public Color getAccentLighterColor() {
-		return accentLighterColor;
-	}
-
-	public void setAccentLighterColor(Color accentLighterColor) {
-		this.accentLighterColor = accentLighterColor;
 	}
 
 	public Color getSpecialColor() {
