@@ -11,6 +11,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -132,9 +135,10 @@ public class Context {
 		preferences.setSplineRenderer(false);
 		preferences.setMaxThreadsAllowed(32);
 		preferences.setFilesLimit(5);
-
+		
 		Gson gson = new GsonBuilder().create();
 		try {
+			Files.createDirectories(Paths.get("preferences"));
 			BufferedWriter writer = new BufferedWriter(new FileWriter("preferences" + File.separator + "current.json"));
 			gson.toJson(preferences, writer);
 			writer.close();
