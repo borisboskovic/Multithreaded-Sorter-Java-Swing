@@ -28,6 +28,7 @@ import model.MultithreadedTestModel;
 import settings.Algorithms;
 import settings.ColorTheme;
 import settings.Context;
+import settings.Preferences;
 
 @SuppressWarnings("serial")
 public class MultithreadedTestView extends JPanel {
@@ -152,17 +153,13 @@ public class MultithreadedTestView extends JPanel {
 		JLabel lbl1 = new JLabel("Max threads: ");
 		lbl1.setFont(lblFont);
 
-		JLabel lbl2 = new JLabel("Min files per thread: ");
+		JLabel lbl2 = new JLabel("Min files per thread*: ");
 		lbl2.setFont(lblFont);
 
 		// Thread Count combo box
 		Vector<Integer> count = new Vector<>();
-		count.add(1);
-		count.add(2);
-		count.add(4);
-		count.add(8);
-		count.add(16);
-		count.add(32);
+		for (int i = 1; i <= Context.getContext().getPreferences().getMaxThreadsAllowed(); i *= 2)
+			count.add(i);
 		this.maxThreads = new MaterialComboBox<>(count);
 		this.maxThreads.setFont(lblFont);
 		this.maxThreads.setPreferredSize(new Dimension(90, 46));
@@ -220,7 +217,7 @@ public class MultithreadedTestView extends JPanel {
 		panel.setOpaque(false);
 
 		JLabel label = new JLabel(
-				"<html>* Ovaj tekst treba zamijeniti stvarnim tekstom. Ovaj tekst treba zamijeniti stvarnim tekstom.Ovaj tekst treba zamijeniti stvarnim tekstom.Ovaj tekst treba zamijeniti stvarnim tekstom.Ovaj tekst treba zamijeniti stvarnim tekstom.</html>");
+				"<html>* Pojam minimalan broj fajlova po niti se odnosi na maksimalan broj niti. Za sledeæi manji broj niti (duplo manji), broj fajlova po niti se udvostruèuje. Poenta je da se pri testovima sa razlièitim brojem niti uvijek sortira jednak broj fajlova.</html>");
 
 		label.setFont(Context.getContext().getFonts().getNoteFont());
 		label.setForeground(th.getAccentColor());
