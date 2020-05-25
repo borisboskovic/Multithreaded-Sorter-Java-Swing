@@ -17,8 +17,6 @@ import view.LineChartWindow;
 import view.SorterProgressWindow;
 
 public class MultithreadedTestModel implements Runnable {
-	public static final int FILES_LIMIT = 20;
-
 	private int maxThreads;
 	private int minFilesPerThread;
 	private String algorithmName;

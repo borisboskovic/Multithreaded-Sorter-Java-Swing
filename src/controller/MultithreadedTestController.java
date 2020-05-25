@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.MultithreadedTestModel;
+import settings.Context;
 import view.MultithreadedTestView;
 
 public class MultithreadedTestController {
@@ -27,7 +28,7 @@ public class MultithreadedTestController {
 	private Boolean validateNumOfFiles() {
 		try {
 			int num = Integer.parseInt(view.getMinFilesPerThread().getText());
-			return (num >= 1 && num <= MultithreadedTestModel.FILES_LIMIT);
+			return (num >= 1 && num <= Context.getContext().getPreferences().getFilesLimit());
 		} catch (Exception e) {
 			return false;
 		}
@@ -48,7 +49,7 @@ public class MultithreadedTestController {
 			else {
 				if (!validateNumOfFiles()) {
 					String message = "For minimum files per thread please choose a value between 1 and "
-							+ MultithreadedTestModel.FILES_LIMIT;
+							+ Context.getContext().getPreferences().getFilesLimit()+", or change this in settings";
 					JOptionPane.showMessageDialog(view, message, "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					view.updateModel();
