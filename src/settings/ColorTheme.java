@@ -15,6 +15,7 @@ public class ColorTheme {
 
 	private Color accentColor;
 	private Color specialColor;
+	private Color inputColor;
 
 	private String themeName;
 
@@ -92,6 +93,14 @@ public class ColorTheme {
 		this.specialColor = specialColor;
 	}
 
+	public Color getInputColor() {
+		return inputColor;
+	}
+	
+	public void setInputColor(Color inputColor) {
+		this.inputColor = inputColor;
+	}
+	
 	public String getThemeName() {
 		return themeName;
 	}

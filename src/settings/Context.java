@@ -12,7 +12,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.google.gson.Gson;
@@ -157,6 +156,7 @@ public class Context {
 		colorTheme.setTextSecondaryColor(Color.WHITE);
 		colorTheme.setAccentColor(new Color(3, 102, 214));
 		colorTheme.setSpecialColor(Color.BLACK);
+		colorTheme.setInputColor(new Color(92, 92, 92));
 
 		colorTheme.setThemeName("default-gray");
 		colorTheme.setBackgroundImageUrl("resources/images/numbers.png");
