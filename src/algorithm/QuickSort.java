@@ -23,7 +23,6 @@ public class QuickSort implements SortingAlgorithm, Runnable {
 	}
 
 	public QuickSort(ArrayList<Integer> array, int down, int up) {
-		System.out.println("Kreiran je QuickSort");
 		this.array = array;
 		this.down = down;
 		this.up = up;
