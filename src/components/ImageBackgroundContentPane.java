@@ -15,8 +15,11 @@ public class ImageBackgroundContentPane extends JComponent {
 
 	@Override
 	protected void paintComponent(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
 		ColorTheme theme = Context.getContext().getColorTheme();
+		g2d.setColor(theme.getBackgroundColor());
+		g2d.fillRect(0, 0, getSize().width, getSize().height);
 		Image bgImage = Toolkit.getDefaultToolkit().getImage(theme.getBackgroundImageUrl());
-		((Graphics2D) g).drawImage(bgImage, 0, 0, getSize().width, getSize().height, this);
+		g2d.drawImage(bgImage, 0, 0, getSize().width, getSize().height, this);
 	}
 }

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.plaf.basic.ComboPopup;
 
 import settings.ColorTheme;
 import settings.Context;
@@ -49,6 +50,8 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 				b.setBorderPainted(false);
 				return b;
 			}
+			
+			
 		});
 
 	}
@@ -64,6 +67,7 @@ class CustomCellRenderer extends DefaultListCellRenderer {
 		this.defaultRenderer = defaultRenderer;
 	}
 
+	
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
@@ -80,6 +84,8 @@ class CustomCellRenderer extends DefaultListCellRenderer {
 		}
 		return c;
 	}
+	
+	
 }
 
 class CustomComboBoxEditor extends BasicComboBoxEditor {
@@ -99,7 +105,7 @@ class CustomComboBoxEditor extends BasicComboBoxEditor {
 
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panel.add(label);
-		panel.setBackground(th.getThemeColor());
+		panel.setBackground(th.getInputColor());
 		panel.setBorder(null);
 	}
 

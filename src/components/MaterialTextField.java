@@ -51,7 +51,7 @@ public class MaterialTextField extends JTextField {
 		setCaretColor(theme.getTextSecondaryColor());
 		setSelectionColor(theme.getAccentColor());
 		setSelectedTextColor(theme.getTextSecondaryColor());
-		setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, theme.getThemeColor()),
+		setBorder(BorderFactory.createCompoundBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, theme.getInputColor()),
 				BorderFactory.createEmptyBorder(5, 10, 0, 10)));
 		super.paint(g);
 	}
