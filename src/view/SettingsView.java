@@ -26,7 +26,6 @@ public class SettingsView extends JPanel {
 
 		applyBtn = new MaterialButton("Apply");
 		add(applyBtn);
-		
 		new SettingsController(model, this);
 	}
 	
