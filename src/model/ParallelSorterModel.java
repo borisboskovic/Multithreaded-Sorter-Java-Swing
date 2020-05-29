@@ -19,7 +19,6 @@ public class ParallelSorterModel {
 			try {
 				th.join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return System.currentTimeMillis() - startTime;

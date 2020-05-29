@@ -18,7 +18,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import components.CustomComboBoxUI;
 import components.MaterialButton;
@@ -29,7 +28,6 @@ import model.MultithreadedTestModel;
 import settings.Algorithms;
 import settings.ColorTheme;
 import settings.Context;
-import settings.Preferences;
 
 @SuppressWarnings("serial")
 public class MultithreadedTestView extends JPanel {
@@ -81,7 +79,7 @@ public class MultithreadedTestView extends JPanel {
 		panel.setLayout(ly);
 		panel.setMaximumSize(new Dimension(2000, 46));
 		panel.setOpaque(false);
-		JLabel label = new JLabel("Path: "); // TODO: Lokalizacija
+		JLabel label = new JLabel("Putanja: ");
 		label.setFont(lblFont);
 		this.path = new MaterialTextField(20);
 		this.browseBtn = new MaterialButton("...");
@@ -107,7 +105,7 @@ public class MultithreadedTestView extends JPanel {
 		panel.setMaximumSize(new Dimension(2000, 100));
 		panel.setOpaque(false);
 
-		JLabel label = new JLabel("Algorithm: ");
+		JLabel label = new JLabel("Algoritam: ");
 		label.setFont(lblFont);
 
 		this.algorithm = new MaterialComboBox<>(Algorithms.getInstance().getList());
@@ -138,10 +136,10 @@ public class MultithreadedTestView extends JPanel {
 		panel.setMaximumSize(new Dimension(2000, 46));
 		panel.setOpaque(false);
 
-		JLabel lbl1 = new JLabel("Max threads: ");
+		JLabel lbl1 = new JLabel("Maksimalno niti: ");
 		lbl1.setFont(lblFont);
 
-		JLabel lbl2 = new JLabel("Min files per thread*: ");
+		JLabel lbl2 = new JLabel("Minimalno fajlova po niti*: ");
 		lbl2.setFont(lblFont);
 
 		// Thread Count combo box
@@ -214,7 +212,7 @@ public class MultithreadedTestView extends JPanel {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panel.setMaximumSize(new Dimension(2000, 80));
 		panel.setOpaque(false);
-		this.sortBtn = new MaterialButton("   Sort   "); // TODO: Lokalizacija
+		this.sortBtn = new MaterialButton("   Sortiraj   ");
 		this.sortBtn.setFont(fontLg);
 
 		panel.add(sortBtn);

@@ -37,8 +37,7 @@ public class GeneratorSectionModel {
 	public void generate() {
 		// Kreriranje foldera i fajla
 		if(path.equals("")) {
-			//TODO: Lokalizacija
-			this.message="Greska! Niste unijeli putanju fajla.";
+			this.message="Gre\u0161ka! Niste unijeli putanju fajla.";
 			return;
 		}
 		Path filePath = Paths.get(path);
@@ -49,8 +48,7 @@ public class GeneratorSectionModel {
 				Files.createDirectories(dir.toPath());
 				Files.createFile(filePath);
 			} catch (IOException e) {
-				// TODO: Lokalizacija
-				this.message = "Greska! Pristup fajl sistemu trenutno nije moguc. Pokusajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
+				this.message = "Gre\u0161ka! Pristup fajl sistemu trenutno nije mogu\u0107. Poku\u0161ajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
 			}
 		}
 		// Generisanje brojeva
@@ -67,10 +65,10 @@ public class GeneratorSectionModel {
 				for (Integer i : numbers) {
 					out.write(i + ", ");
 				}
-				this.message = "File successfully created.";
+				this.message = "Fajl uspje\u0161no kreiran.";
 				out.close();
 			} catch (IOException e) {
-				this.message = "Greska! Pristup fajl sistemu trenutno nije moguc. Pokusajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
+				this.message = "Gre\u0161ka! Pristup fajl sistemu trenutno nije mogu\u0107. Poku\u0161ajte sa drugom lokacijom ili pokrenite aplikaciju kao administrator";
 				e.printStackTrace();
 			}
 		}
@@ -83,7 +81,7 @@ public class GeneratorSectionModel {
 	 */
 	public Boolean validate() {
 		if (ammount < 0 || from > to) {
-			message = "Greska! Uneseni podaci nisu ispravni.";
+			message = "Gre\u0161ka! Uneseni podaci nisu ispravni.";
 			return false;
 		}
 		return true;

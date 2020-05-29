@@ -3,7 +3,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -58,9 +57,10 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 
 	private void setUpButtons() {
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+		BoxLayout bl = new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS);
+		buttonPanel.setLayout(bl);
 		buttonPanel.setOpaque(false);
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 0));
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 20, 20));
 
 		Font fnt = Context.getContext().getFonts().getMainButtonFont();
 		Font large = new Font(fnt.getName(), fnt.getStyle(), 32);

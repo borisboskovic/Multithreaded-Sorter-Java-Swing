@@ -66,7 +66,7 @@ public class PathSectionView extends JPanel {
 		JPanel panel = new JPanel();
 		BoxLayout layout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
 		panel.setLayout(layout);
-		remove = new MaterialButton("Ukloni"); // TODO: Lokalizacija
+		remove = new MaterialButton("Ukloni");
 		remove.setFont(Context.getContext().getFonts().getMainButtonFont());
 		panel.add(remove);
 		panel.setOpaque(false);
@@ -80,7 +80,7 @@ public class PathSectionView extends JPanel {
 		BoxLayout layout = new BoxLayout(mainSection, BoxLayout.PAGE_AXIS);
 		mainSection.setLayout(layout);
 
-		JLabel pathLabel = new JLabel("Path:"); // TODO: Lokalizacija
+		JLabel pathLabel = new JLabel("Putanja:");
 		pathLabel.setFont(Context.getContext().getFonts().getLabelFont());
 		pathTxtField = new MaterialTextField(512);
 		pathTxtField.setText(model.getPath());

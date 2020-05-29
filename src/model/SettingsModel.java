@@ -19,7 +19,7 @@ public class SettingsModel {
 
 	public SettingsModel() {
 		loadThemes();
-		preferences=Context.getContext().getPreferences();
+		preferences = Context.getContext().getPreferences();
 	}
 
 	/**
@@ -43,10 +43,19 @@ public class SettingsModel {
 		}
 	}
 
+	public void saveSettings(String theme, String graphStyle, int threads, int files) {
+		preferences.setThemeName(theme);
+		Context.getContext().setColorTheme(themes.get(theme));
+		preferences.setSplineRenderer(graphStyle.equals("Spline graph"));
+		preferences.setMaxThreadsAllowed(threads);
+		preferences.setFilesLimit(files);
+		preferences.save();
+	}
+
 	public HashMap<String, ColorTheme> getThemes() {
 		return themes;
 	}
-	
+
 	public Preferences getPreferences() {
 		return preferences;
 	}

@@ -12,7 +12,6 @@ import model.GeneratorModel;
 import model.InfoModel;
 import model.MultithreadedTestModel;
 import model.SinglethreadedTestModel;
-import settings.Context;
 import model.PanelSwitchingModel;
 import model.SettingsModel;
 

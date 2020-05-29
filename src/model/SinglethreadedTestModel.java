@@ -96,7 +96,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		ArrayList<ArrayWithPath> arraysCollection = new ArrayList<>();
 
 		progressWindow = new SorterProgressWindow();
-		progressWindow.setDescription("Loading data from files...");
+		progressWindow.setDescription("U\u010ditavanje podataka iz fajlova...");
 		progressWindow.getAbort().addActionListener(new ActionListener() {
 
 			@Override
@@ -122,10 +122,10 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 				in.close();
 				arraysCollection.add(new ArrayWithPath(array, sectionModel.getPath()));
 			} catch (FileNotFoundException e) {
-				sectionModel.setMessage("ERROR! File not found."); // TODO: Lokalizacija
+				sectionModel.setMessage("GRE\u0160KA! Fajl nije pronaðen.");
 				sectionModel.updateView();
 			} catch (IOException e) {
-				sectionModel.setMessage("ERROR! Acces Denied."); // TODO: Lokalizacija
+				sectionModel.setMessage("GRE\\u0160KA! Pristup odbijen.");
 				sectionModel.updateView();
 			}
 		}
@@ -147,7 +147,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 
 		if (algorithms.size() == 0) {
 			progressWindow.dispose();
-			JOptionPane.showMessageDialog(progressWindow, "There are no files to sort.", "",
+			JOptionPane.showMessageDialog(progressWindow, "Nema fajlova za sortiranje.", "",
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
@@ -155,7 +155,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		// Sorting and geting results
 		ArrayList<Integer> ammounts = new ArrayList<>();
 		ArrayList<Long> times = new ArrayList<>();
-		progressWindow.setDescription("Sorting data...");
+		progressWindow.setDescription("Sortiranje podataka...");
 		progressWindow.setProgress("1/" + algorithms.size());
 		for (SortingAlgorithm algorithm : algorithms) {
 			if (exit)
@@ -165,7 +165,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 			ammounts.add(algorithm.getArray().size());
 		}
 		progressWindow.setProgress(" ");
-		progressWindow.setDescription("Creating graph...");
+		progressWindow.setDescription("Kreiranje grafikona...");
 		double[][] results = new double[2][ammounts.size()];
 		for (int i = 0; i < ammounts.size(); i++) {
 			results[0][i] = ammounts.get(i);
@@ -175,9 +175,9 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries(algorithmName, results);
 		progressWindow.dispose();
-		new SorterFinishWindow(arraysCollection, algorithms.size() + "/" + pathModels.size() + " files sorted");
-		new LineChartWindow(dataset, "Vrijeme sortiranja u zavisnosti od kolièine podataka", "Kolièina podataka",
-				"Vrijeme [ms]"); // TODO: Lokalizacija
+		new SorterFinishWindow(arraysCollection, algorithms.size() + "/" + pathModels.size() + " sortirano");
+		new LineChartWindow(dataset, "Vrijeme sortiranja u zavisnosti od koli\u010dine podataka", "Koli\u010dina podataka",
+				"Vrijeme [ms]");
 	}
 
 	public void setAlgorithmName(String algorithmName) {

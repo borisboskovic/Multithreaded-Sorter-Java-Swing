@@ -20,14 +20,12 @@ public class PanelSwitchingModel implements SubjectInterface {
 
 	private void populateButtons() {
 		buttons = new ArrayList<>();
-		PanelButton button1 = new PanelButton("System Info");
-		PanelButton button2 = new PanelButton("Generate test data");
-		PanelButton button3 = new PanelButton("Singlethreaded test");
-		PanelButton button4 = new PanelButton("Multithreaded test");
-		PanelButton button5 = new PanelButton("Settings");
-		PanelButton button6 = new PanelButton("Help & About");
-
-		// TODO: Dodaj action commands
+		PanelButton button1 = new PanelButton("Sistemske informacije");
+		PanelButton button2 = new PanelButton("Generisanje podataka");
+		PanelButton button3 = new PanelButton("Serijski test");
+		PanelButton button4 = new PanelButton("Paralelni test");
+		PanelButton button5 = new PanelButton("Pode\u0161avanja");
+		PanelButton button6 = new PanelButton("O Programu");
 
 		buttons.add(button1);
 		buttons.add(button2);

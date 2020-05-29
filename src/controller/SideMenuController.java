@@ -10,6 +10,7 @@ import view.SideMenuView;
 public class SideMenuController {
 
 	private PanelSwitchingModel model;
+	@SuppressWarnings("unused")
 	private SideMenuView view;
 
 	public SideMenuController(PanelSwitchingModel model, SideMenuView view) {

@@ -93,7 +93,7 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 		this.addButton.setFont(large);
 		this.removeButton = new MaterialButton(" X ");
 		this.removeButton.setFont(large);
-		this.sortButton = new MaterialButton("Sortiraj"); // TODO: Lokalizacija
+		this.sortButton = new MaterialButton("Sortiraj");
 		this.sortButton.setFont(large);
 
 		buttonPanel.add(addButton);

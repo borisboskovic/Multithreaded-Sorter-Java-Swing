@@ -18,7 +18,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicComboBoxUI;
 
 import components.CustomComboBoxUI;
 import components.MaterialButton;
@@ -148,7 +147,7 @@ public class SettingsView extends JPanel {
 		this.threadsTxt.setFont(lblFont);
 		this.threadsTxt.setPreferredSize(new Dimension(100, 46));
 
-		JLabel label = new JLabel("Ogranièenje broja niti:");
+		JLabel label = new JLabel("Ograni\u010denje broja niti:");
 		label.setFont(lblFont);
 		label.setForeground(theme.getTextPrimaryColor());
 		label.setPreferredSize(new Dimension(230, 46));
@@ -170,7 +169,7 @@ public class SettingsView extends JPanel {
 		this.filesTxt.setFont(lblFont);
 		this.filesTxt.setPreferredSize(new Dimension(100, 46));
 
-		JLabel label = new JLabel("Ogranièenje broja fajlova:");
+		JLabel label = new JLabel("Ograni\u010denje broja fajlova:");
 		label.setFont(lblFont);
 		label.setForeground(theme.getTextPrimaryColor());
 		label.setPreferredSize(new Dimension(230, 46));
@@ -201,7 +200,7 @@ public class SettingsView extends JPanel {
 		return panel;
 	}
 
-	private void updateFieldValues() {
+	public void updateFieldValues() {
 		Preferences preferences = Context.getContext().getPreferences();
 		this.themesCmbBox.setSelectedItem(preferences.getThemeName());
 		this.graphCmbBox.setSelectedItem(preferences.isSplineRenderer() ? "Spline graph" : "Line graph");
@@ -213,10 +212,26 @@ public class SettingsView extends JPanel {
 		return applyBtn;
 	}
 
+	public JButton getCancelBtn() {
+		return cancelBtn;
+	}
+	
 	public JComboBox<String> getThemesCmbBox() {
 		return themesCmbBox;
 	}
 
+	public JComboBox<String> getGraphCmbBox() {
+		return graphCmbBox;
+	}
+	
+	public JTextField getThreadsTxt() {
+		return threadsTxt;
+	}
+	
+	public JTextField getFilesTxt() {
+		return filesTxt;
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;

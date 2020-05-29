@@ -50,9 +50,9 @@ public class LineChartWindow extends JFrame {
 	public LineChartWindow(DefaultXYDataset dataSet, String title, String xName, String yName) {
 		setUpChart(dataSet, title, xName, yName);
 
-		saveBtn = new MaterialButton("Save graph"); // TODO: Lokalizacija
+		saveBtn = new MaterialButton("Sa\u010duvaj");
 		saveBtn.addActionListener(saveBtnListener);
-		closeBtn = new MaterialButton("Close graph"); // TODO: Lokalizacija
+		closeBtn = new MaterialButton("Zatvori");
 		closeBtn.addActionListener(closeBtnListener);
 		JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		btnPanel.add(saveBtn);
@@ -66,7 +66,7 @@ public class LineChartWindow extends JFrame {
 		add(chartPanel, BorderLayout.CENTER);
 		add(btnPanel, BorderLayout.SOUTH);
 
-		setTitle("Prikaz grafikona"); // TODO: Lokalizacija
+		setTitle("Prikaz grafikona");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\graph-icon.png"));
 		setSize(new Dimension(800, 600));
 		setMinimumSize(new Dimension(600, 400));

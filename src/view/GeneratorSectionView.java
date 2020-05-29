@@ -122,7 +122,7 @@ public class GeneratorSectionView extends JPanel {
 		FontTheme fonts = Context.getContext().getFonts();
 		pathRow.setOpaque(false);
 		Font labelFont = fonts.getLabelFont();
-		JLabel pathLbl = new JLabel("Lokacija:");
+		JLabel pathLbl = new JLabel("Putanja:");
 		pathLbl.setFont(labelFont);
 		this.path = new MaterialTextField(512);
 		this.path.setText(model.getPath());

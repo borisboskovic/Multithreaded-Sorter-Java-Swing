@@ -57,7 +57,7 @@ public class SorterProgressWindow extends JFrame {
 		descriptionPanel.setBackground(Color.WHITE);
 		descriptionPanel.add(description);
 
-		abort = new MaterialButton("Abort");
+		abort = new MaterialButton("Prekini");
 		JPanel abortPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		abortPanel.setOpaque(false);
 		abortPanel.add(abort);

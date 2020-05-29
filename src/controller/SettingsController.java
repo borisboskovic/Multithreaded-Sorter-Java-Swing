@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import model.SettingsModel;
-import settings.Context;
 import view.SettingsView;
 
 public class SettingsController {
@@ -18,20 +17,30 @@ public class SettingsController {
 		this.model = model;
 		this.view = view;
 		view.getApplyBtn().addActionListener(applyBtnListener);
+		view.getCancelBtn().addActionListener(cancelBtnListener);
 	}
 
 	private ActionListener applyBtnListener = new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Context context = Context.getContext();
-			String selectedTheme = view.getThemesCmbBox().getSelectedItem().toString();
-			model.getPreferences().setThemeName(selectedTheme);
-			context.setColorTheme(model.getThemes().get(selectedTheme));
-			context.savePreferences();
+			String theme = view.getThemesCmbBox().getSelectedItem().toString();
+			String graphStyle=view.getGraphCmbBox().getSelectedItem().toString();
+			int threads = Integer.valueOf(view.getThreadsTxt().getText());
+			int files = Integer.valueOf(view.getFilesTxt().getText());
+			model.saveSettings(theme, graphStyle, threads, files);
+			
 			JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(view);
 			topFrame.revalidate();
 			topFrame.repaint();
+		}
+	};
+	
+	private ActionListener cancelBtnListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			view.updateFieldValues();
 		}
 	};
 }

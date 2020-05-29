@@ -79,11 +79,11 @@ public class MultithreadedTestModel implements Runnable {
 				progressWindow.dispose();
 			}
 		});
-		progressWindow.setDescription("Reading data from file..."); // TODO: Lokalizacija
+		progressWindow.setDescription("U\u010ditavanje podataka iz fajla...");
 		readDataFromFile(path);
-		progressWindow.setDescription("Creating sorters...");
+		progressWindow.setDescription("Kreiranje sortera...");
 		createSorters();
-		progressWindow.setDescription("Running tests...");
+		progressWindow.setDescription("Izvr\u0161avanje testova...");
 		ArrayList<Long> times = new ArrayList<>();
 
 		for (int i = 0; i < sorters.size(); i++) {
@@ -93,7 +93,7 @@ public class MultithreadedTestModel implements Runnable {
 			times.add(sorters.get(i).sort());
 		}
 
-		progressWindow.setDescription("Creating graph...");
+		progressWindow.setDescription("Kreiranje grafikona...");
 		double data[][] = new double[2][sorters.size()];
 		for (int i = 0; i < sorters.size(); i++) {
 			data[0][i] = sorters.get(i).getThreads().size();
@@ -102,7 +102,7 @@ public class MultithreadedTestModel implements Runnable {
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		dataset.addSeries(algorithmName, data);
 		progressWindow.dispose();
-		new LineChartWindow(dataset, "Vrijeme sortiranja u zavisnosti od broja tredova", "Thread count", "time [ms]");
+		new LineChartWindow(dataset, "Vrijeme sortiranja u zavisnosti od broja tredova", "Broj niti", "Vrijeme [ms]");
 
 	}
 

@@ -40,7 +40,6 @@ public class MaterialButton extends JButton {
 	public void paint(Graphics g) {
 		theme = Context.getContext().getColorTheme();
 		Graphics2D graphics2d = (Graphics2D) g;
-		graphics2d.setFont(this.getFont()); // TODO: Da li je ovo zaista potrebno?
 		graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		Dimension dimensions = this.getPreferredSize();
 
@@ -100,8 +99,6 @@ public class MaterialButton extends JButton {
 
 		@Override
 		public void mouseClicked(java.awt.event.MouseEvent e) {
-			// TODO Auto-generated method stub
-
 		}
 	};
 

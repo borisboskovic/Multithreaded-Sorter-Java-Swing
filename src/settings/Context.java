@@ -98,16 +98,13 @@ public class Context {
 				inputStream = new FileInputStream(file);
 				ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, inputStream));
 			} catch (FontFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

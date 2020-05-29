@@ -70,7 +70,7 @@ public class MultithreadedTestController {
 			fileChooser.addChoosableFileFilter(fileFilter);
 			fileChooser.setPreferredSize(new Dimension(800, 600));
 
-			int returnValue = fileChooser.showSaveDialog(view);
+			int returnValue = fileChooser.showOpenDialog(view);
 			if (returnValue == JFileChooser.APPROVE_OPTION) {
 				String selectedFile = fileChooser.getSelectedFile().getPath().toString();
 				view.getPath().setText(selectedFile);

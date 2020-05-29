@@ -54,7 +54,7 @@ public class SorterFinishWindow extends JDialog {
 		imagePanel.add(new JLabel(new ImageIcon(done)));
 
 		JPanel finishPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		JLabel finishLabel = new JLabel("Finished");
+		JLabel finishLabel = new JLabel("Zavr\u0161eno");
 		finishLabel.setFont(font);
 		finishLabel.setForeground(new Color(44, 72, 254));
 		finishPanel.setBackground(Color.WHITE);
@@ -69,15 +69,15 @@ public class SorterFinishWindow extends JDialog {
 
 		JPanel questionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		questionPanel.setBackground(Color.WHITE);
-		JLabel questionLbl = new JLabel("Would you like to save sorted data?");
+		JLabel questionLbl = new JLabel("Da li \u017eelite da sa\u010duvate sortirane podatke?");
 		questionLbl.setFont(font);
 		questionLbl.setForeground(new Color(44, 72, 254));
 		questionPanel.add(questionLbl);
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		buttonPanel.setBackground(Color.WHITE);
-		yes = new MaterialButton(" Yes ");
+		yes = new MaterialButton(" Da ");
 		yes.addActionListener(yesBtnListener);
-		no = new MaterialButton(" No ");
+		no = new MaterialButton(" Ne ");
 		no.addActionListener(noBtnListener);
 		buttonPanel.add(yes);
 		buttonPanel.add(Box.createHorizontalStrut(100));
@@ -113,14 +113,13 @@ public class SorterFinishWindow extends JDialog {
 			for (ArrayWithPath array : arrays) {
 				try {
 					String path = array.getPath();
-					path = path.substring(0, path.length() - 4) + " - sorted.txt";
+					path = path.substring(0, path.length() - 4) + " - sortirano.txt";
 					BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 					for (Integer num : array.getArray()) {
 						writer.write(num + ", ");
 					}
 					writer.close();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
