@@ -3,6 +3,7 @@ package components;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.util.Vector;
 
 import javax.swing.DefaultListCellRenderer;
@@ -50,11 +51,22 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 				return b;
 			}
 			
-			
 		});
 
 	}
 
+	@Override
+	public void paint(Graphics g) {
+		this.theme = Context.getContext().getColorTheme();
+		setBackground(theme.getThemeColor());
+		setForeground(theme.getTextSecondaryColor());
+		
+		CustomComboBoxEditor editor = (CustomComboBoxEditor)getEditor();
+		editor.getEditorComponent().setBackground(theme.getInputColor());
+		editor.getLabel().setForeground(theme.getTextSecondaryColor());
+		
+		super.paint(g);
+	}
 }
 
 @SuppressWarnings("serial")
@@ -121,4 +133,7 @@ class CustomComboBoxEditor extends BasicComboBoxEditor {
 		label.setText(item.toString());
 	}
 	
+	public JLabel getLabel() {
+		return label;
+	}
 }
