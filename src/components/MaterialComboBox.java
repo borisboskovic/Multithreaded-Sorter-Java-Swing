@@ -24,6 +24,7 @@ import settings.FontTheme;
 public class MaterialComboBox<E> extends JComboBox<E> {
 	private ColorTheme theme;
 	private FontTheme fonts;
+	private CustomCellRenderer cellRenderer;
 
 	public MaterialComboBox(Vector<E> items) {
 		super(items);
@@ -37,21 +38,10 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 
 		setEditor(new CustomComboBoxEditor());
 		setEditable(true);
-		setRenderer(new CustomCellRenderer(getRenderer()));
+		this.cellRenderer = new CustomCellRenderer(getRenderer());
+		setRenderer(cellRenderer);
 
-		setUI(new BasicComboBoxUI() {
-			@Override
-			protected JButton createArrowButton() {
-				JButton b = super.createArrowButton();
-				b = new JButton("\u02c5");
-				b.setFont(large);
-				b.setBackground(theme.getAccentColor());
-				b.setForeground(theme.getTextSecondaryColor());
-				b.setBorderPainted(false);
-				return b;
-			}
-			
-		});
+		setUI(new CustomComboBoxUI());
 
 	}
 
@@ -60,10 +50,16 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 		this.theme = Context.getContext().getColorTheme();
 		setBackground(theme.getThemeColor());
 		setForeground(theme.getTextSecondaryColor());
-		
-		CustomComboBoxEditor editor = (CustomComboBoxEditor)getEditor();
+
+		CustomComboBoxEditor editor = (CustomComboBoxEditor) getEditor();
 		editor.getEditorComponent().setBackground(theme.getInputColor());
 		editor.getLabel().setForeground(theme.getTextSecondaryColor());
+
+		JButton button = ((CustomComboBoxUI) getUI()).getButton();
+		button.setBackground(theme.getAccentColor());
+		button.setForeground(theme.getTextSecondaryColor());
+
+		((CustomCellRenderer)getRenderer()).setTheme(theme);
 		
 		super.paint(g);
 	}
@@ -78,7 +74,6 @@ class CustomCellRenderer extends DefaultListCellRenderer {
 		this.defaultRenderer = defaultRenderer;
 	}
 
-	
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
@@ -89,13 +84,18 @@ class CustomCellRenderer extends DefaultListCellRenderer {
 				c.setForeground(theme.getTextSecondaryColor());
 				((JLabel) c).setBorder(null);
 			} else {
+				c.setBackground(theme.getInputColor());
+				c.setForeground(theme.getTextSecondaryColor());
 			}
 		} else {
 			c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 		}
 		return c;
 	}
-	
+
+	public void setTheme(ColorTheme theme) {
+		this.theme = theme;
+	}
 	
 }
 
@@ -132,7 +132,7 @@ class CustomComboBoxEditor extends BasicComboBoxEditor {
 		this.selectedItem = item;
 		label.setText(item.toString());
 	}
-	
+
 	public JLabel getLabel() {
 		return label;
 	}

@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
+import components.CustomComboBoxUI;
 import components.MaterialButton;
 import components.MaterialComboBox;
 import components.MaterialTextField;
@@ -81,20 +82,7 @@ public class SettingsView extends JPanel {
 		this.themesCmbBox = new MaterialComboBox<>(themeNames);
 		this.themesCmbBox.setFont(lblFont);
 		this.themesCmbBox.setPreferredSize(new Dimension(400, 46));
-		this.themesCmbBox.setUI(new BasicComboBoxUI() {
-
-			@Override
-			protected JButton createArrowButton() {
-				JButton b = super.createArrowButton();
-				b = new JButton("\u02c5");
-				b.setFont(lblFont);
-				b.setBackground(theme.getAccentColor());
-				b.setForeground(theme.getTextSecondaryColor());
-				b.setBorderPainted(false);
-				return b;
-
-			}
-		});
+		this.themesCmbBox.setUI(new CustomComboBoxUI());
 		ComboBoxEditor editor = this.themesCmbBox.getEditor();
 		JPanel editorPanel = (JPanel) editor.getEditorComponent();
 		editorPanel.setFont(lblFont);
@@ -128,20 +116,7 @@ public class SettingsView extends JPanel {
 		this.graphCmbBox = new MaterialComboBox<>(graphStyles);
 		this.graphCmbBox.setFont(lblFont);
 		this.graphCmbBox.setPreferredSize(new Dimension(400, 46));
-		this.graphCmbBox.setUI(new BasicComboBoxUI() {
-
-			@Override
-			protected JButton createArrowButton() {
-				JButton b = super.createArrowButton();
-				b = new JButton("\u02c5");
-				b.setFont(lblFont);
-				b.setBackground(theme.getAccentColor());
-				b.setForeground(theme.getTextSecondaryColor());
-				b.setBorderPainted(false);
-				return b;
-
-			}
-		});
+		this.graphCmbBox.setUI(new CustomComboBoxUI());
 		ComboBoxEditor editor = this.graphCmbBox.getEditor();
 		JPanel editorPanel = (JPanel) editor.getEditorComponent();
 		editorPanel.setFont(lblFont);

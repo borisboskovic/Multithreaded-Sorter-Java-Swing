@@ -46,8 +46,8 @@ public class GeneratorSectionView extends JPanel {
 
 	public GeneratorSectionView(GeneratorSectionModel model) {
 		this.model = model;
-		ColorTheme theme=Context.getContext().getColorTheme();
-		FontTheme fonts=Context.getContext().getFonts();
+		ColorTheme theme = Context.getContext().getColorTheme();
+		FontTheme fonts = Context.getContext().getFonts();
 		setBackground(theme.getSectionColor());
 
 		BoxLayout mainLayout = new BoxLayout(this, BoxLayout.LINE_AXIS);
@@ -98,7 +98,6 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpButtonPanel(JPanel buttonPanel) {
-		ColorTheme theme=Context.getContext().getColorTheme();
 		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 		delete = new MaterialButton("Ukloni");
@@ -110,7 +109,7 @@ public class GeneratorSectionView extends JPanel {
 
 	private void setUpNumberPanel(JPanel numberPanel) {
 		ColorTheme theme = Context.getContext().getColorTheme();
-		FontTheme fonts =Context.getContext().getFonts();
+		FontTheme fonts = Context.getContext().getFonts();
 		numberPanel.setOpaque(false);
 		number = new JLabel(String.valueOf(model.getSectionNumber()));
 		number.setForeground(theme.getSpecialColor());
@@ -120,11 +119,9 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpPathRow(JPanel pathRow) {
-		ColorTheme theme = Context.getContext().getColorTheme();
-		FontTheme fonts =Context.getContext().getFonts();
+		FontTheme fonts = Context.getContext().getFonts();
 		pathRow.setOpaque(false);
 		Font labelFont = fonts.getLabelFont();
-		// TODO: lokalizacija
 		JLabel pathLbl = new JLabel("Lokacija:");
 		pathLbl.setFont(labelFont);
 		this.path = new MaterialTextField(512);
@@ -143,8 +140,7 @@ public class GeneratorSectionView extends JPanel {
 	}
 
 	private void setUpAmmountRow(JPanel ammountRow) {
-		ColorTheme theme = Context.getContext().getColorTheme();
-		FontTheme fonts =Context.getContext().getFonts();
+		FontTheme fonts = Context.getContext().getFonts();
 		ammountRow.setOpaque(false);
 		Font labelFont = fonts.getLabelFont();
 		JLabel ammountLbl = new JLabel("Koli\u010dina:");

@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 
+import components.CustomComboBoxUI;
 import components.MaterialButton;
 import components.MaterialComboBox;
 import components.MaterialTextField;
@@ -112,20 +113,7 @@ public class MultithreadedTestView extends JPanel {
 		this.algorithm = new MaterialComboBox<>(Algorithms.getInstance().getList());
 		this.algorithm.setFont(lblFont);
 		this.algorithm.setPreferredSize(new Dimension(300, 46));
-		this.algorithm.setUI(new BasicComboBoxUI() {
-
-			@Override
-			protected JButton createArrowButton() {
-				JButton b = super.createArrowButton();
-				b = new JButton("\u02c5");
-				b.setFont(lblFont);
-				b.setBackground(th.getAccentColor());
-				b.setForeground(th.getTextSecondaryColor());
-				b.setBorderPainted(false);
-				return b;
-
-			}
-		});
+		this.algorithm.setUI(new CustomComboBoxUI());
 
 		ComboBoxEditor editor = this.algorithm.getEditor();
 		JPanel editorPanel = (JPanel) editor.getEditorComponent();
@@ -164,19 +152,7 @@ public class MultithreadedTestView extends JPanel {
 		this.maxThreads.setFont(lblFont);
 		this.maxThreads.setPreferredSize(new Dimension(90, 46));
 		this.maxThreads.setMaximumSize(new Dimension(100, 100));
-		this.maxThreads.setUI(new BasicComboBoxUI() {
-			@Override
-			protected JButton createArrowButton() {
-				JButton b = super.createArrowButton();
-				b = new JButton("\u02c5");
-				b.setFont(lblFont);
-				b.setBackground(th.getAccentColor());
-				b.setForeground(th.getTextSecondaryColor());
-				b.setBorderPainted(false);
-				return b;
-
-			}
-		});
+		this.maxThreads.setUI(new CustomComboBoxUI());
 		ComboBoxEditor editor = this.maxThreads.getEditor();
 		JPanel editorPanel = (JPanel) editor.getEditorComponent();
 		editorPanel.setFont(lblFont);
