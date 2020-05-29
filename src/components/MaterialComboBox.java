@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.plaf.basic.BasicComboBoxUI;
-import javax.swing.plaf.basic.ComboPopup;
 
 import settings.ColorTheme;
 import settings.Context;
@@ -121,5 +120,5 @@ class CustomComboBoxEditor extends BasicComboBoxEditor {
 		this.selectedItem = item;
 		label.setText(item.toString());
 	}
-
+	
 }

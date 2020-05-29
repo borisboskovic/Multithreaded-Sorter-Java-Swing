@@ -147,7 +147,7 @@ public class GeneratorSectionView extends JPanel {
 		FontTheme fonts =Context.getContext().getFonts();
 		ammountRow.setOpaque(false);
 		Font labelFont = fonts.getLabelFont();
-		JLabel ammountLbl = new JLabel("Kolièina:");
+		JLabel ammountLbl = new JLabel("Koli\u010dina:");
 		JLabel fromLbl = new JLabel("Od:");
 		JLabel toLbl = new JLabel("Do:");
 		ammountLbl.setFont(labelFont);

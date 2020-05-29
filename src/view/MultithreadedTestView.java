@@ -217,7 +217,7 @@ public class MultithreadedTestView extends JPanel {
 		panel.setOpaque(false);
 
 		JLabel label = new JLabel(
-				"<html>* Pojam minimalan broj fajlova po niti se odnosi na maksimalan broj niti. Za sledeæi manji broj niti (duplo manji), broj fajlova po niti se udvostruèuje. Poenta je da se pri testovima sa razlièitim brojem niti uvijek sortira jednak broj fajlova.</html>");
+				"<html>* Pojam minimalan broj fajlova po niti se odnosi na maksimalan broj niti. Za slede\u0107i manji broj niti (duplo manji), broj fajlova po niti se udvostru\u010duje. Poenta je da se pri testovima sa razli\u010ditim brojem niti uvijek sortira jednak broj fajlova.</html>");
 
 		label.setFont(Context.getContext().getFonts().getNoteFont());
 		label.setForeground(th.getAccentColor());
