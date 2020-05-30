@@ -242,6 +242,7 @@ public class GeneratorSectionView extends JPanel {
 			model.setAmmount(Integer.valueOf(ammount.getText()));
 			model.setFrom(Integer.valueOf(from.getText()));
 			model.setTo(Integer.valueOf(to.getText()));
+			model.setMessage(" ");
 		} catch (NumberFormatException e) {
 		}
 	}

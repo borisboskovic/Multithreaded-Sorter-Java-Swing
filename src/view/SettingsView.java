@@ -193,7 +193,7 @@ public class SettingsView extends JPanel {
 
 		JPanel panel = new JPanel(new FlowLayout());
 		panel.add(applyBtn);
-		panel.add(Box.createHorizontalStrut(150));
+		panel.add(Box.createHorizontalStrut(100));
 		panel.add(cancelBtn);
 		panel.setOpaque(false);
 
@@ -215,7 +215,7 @@ public class SettingsView extends JPanel {
 	public JButton getCancelBtn() {
 		return cancelBtn;
 	}
-	
+
 	public JComboBox<String> getThemesCmbBox() {
 		return themesCmbBox;
 	}
@@ -223,15 +223,15 @@ public class SettingsView extends JPanel {
 	public JComboBox<String> getGraphCmbBox() {
 		return graphCmbBox;
 	}
-	
+
 	public JTextField getThreadsTxt() {
 		return threadsTxt;
 	}
-	
+
 	public JTextField getFilesTxt() {
 		return filesTxt;
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D graphics2d = (Graphics2D) g;

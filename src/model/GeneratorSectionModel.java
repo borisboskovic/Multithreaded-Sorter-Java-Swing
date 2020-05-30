@@ -123,6 +123,10 @@ public class GeneratorSectionModel {
 		return message;
 	}
 
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
 	public int getSectionNumber() {
 		return sectionNumber;
 	}

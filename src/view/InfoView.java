@@ -47,12 +47,12 @@ public class InfoView extends JPanel {
 		basicLabels.setLayout(new GridLayout(6, 1));
 		basicLabels.setOpaque(false);
 
-		JLabel userName = new JLabel("User Name: " + model.getUserName());
-		JLabel OS_name = new JLabel("Operating System: " + model.getOS_name());
-		JLabel OS_version = new JLabel("OS version: " + model.getOS_version());
-		JLabel architecture = new JLabel("Architecture: " + model.getOS_architecture());
-		JLabel coresCount = new JLabel("Number of logical cores: " + model.getCoresCount());
-		JLabel cpu = new JLabel("CPU: " + model.getProcessorName());
+		JLabel userName = new JLabel("Korisni\u010dko ime: " + model.getUserName());
+		JLabel OS_name = new JLabel("Operativni sistem: " + model.getOS_name());
+		JLabel OS_version = new JLabel("Verzija OS: " + model.getOS_version());
+		JLabel architecture = new JLabel("Arhitektura: " + model.getOS_architecture());
+		JLabel coresCount = new JLabel("Broj logi\u010dkih jezgri: " + model.getCoresCount());
+		JLabel cpu = new JLabel("Procesor: " + model.getProcessorName());
 
 		Font labelFont = Context.getContext().getFonts().getLabelFont();
 		userName.setFont(labelFont);
@@ -86,7 +86,7 @@ public class InfoView extends JPanel {
 
 		component.add(basicLabels);
 
-		JLabel disksCaption = new JLabel("Disks:");
+		JLabel disksCaption = new JLabel("Diskovi:");
 		disksCaption.setForeground(labelColor);
 		disksCaption.setFont(labelFont);
 		component.add(disksCaption);

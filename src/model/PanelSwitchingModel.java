@@ -25,7 +25,7 @@ public class PanelSwitchingModel implements SubjectInterface {
 		PanelButton button3 = new PanelButton("Serijski test");
 		PanelButton button4 = new PanelButton("Paralelni test");
 		PanelButton button5 = new PanelButton("Pode\u0161avanja");
-		PanelButton button6 = new PanelButton("O Programu");
+		PanelButton button6 = new PanelButton("O programu");
 
 		buttons.add(button1);
 		buttons.add(button2);
