@@ -39,7 +39,7 @@ public class MainWindow extends JFrame implements ObserverInterface {
 
 		setTitle("Multithreaded sorter - by Milica M. & Boris B.");
 		setSize(new Dimension(1366, 768));
-		setMinimumSize(new Dimension(1024, 576));
+		setMinimumSize(new Dimension(1100, 576));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setIconImage(getToolkit().getImage("resources/images/icon.png"));

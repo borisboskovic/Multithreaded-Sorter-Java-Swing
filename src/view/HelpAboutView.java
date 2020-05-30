@@ -4,14 +4,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -33,7 +30,6 @@ public class HelpAboutView extends JPanel {
 		BoxLayout mainPanelLayout = new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS);
 		this.mainPanel.setLayout(mainPanelLayout);
 		this.mainPanel.setOpaque(false);
-		this.mainPanel.setMaximumSize(new Dimension(2000, 500));
 		this.mainPanel.setPreferredSize(new Dimension(2000, 500));
 		this.mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 30, 0, 20));
 
