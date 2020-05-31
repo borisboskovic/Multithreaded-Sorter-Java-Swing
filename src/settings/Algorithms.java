@@ -9,6 +9,7 @@ import algorithm.InsertionSort;
 import algorithm.MergeSort;
 import algorithm.QuickSort;
 import algorithm.SelectionSort;
+import algorithm.ShellSort;
 import algorithm.SortingAlgorithm;
 
 public class Algorithms {
@@ -25,6 +26,7 @@ public class Algorithms {
 		list.add("Merge Sort");
 		list.add("Heap Sort");
 		list.add("Selection Sort");
+		list.add("Shell Sort");
 	};
 
 	public static Algorithms getInstance() {
@@ -50,8 +52,9 @@ public class Algorithms {
 			return new HeapSort(array);
 		else if (name.equals(list.get(5)))
 			return new SelectionSort(array);
-		else
-			return null;
+		else if (name.equals(list.get(6)))
+			return new ShellSort(array);
+		return null;
 	}
 
 }
