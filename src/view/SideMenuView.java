@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SideMenuView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled menija aplikacije
+ ***********************************************************************/
+
 package view;
 
 import java.awt.Dimension;
@@ -58,7 +64,6 @@ public class SideMenuView extends JPanel implements ObserverInterface {
 
 	@Override
 	public void update() {
-		
 		repaint();
 	}
 

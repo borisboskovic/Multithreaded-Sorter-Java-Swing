@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	LineChartView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise prozor linijskog grafikona
+ ***********************************************************************/
+
 package view;
 
 import java.awt.BasicStroke;
@@ -76,6 +82,13 @@ public class LineChartWindow extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Metoda vrsi podesavanje grafikona na osnovu proslijedjenih parametara
+	 * @param dataSet - set podataka koji se prikazuju
+	 * @param title - naslov grafikona
+	 * @param xName - naziv x ose
+	 * @param yName - naziv y ose
+	 */
 	private void setUpChart(DefaultXYDataset dataSet, String title, String xName, String yName) {
 		ColorTheme th = Context.getContext().getColorTheme();
 
@@ -108,6 +121,10 @@ public class LineChartWindow extends JFrame {
 		chart.setPadding(new RectangleInsets(10, 10, 10, 10));
 	}
 
+	/**
+	 * Metoda cuva grafiku dijagrama u eksterni png fajl
+	 * @param file - fajl u koji se slika cuva
+	 */
 	private void saveToPNG(File file) {
 		int width = chartPanel.getSize().width;
 		int height = chartPanel.getSize().height;
@@ -125,6 +142,9 @@ public class LineChartWindow extends JFrame {
 		}
 	}
 
+	/**
+	 * Listener zaduzen za izbor lokacije pomocu fajl dijaloga i cuvanje grafike u eksterni fajl
+	 */
 	private ActionListener saveBtnListener = new ActionListener() {
 
 		@Override
@@ -146,6 +166,9 @@ public class LineChartWindow extends JFrame {
 		}
 	};
 
+	/**
+	 * Listener zaduzen za zatvaranje prozora grafikona
+	 */
 	private ActionListener closeBtnListener = new ActionListener() {
 
 		@Override

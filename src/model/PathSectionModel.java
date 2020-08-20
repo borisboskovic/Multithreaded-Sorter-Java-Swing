@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	PathSectionModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model podsekcije za serijski test
+ ***********************************************************************/
+
 package model;
 
 import view.PathSectionView;
@@ -10,12 +16,21 @@ public class PathSectionModel {
 
 	private PathSectionView view;
 	
+	/**
+	 * Konstruktor
+	 * @param number -redni broj sekcije
+	 */
 	public PathSectionModel(int number) {
 		this.number = number;
 		this.path = "";
 		this.message = " ";
 	}
 
+	/**
+	 * Konstruktor
+	 * @param number - redni broj sekcije
+	 * @param path - putanja fajla
+	 */
 	public PathSectionModel(int number, String path) {
 		this.number = number;
 		this.path = path;

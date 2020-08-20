@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SorterFinishWindow.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise dijalog prozor koji obavjestava o zavrsetku testa 
+ ***********************************************************************/
+
 package view;
 
 import java.awt.Color;
@@ -105,6 +111,9 @@ public class SorterFinishWindow extends JDialog {
 		setVisible(true);
 	}
 
+	/**
+	 * Listener zaduzen za cuvanje sortiranih podataka u tekstualni fajl (pri ozboru opcije DA)
+	 */
 	private ActionListener yesBtnListener = new ActionListener() {
 
 		@Override
@@ -128,6 +137,9 @@ public class SorterFinishWindow extends JDialog {
 		}
 	};
 
+	/**
+	 * Listener zaduzen za zatvaranje dijalog prozora pri izboru opcije ne
+	 */
 	private ActionListener noBtnListener = new ActionListener() {
 
 		@Override

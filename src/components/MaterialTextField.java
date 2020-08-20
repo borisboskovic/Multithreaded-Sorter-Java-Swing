@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	MaterialTextField.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu izvedenu iz klase JTextField gdje je izgled
+ * 			komponente prilagodjen trenutnoj temi
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Dimension;
@@ -25,6 +32,9 @@ public class MaterialTextField extends JTextField {
 		this.addFocusListener(selectOnFocus);
 	}
 
+	/**
+	 * Metoda prilagodjava izgled komponente trenutnoj temi
+	 */
 	private void applyStyle() {
 		ColorTheme theme = Context.getContext().getColorTheme();
 
@@ -56,6 +66,10 @@ public class MaterialTextField extends JTextField {
 		super.paint(g);
 	}
 	
+	/**
+	 * Objekat zaduzen za osluskivanje fokusa na komponentu. U slucaju fokusiranja 
+	 * selektuje sav tekst unutar komponente.
+	 */
 	private FocusListener selectOnFocus = new FocusListener() {
 
 		@Override

@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	ArrayWithPath.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pomocnu klasu koja u sebi cuva niz i putanju sa koje
+ * 			je niz ucitan
+ ***********************************************************************/
+
 package helpers;
 
 import java.util.ArrayList;

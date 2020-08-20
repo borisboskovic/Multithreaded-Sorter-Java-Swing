@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SinglethreadedTestView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled sekcije serijski test
+ ***********************************************************************/
+
 package view;
 
 import java.awt.BorderLayout;
@@ -60,6 +66,9 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 		new SinglethreadedTestController(model, this);
 	}
 
+	/**
+	 * Metoda dodaje podsekcije u pogled na osnovu modela
+	 */
 	private void setUpSections() {
 		sectionsPanel = new VerticallyScrollablePanel();
 		BoxLayout sectionsLayout = new BoxLayout(sectionsPanel, BoxLayout.PAGE_AXIS);
@@ -80,6 +89,9 @@ public class SinglethreadedTestView extends JPanel implements ObserverInterface 
 
 	}
 
+	/**
+	 * Metoda kreira i dodaje kontrolnu dugmad
+	 */
 	private void addButtons() {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);

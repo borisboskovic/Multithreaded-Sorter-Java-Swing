@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	CustomComboBoxUI.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise prilagodnjeni korisnicki interfejs elementa JComboBox
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Font;
@@ -13,6 +19,9 @@ public class CustomComboBoxUI extends BasicComboBoxUI {
 	private JButton button;
 	private ColorTheme theme;
 
+	/**
+	 * Konstruktor klase. Koriste se boja i font iz trenutne teme
+	 */
 	public CustomComboBoxUI() {
 		this.theme = Context.getContext().getColorTheme();
 		this.font = Context.getContext().getFonts().getLabelFont();

@@ -1,7 +1,7 @@
 /***********************************************************************
- * Module:  BubbleSort.java
- * Author:  Milica Milosevic, Boris Boskovic
- * Purpose: Defines the Class BubbleSort
+ * Modul:  	BubbleSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Bubble sort
  ***********************************************************************/
 
 package algorithm;
@@ -46,7 +46,8 @@ public class BubbleSort implements SortingAlgorithm, Runnable {
 		this.array = array;
 	}
 
-	public Boolean isDone() {
+	@Override
+	public boolean isDone() {
 		return done;
 	}
 

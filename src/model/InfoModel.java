@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	InfoModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model sekcije informacije
+ ***********************************************************************/
+
 package model;
 
 import java.io.File;
@@ -13,6 +19,9 @@ public class InfoModel {
 	private String processorName;
 	private ArrayList<Disk> disks;
 
+	/**
+	 * Konstruktor klase. Pri instanciranju se citaju sistemske informacije
+	 */
 	public InfoModel() {
 		this.userName = System.getProperty("user.name");
 		this.OS_name = System.getProperty("os.name");
@@ -30,6 +39,10 @@ public class InfoModel {
 
 	}
 
+	/**
+	 * Klasa zaduzena za cuvanje informacija o disku
+	 * @author Boris Boskovic, Milica Milosevic
+	 */
 	public class Disk{
 		private String path;
 		private long totalBytes;

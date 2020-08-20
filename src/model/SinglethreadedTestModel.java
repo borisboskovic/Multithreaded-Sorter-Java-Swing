@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SinglethreadedModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model sekcije serijski test
+ ***********************************************************************/
+
 package model;
 
 import java.awt.event.ActionEvent;
@@ -43,6 +49,10 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		return pathModels;
 	}
 
+	/**
+	 * Metoda kreira modele podsekcija na osnovu proslijedjenih fajlova
+	 * @param files - niz fajlova koji se prosljedjuje
+	 */
 	public void addFiles(File[] files) {
 		for (File f : files) {
 			Boolean repeated = false;
@@ -55,10 +65,17 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		}
 	}
 
+	/**
+	 * Metoda uklanja sve fajlove
+	 */
 	public void removeAllFiles() {
 		pathModels = new ArrayList<>();
 	}
 
+	/**
+	 * Metoda uklanja odredjenu podsekciju
+	 * @param modelToRemove - model koji se uklanja
+	 */
 	public void removeFile(PathSectionModel modelToRemove) {
 		// Nemoguce je prolaziti kroz listu ovakvog tipa i u isto vrijeme uklanjati
 		// elemente iz liste.
@@ -106,7 +123,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 			}
 		});
 
-		// Reading from files
+		// Ucitavanje podataka iz fajlova
 		for (PathSectionModel sectionModel : pathModels) {
 			try {
 				progressWindow.setProgress((pathModels.indexOf(sectionModel) + 1) + "/" + pathModels.size());
@@ -130,7 +147,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 			}
 		}
 
-		// Ordering arrays by size
+		// Redjanje nizova po broju elemenata
 		Comparator<ArrayWithPath> comparator = new Comparator<ArrayWithPath>() {
 			@Override
 			public int compare(ArrayWithPath o1, ArrayWithPath o2) {
@@ -139,7 +156,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 		};
 		arraysCollection.sort(comparator);
 
-		// Creating sorters
+		// Kreiranje sortera
 		ArrayList<SortingAlgorithm> algorithms = new ArrayList<>();
 		for (ArrayWithPath arrayWithPath : arraysCollection) {
 			algorithms.add(Algorithms.getInstance().createAlgorithm(algorithmName, arrayWithPath.getArray()));
@@ -152,7 +169,7 @@ public class SinglethreadedTestModel implements SubjectInterface, Runnable {
 			return;
 		}
 
-		// Sorting and geting results
+		// Sortiranje i prikaz rezultata
 		ArrayList<Integer> ammounts = new ArrayList<>();
 		ArrayList<Long> times = new ArrayList<>();
 		progressWindow.setDescription("Sortiranje podataka...");

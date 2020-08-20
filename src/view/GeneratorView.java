@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	GeneratorView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled sekcije generator testnih podataka
+ ***********************************************************************/
+
 package view;
 
 import java.awt.BorderLayout;
@@ -55,6 +61,9 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		new GeneratorController(model, this);
 	}
 
+	/**
+	 * Metoda kreira kontrolnu dugmad sekcije
+	 */
 	private void setUpButtons() {
 		JPanel buttonPanel = new JPanel();
 		BoxLayout bl = new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS);
@@ -80,6 +89,9 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		add(buttonPanel, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Metoda dodaje podsekcije iz modela u pogled
+	 */
 	private void setUpSections() {
 		sectionsPanel = new VerticallyScrollablePanel();
 		BoxLayout sectionsLayout = new BoxLayout(sectionsPanel, BoxLayout.PAGE_AXIS);
@@ -114,6 +126,9 @@ public class GeneratorView extends JPanel implements ObserverInterface {
 		return generate;
 	}
 
+	/**
+	 * Metoda azurira model na osnovu pogleda
+	 */
 	public void updateModels() {
 		Component[] components = sectionsPanel.getComponents();
 		for (Component cmp : components) {

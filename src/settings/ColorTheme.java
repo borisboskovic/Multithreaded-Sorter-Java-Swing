@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	ColorTheme.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu teme korisnickog interfejsa
+ ***********************************************************************/
+
 package settings;
 
 import java.awt.Color;

@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	GeneratorSectionView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled podsekcije generatora testnih podataka
+ ***********************************************************************/
+
 package view;
 
 import java.awt.Dimension;
@@ -97,6 +103,9 @@ public class GeneratorSectionView extends JPanel {
 		setOpaque(false);
 	}
 
+	/**
+	 * Metoda kreira panel sa dugmetom za uklanjanje sekcije
+	 */
 	private void setUpButtonPanel(JPanel buttonPanel) {
 		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
@@ -107,6 +116,9 @@ public class GeneratorSectionView extends JPanel {
 		buttonPanel.add(Box.createVerticalGlue());
 	}
 
+	/**
+	 * Metoda kreira panel sa rednim brojem sekcije
+	 */
 	private void setUpNumberPanel(JPanel numberPanel) {
 		ColorTheme theme = Context.getContext().getColorTheme();
 		FontTheme fonts = Context.getContext().getFonts();
@@ -118,6 +130,9 @@ public class GeneratorSectionView extends JPanel {
 		numberPanel.add(number);
 	}
 
+	/**
+	 * Metoda kreira panel sa poljem za unos putanje
+	 */
 	private void setUpPathRow(JPanel pathRow) {
 		FontTheme fonts = Context.getContext().getFonts();
 		pathRow.setOpaque(false);
@@ -139,6 +154,9 @@ public class GeneratorSectionView extends JPanel {
 		pathRow.add(Box.createHorizontalStrut(10));
 	}
 
+	/**
+	 * Metoda kreira panel sa tekstualnim poljem za unos parametara generatora
+	 */
 	private void setUpAmmountRow(JPanel ammountRow) {
 		FontTheme fonts = Context.getContext().getFonts();
 		ammountRow.setOpaque(false);
@@ -184,6 +202,9 @@ public class GeneratorSectionView extends JPanel {
 		super.paint(g);
 	}
 
+	/**
+	 * Listener za uklanjanje podsekcije iz generatora test podataka
+	 */
 	private ActionListener deletingListener = new ActionListener() {
 
 		@Override
@@ -197,6 +218,9 @@ public class GeneratorSectionView extends JPanel {
 		}
 	};
 
+	/**
+	 * Listener za otvaranje fajl dijaloga i izbor putanje
+	 */
 	private ActionListener browseListener = new ActionListener() {
 
 		@Override
@@ -218,6 +242,9 @@ public class GeneratorSectionView extends JPanel {
 		}
 	};
 
+	/**
+	 * Listener za pracenje promjena u tekstualnim poljima. Azurira model po potrebi
+	 */
 	private DocumentListener textChanged = new DocumentListener() {
 
 		@Override
@@ -236,6 +263,9 @@ public class GeneratorSectionView extends JPanel {
 		}
 	};
 
+	/**
+	 * Metoda za azuriranje modela na osnovu stanja pogleda
+	 */
 	public void updateModel() {
 		model.setPath(path.getText());
 		try {

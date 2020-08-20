@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	HeapSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Heap sort
+ ***********************************************************************/
+
 package algorithm;
 
 import java.util.ArrayList;
@@ -62,6 +68,7 @@ public class HeapSort implements SortingAlgorithm, Runnable {
 		this.array = array;
 	}
 
+	@Override
 	public boolean isDone() {
 		return done;
 	}

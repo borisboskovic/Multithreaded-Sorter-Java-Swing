@@ -1,9 +1,8 @@
 /***********************************************************************
- * Module:  QuickSort.java
- * Author:  Milica Milosevic, Boris Boskovic
- * Purpose: Defines the Class QuickSort
+ * Modul:  	QuickSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Quick sort
  ***********************************************************************/
-
 package algorithm;
 
 import java.util.*;
@@ -48,6 +47,12 @@ public class QuickSort implements SortingAlgorithm, Runnable {
 		return System.currentTimeMillis() - startTime;
 	}
 
+	/**
+	 * Uzima pivot element i rasporedjuje elemente u nizu u odnosu na taj element
+	 * @param down - donja granica
+	 * @param up - gornja granica
+	 * @return	pivot element
+	 */
 	private int partition(int down, int up) {
 		int i = down, j = up;
 		int pivot = array.get(down);
@@ -75,10 +80,12 @@ public class QuickSort implements SortingAlgorithm, Runnable {
 		done = true;
 	}
 
-	public Boolean isDone() {
+	@Override
+	public boolean isDone() {
 		return done;
 	}
 
+	@Override
 	public void setArray(ArrayList<Integer> array) {
 		this.array = array;
 		down = 0;

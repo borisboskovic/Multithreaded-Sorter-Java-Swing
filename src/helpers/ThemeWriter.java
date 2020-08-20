@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	ThemeWriter.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pomocnu klasu zaduzenu za zapisivanje teme u JSON
+ * 			formatu
+ ***********************************************************************/
+
 package helpers;
 
 import java.awt.Color;
@@ -17,6 +24,10 @@ public class ThemeWriter {
 		writeTheme("newspaper");
 	}
 
+	/**
+	 * Metoda zaduzena za zapisivanje teme u JSON fajl.
+	 * @param name - naziv teme, odnosno fajla 
+	 */
 	public static void writeTheme(String name) {
 		ColorTheme colorTheme;
 		colorTheme = new ColorTheme();

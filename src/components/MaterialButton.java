@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	MaterialButton.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu izvedenu iz klase JButton gdje je izgled
+ * 			dugmeta prilagodjen trenutnoj temi
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Color;
@@ -61,6 +68,11 @@ public class MaterialButton extends JButton {
 		}
 	}
 
+	/**
+	 * Odredjuje lokaciju teksta uzimajuci u obzir izabrani font i velicinu komponente
+	 * @param font - izarani pont
+	 * @return Tacka koja predstavlja lokaciju od koje se ispisuje tekst
+	 */
 	private Point getTextPosition(Font font) {
 		FontMetrics fm = getFontMetrics(font);
 		int lineWidth = 0;
@@ -73,6 +85,9 @@ public class MaterialButton extends JButton {
 		return new Point(x, y);
 	}
 
+	/**
+	 * Objekat koji definise interakciju sa dugmetom. Zaduzen za vizuelne promjene pri interakciji.
+	 */
 	private MouseListener mouseListener = new MouseListener() {
 
 		@Override
@@ -102,6 +117,11 @@ public class MaterialButton extends JButton {
 		}
 	};
 
+	/**
+	 * Metoda kreira svjetliju nijansu proslijedjene boje
+	 * @param color - boja koja se prosljedjuje
+	 * @return	- Kreirana boja
+	 */
 	private Color lighten(Color color) {
 		int r = color.getRed();
 		int g = color.getGreen();

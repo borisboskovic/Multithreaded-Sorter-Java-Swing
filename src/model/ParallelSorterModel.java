@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	ParallelSorterModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model za uporedno izvrsavanje sortera
+ ***********************************************************************/
+
 package model;
 
 import java.util.ArrayList;
@@ -11,6 +17,10 @@ public class ParallelSorterModel {
 			threads.add(new Thread(new SerialSorterModel(new ArrayList<>(array), filesPerThread, algorithmName)));
 	}
 
+	/**
+	 * Pokretanje sortera i mjerenje ukupnog vremena
+	 * @return - proteklo vrijeme u milisekundama
+	 */
 	public long sort() {
 		long startTime = System.currentTimeMillis();
 		for (Thread th : threads)

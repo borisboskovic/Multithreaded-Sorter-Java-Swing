@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	Preferences.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu podesavanja aplikacije
+ ***********************************************************************/
+
+
 package settings;
 
 import java.io.BufferedWriter;
@@ -15,6 +22,9 @@ public class Preferences {
 	private int maxThreadsAllowed;
 	private int filesLimit;
 
+	/**
+	 * Metoda cuva podesavanja u JSON fajlu
+	 */
 	public void save() {
 		Gson gson = new GsonBuilder().create();
 		try {
@@ -25,6 +35,9 @@ public class Preferences {
 		}
 	}
 	
+	/**
+	 * Metoda zapisuje podrazumijevana podesavanja u JSON fajl
+	 */
 	public static void writeDefaultPrefferences() {
 		Preferences pref = new Preferences();
 		pref.themeName = "default-gray";
@@ -43,7 +56,6 @@ public class Preferences {
 	}
 
 	
-	//Getters and setters
 	public String getThemeName() {
 		return themeName;
 	}

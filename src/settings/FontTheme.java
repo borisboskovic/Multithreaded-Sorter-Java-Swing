@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	FontTheme.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu fontova koristenih u aplikaciji (Font tema)
+ ***********************************************************************/
+
 package settings;
 
 import java.awt.Font;

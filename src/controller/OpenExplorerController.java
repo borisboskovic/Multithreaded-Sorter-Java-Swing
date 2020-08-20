@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	OpenExplorerController.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise kontroler koji otvara sistem eksplorer iz sekcije
+ * 			informacije
+ ***********************************************************************/
+
 package controller;
 
 import java.awt.event.MouseEvent;

@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	MaterialComboBox.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu izvedenu iz klase JComboBox gdje je izgled
+ * 			komponente prilagodjen trenutnoj temi
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Component;
@@ -26,6 +33,10 @@ public class MaterialComboBox<E> extends JComboBox<E> {
 	private FontTheme fonts;
 	private CustomCellRenderer cellRenderer;
 
+	/**
+	 * Kontsruktor klase
+	 * @param items - Stavke koje se postavljaju u listu
+	 */
 	public MaterialComboBox(Vector<E> items) {
 		super(items);
 		this.theme = Context.getContext().getColorTheme();
@@ -99,6 +110,12 @@ class CustomCellRenderer extends DefaultListCellRenderer {
 	
 }
 
+/***********************************************************************
+ * Modul:  	CustomComboBoxEditor.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu izvedenu iz klase BasicComboBoxEditor gdje je
+ * 			izgled komponente prilagodjen trenutnoj temi
+ ***********************************************************************/
 class CustomComboBoxEditor extends BasicComboBoxEditor {
 	private JLabel label = new JLabel();
 	private JPanel panel = new JPanel();
@@ -120,14 +137,23 @@ class CustomComboBoxEditor extends BasicComboBoxEditor {
 		panel.setBorder(null);
 	}
 
+	/**
+	 * Metoda vraca komponentu editora
+	 */
 	public Component getEditorComponent() {
 		return this.panel;
 	}
 
+	/**
+	 * Metoda vraca izabranu stavku liste
+	 */
 	public Object getItem() {
 		return this.selectedItem.toString();
 	}
 
+	/**
+	 * Metoda postavlja izabranu stavku liste
+	 */
 	public void setItem(Object item) {
 		this.selectedItem = item;
 		label.setText(item.toString());

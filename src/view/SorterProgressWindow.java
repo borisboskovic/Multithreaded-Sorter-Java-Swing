@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SorterProgresWindow.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise prozor komponente za pracenje progresa testa
+ ***********************************************************************/
+
 package view;
 
 import java.awt.Color;

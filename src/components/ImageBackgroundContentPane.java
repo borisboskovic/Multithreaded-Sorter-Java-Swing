@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	ImageBackgroundContentPane.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise prilagodjenu klasu, izvedenu iz JComponent sa
+ * 			dodatom slikom u pozadini
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Graphics;

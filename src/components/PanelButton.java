@@ -1,11 +1,9 @@
-/**
- * Klasa nasledjuje klasu JButton i mijenja izgled dugmeta u zavisnosti od
- * trenutno koristene teme u aplikaciji. Posjeduje property active u zavisnosti
- * od cijeg stanja se dugme moze iscrtati na jedan od dva nacina. Takodje
- * postavlja mouse hover efekat ukoliko dugme nije aktivno.
- * 
- * @author Boris Boskovic
- */
+/***********************************************************************
+ * Modul:  	PanelButton.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu izvedenu iz klase JButton gdje je izgled
+ * 			komponente prilagodjen trenutnoj temi
+ ***********************************************************************/
 
 package components;
 
@@ -76,6 +74,11 @@ public class PanelButton extends JButton {
 		drawText(graphics2d, theme.getTextSecondaryColor());
 	}
 
+	/**
+	 * Metoda zaduzena za ispisivanje teksta na komponenti
+	 * @param graphics2d - Graficki objekat komponente
+	 * @param color - Boja teksta
+	 */
 	private void drawText(Graphics2D graphics2d, Color color) {
 		graphics2d.setColor(color);
 
@@ -104,6 +107,10 @@ public class PanelButton extends JButton {
 		return pressed;
 	}
 
+	/**
+	 * Objekat zaduzen za osluskivanje interakcije misem na komponentu.
+	 * U zavisnosti od stanja mijenja se izgled komponente
+	 */
 	private MouseListener mouseListener = new MouseListener() {
 
 		@Override

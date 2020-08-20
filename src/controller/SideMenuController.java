@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SideMenuController.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise kontroler zaduzen za izbor trenutno aktivne sekcije
+ ***********************************************************************/
+
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -21,6 +27,9 @@ public class SideMenuController {
 		}
 	}
 
+	/**
+	 * Listener koji klikom na stavku meniju mijenja trenutno aktivnu sekciju 
+	 */
 	private ActionListener activeButtonSwitcher = new ActionListener() {
 
 		@Override

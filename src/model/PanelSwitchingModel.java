@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	PanelSwitchingModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu zaduzenu za prikaz odgovarajucih sekcija na
+ * 			osnovu izbora iz menija
+ ***********************************************************************/
+
 package model;
 
 import java.util.ArrayList;
@@ -18,6 +25,9 @@ public class PanelSwitchingModel implements SubjectInterface {
 		active = 0;
 	}
 
+	/**
+	 * Metoda kreira i dodaje dugmad za izbor sekcija
+	 */
 	private void populateButtons() {
 		buttons = new ArrayList<>();
 		PanelButton button1 = new PanelButton("Sistemske informacije");
@@ -43,6 +53,10 @@ public class PanelSwitchingModel implements SubjectInterface {
 		return active;
 	}
 
+	/**
+	 * Metoda dugme sa datim indeksom oznacava kao izabrano
+	 * @param active - indeks dugmeta
+	 */
 	public void setActive(int active) {
 		this.active = active;
 		for (PanelButton b : buttons) {

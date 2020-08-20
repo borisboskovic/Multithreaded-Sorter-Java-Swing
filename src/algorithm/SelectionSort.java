@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SelectionSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Selection sort
+ ***********************************************************************/
+
 package algorithm;
 
 import java.util.ArrayList;
@@ -37,6 +43,7 @@ public class SelectionSort implements SortingAlgorithm, Runnable {
 		return System.currentTimeMillis() - startTime;
 	}
 
+	@Override
 	public boolean isDone() {
 		return done;
 	}

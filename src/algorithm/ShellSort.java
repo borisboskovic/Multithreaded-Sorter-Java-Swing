@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	ShellSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Shell sort
+ ***********************************************************************/
+
 package algorithm;
 
 import java.util.ArrayList;
@@ -38,6 +44,7 @@ public class ShellSort implements Runnable, SortingAlgorithm {
 		this.array = array;
 	}
 
+	@Override
 	public boolean isDone() {
 		return done;
 	}

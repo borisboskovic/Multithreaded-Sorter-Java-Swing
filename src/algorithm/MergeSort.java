@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	MergeSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Merge sort
+ ***********************************************************************/
+
 package algorithm;
 
 import java.util.ArrayList;
@@ -77,6 +83,7 @@ public class MergeSort implements SortingAlgorithm, Runnable {
 		}
 	}
 
+	@Override
 	public boolean isDone() {
 		return done;
 	}

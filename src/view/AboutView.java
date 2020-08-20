@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	AboutView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled sekcije informacije o programu
+ ***********************************************************************/
+
 package view;
 
 import java.awt.Dimension;
@@ -17,10 +23,10 @@ import settings.Context;
 import settings.FontTheme;
 
 @SuppressWarnings("serial")
-public class HelpAboutView extends JPanel {
+public class AboutView extends JPanel {
 	private JPanel mainPanel;
 
-	public HelpAboutView() {
+	public AboutView() {
 		BoxLayout containerLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		setLayout(containerLayout);
 		setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
@@ -40,6 +46,9 @@ public class HelpAboutView extends JPanel {
 		add(Box.createVerticalGlue());
 	}
 
+	/**
+	 * Metoda kreira i dodaje komponente pogleda
+	 */
 	private void createComponents() {
 		FontTheme fonts = Context.getContext().getFonts();
 		ColorTheme theme = Context.getContext().getColorTheme();

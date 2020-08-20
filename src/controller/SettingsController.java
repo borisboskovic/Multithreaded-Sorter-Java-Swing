@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SettingsController.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise kontroler za sekciju Podesavanja
+ ***********************************************************************/
+
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -20,6 +26,9 @@ public class SettingsController {
 		view.getCancelBtn().addActionListener(cancelBtnListener);
 	}
 
+	/**
+	 * Listener zaduzen za cuvanje podesavanja 
+	 */
 	private ActionListener applyBtnListener = new ActionListener() {
 
 		@Override
@@ -36,6 +45,10 @@ public class SettingsController {
 		}
 	};
 	
+	/**
+	 * Listener zaduzen za odustajanje od cuvanja podesavanja.
+	 * (Azurira view tako da se prikazuju aktuelna podesavanja)
+	 */
 	private ActionListener cancelBtnListener = new ActionListener() {
 		
 		@Override

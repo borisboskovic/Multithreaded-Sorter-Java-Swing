@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	InfoView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled sekcije sistemske informacije
+ ***********************************************************************/
+
+
 package view;
 
 import java.awt.Color;
@@ -27,7 +34,7 @@ import settings.Context;
 public class InfoView extends JPanel {
 
 	private InfoModel model;
-	private int padd; // Border Thickness
+	private int padd; // Debljina okvira
 
 	public InfoView(InfoModel model) {
 		this.model = model;
@@ -41,6 +48,10 @@ public class InfoView extends JPanel {
 		setOpaque(false);
 	}
 
+	/**
+	 * Metoda kreira i dodaje komponente u pogled, na osnovu modela sekcije
+	 * @param component - Kontejnerska komponenta
+	 */
 	private void addComponentsFromModel(JComponent component) {
 
 		JPanel basicLabels = new JPanel();

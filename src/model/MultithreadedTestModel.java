@@ -1,3 +1,8 @@
+/***********************************************************************
+ * Modul:  	MultithreadedTestModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model sekcije paralelni test
+ ***********************************************************************/
 package model;
 
 import java.awt.event.ActionEvent;
@@ -28,6 +33,9 @@ public class MultithreadedTestModel implements Runnable {
 
 	private SorterProgressWindow progressWindow;
 
+	/**
+	 * Metoda kreira modele koji u sebi sadrze sortere i koji se uporedo izvrsavaju
+	 */
 	public void createSorters() {
 		sorters = new ArrayList<>();
 		for (int i = 1; i <= maxThreads; i *= 2)
@@ -51,6 +59,10 @@ public class MultithreadedTestModel implements Runnable {
 		this.minFilesPerThread = minFilesPerThread;
 	}
 
+	/**
+	 * Metoda otvara fajl sa zadate putanje i ucitava podatke iz njega u niz
+	 * @param path - putanja fajla
+	 */
 	private void readDataFromFile(String path) {
 		array = new ArrayList<>();
 		try {

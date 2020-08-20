@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	MainWindow.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise glavni prozor aplikacije
+ ***********************************************************************/
+
 package view;
 
 import java.awt.BorderLayout;
@@ -33,7 +39,7 @@ public class MainWindow extends JFrame implements ObserverInterface {
 		this.views.add(new SinglethreadedTestView(new SinglethreadedTestModel()));
 		this.views.add(new MultithreadedTestView(new MultithreadedTestModel()));
 		this.views.add(new SettingsView(new SettingsModel()));
-		this.views.add(new HelpAboutView());
+		this.views.add(new AboutView());
 
 		mainPanel = views.get(0);
 

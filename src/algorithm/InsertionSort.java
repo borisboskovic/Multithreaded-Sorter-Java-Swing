@@ -1,9 +1,8 @@
 /***********************************************************************
- * Module:  InsertionSort.java
- * Author:  Milica Milosevic, Boris Boskovic
- * Purpose: Defines the Class InsertionSort
+ * Modul:  	InsertionSort.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise algoritam sortiranja - Insertion sort
  ***********************************************************************/
-
 package algorithm;
 
 import java.util.ArrayList;
@@ -47,7 +46,8 @@ public class InsertionSort implements SortingAlgorithm, Runnable {
 		this.array = array;
 	}
 
-	public Boolean isDone() {
+	@Override
+	public boolean isDone() {
 		return done;
 	}
 

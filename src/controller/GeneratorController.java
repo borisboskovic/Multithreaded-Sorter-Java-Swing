@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	GeneratorController.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise kontroler sekcije generator test podataka
+ ***********************************************************************/
+
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -24,6 +30,9 @@ public class GeneratorController {
 		view.getClear().addActionListener(clearButtonListener);
 	}
 
+	/**
+	 * Listener zaduzen za dodavanje nove sekcije unutar generatora
+	 */
 	private ActionListener addButtonListener = new ActionListener() {
 
 		@Override
@@ -45,6 +54,11 @@ public class GeneratorController {
 			model.notifyObservers();
 		}
 
+		/**
+		 * Metoda kopira putanju dodajuci joj redni broj
+		 * @param oldPath	-	Putanja koja se kopira
+		 * @return	Nova putanja
+		 */
 		private String copyPath(String oldPath) {
 			Path path = Paths.get(oldPath);
 			Pattern pattern1 = Pattern.compile("(.+)(\\s\\((\\d+)\\))(\\.[\\d\\w]+)");
@@ -75,11 +89,17 @@ public class GeneratorController {
 
 	};
 
+	/**
+	 * Listener za dugme Clear
+	 */
 	private ActionListener clearButtonListener = (e) -> {
 		model.clearGenerators();
 		model.notifyObservers();
 	};
 
+	/**
+	 * Listener za dugme generisi
+	 */
 	private ActionListener generateButtonListener = (e) -> {
 		model.generateAll();
 		model.notifyObservers();

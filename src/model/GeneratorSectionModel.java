@@ -1,9 +1,10 @@
-/**
- * Klasa posjeduje metode za generisanje zadate kolicine brojeva u zadatom opsegu,
- * te njihovo zapisivanje na datoj lokaciji.
- * 
- * @author Boris Boskovic
- */
+/***********************************************************************
+ * Modul:  	GeneratorSectionModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model podsekcije generatora testnih podataka. Klasa
+ * 			posjeduje metode za generisanje zadate kolicine brojeva,
+ * 			u zadatom opsegu, te njihovo zapisivanje na datoj lokaciji.
+ ***********************************************************************/
 
 package model;
 

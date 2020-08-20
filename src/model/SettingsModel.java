@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SettingsModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model sekcije podesavanja
+ ***********************************************************************/
+
 package model;
 
 import java.io.BufferedReader;
@@ -23,7 +29,7 @@ public class SettingsModel {
 	}
 
 	/**
-	 * Reads themes from file system and adds them to collection
+	 * Metoda ucitava postojece teme iz JSON fajlova
 	 */
 	private void loadThemes() {
 		this.themes = new HashMap<>();
@@ -43,6 +49,13 @@ public class SettingsModel {
 		}
 	}
 
+	/**
+	 * Metoda cuva trenutna podesavanja 
+	 * @param theme - naziv izabrane teme
+	 * @param graphStyle - stil grafikona
+	 * @param threads - maksimalan broj niti
+	 * @param files - minimalan broj fajlova po niti
+	 */
 	public void saveSettings(String theme, String graphStyle, int threads, int files) {
 		preferences.setThemeName(theme);
 		Context.getContext().setColorTheme(themes.get(theme));

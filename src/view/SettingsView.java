@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SettingsView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled sekcije podesavanja
+ ***********************************************************************/
+
 package view;
 
 import java.awt.Dimension;
@@ -72,6 +78,9 @@ public class SettingsView extends JPanel {
 		new SettingsController(model, this);
 	}
 
+	/**
+	 * Metoda kreira panel sa podesavanjima vezanim za izbor teme
+	 */
 	private JPanel createThemeRow() {
 		Context context = Context.getContext();
 		ColorTheme theme = context.getColorTheme();
@@ -104,6 +113,9 @@ public class SettingsView extends JPanel {
 		return panel;
 	}
 
+	/**
+	 * Metoda kreira panel sa podesavanjima vezanim za stil grafikona
+	 */
 	private JPanel createGraphRow() {
 		Context context = Context.getContext();
 		ColorTheme theme = context.getColorTheme();
@@ -138,6 +150,9 @@ public class SettingsView extends JPanel {
 		return panel;
 	}
 
+	/**
+	 * Metoda kreira panel sa podesavanjima vezanim za maksimalni broj niti
+	 */
 	private JPanel createThreadsRow() {
 		Context context = Context.getContext();
 		ColorTheme theme = context.getColorTheme();
@@ -160,6 +175,9 @@ public class SettingsView extends JPanel {
 		return panel;
 	}
 
+	/**
+	 * Metoda kreira panel sa podesavanjima vezanim za izbor minimalnog broja fajlova po niti
+	 */
 	private JPanel createFilesRow() {
 		Context context = Context.getContext();
 		ColorTheme theme = context.getColorTheme();
@@ -182,6 +200,9 @@ public class SettingsView extends JPanel {
 		return panel;
 	}
 
+	/**
+	 * Metoda kreira panel sa kontrolnom dugmadi
+	 */
 	private JPanel createButtonsRow() {
 		Font fontLg = new Font(Context.getContext().getFonts().getMainButtonFont().getName(), Font.TRUETYPE_FONT, 32);
 
@@ -200,6 +221,9 @@ public class SettingsView extends JPanel {
 		return panel;
 	}
 
+	/**
+	 * Metoda podesava vrijednosti unesene u komponentama na osnovu trenutnih podesavanja
+	 */
 	public void updateFieldValues() {
 		Preferences preferences = Context.getContext().getPreferences();
 		this.themesCmbBox.setSelectedItem(preferences.getThemeName());

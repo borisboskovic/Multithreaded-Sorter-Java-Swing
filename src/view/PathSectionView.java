@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	PathSectionView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled podsekcije serijskog testa
+ ***********************************************************************/
+
 package view;
 
 import java.awt.FlowLayout;
@@ -35,7 +41,6 @@ public class PathSectionView extends JPanel {
 	private JTextField pathTxtField;
 	private ColorTheme theme;
 
-	//Constructor
 	public PathSectionView(PathSectionModel model) {
 		this.theme = Context.getContext().getColorTheme();
 		this.model = model;
@@ -53,6 +58,10 @@ public class PathSectionView extends JPanel {
 		setOpaque(false);
 	}
 
+	/**
+	 * Metoda postavlja redni broj sekcije
+	 * @param num - redni broj
+	 */
 	private void setUpNumber(int num) {
 		JPanel panel = new JPanel();
 		number = new JLabel(String.valueOf(num));
@@ -62,6 +71,9 @@ public class PathSectionView extends JPanel {
 		this.add(panel);
 	}
 
+	/**
+	 * Metoda kreira i dodaje dugme za uklanjanje podsekcije
+	 */
 	private void setUpRemoveButton() {
 		JPanel panel = new JPanel();
 		BoxLayout layout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
@@ -75,6 +87,9 @@ public class PathSectionView extends JPanel {
 		this.add(panel);
 	}
 
+	/**
+	 * Metoda kreira i dodaje komponente u pogled
+	 */
 	private void setUpMainSection() {
 		JPanel mainSection = new JPanel();
 		BoxLayout layout = new BoxLayout(mainSection, BoxLayout.PAGE_AXIS);
@@ -126,6 +141,9 @@ public class PathSectionView extends JPanel {
 		messageLabel.setText(model.getMessage());
 	}
 
+	/**
+	 * Listener zaduzen za uklanjanje podsekcije pritiskom na dugme Ukloni
+	 */
 	private ActionListener removeBtnListener = new ActionListener() {
 
 		@Override
@@ -137,6 +155,9 @@ public class PathSectionView extends JPanel {
 		}
 	};
 
+	/**
+	 * Listener zaduzen za azuriranje modela pri promjeni putanje u tekstualnom polju
+	 */
 	private DocumentListener textChangeListener = new DocumentListener() {
 
 		@Override

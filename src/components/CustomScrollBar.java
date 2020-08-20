@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	CustomScrollBarr.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise prilagodjeni korisnicki interfejs scroll trake
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Dimension;
@@ -49,6 +55,10 @@ public class CustomScrollBar extends MetalScrollBarUI {
 		super.paint(g, c);
 	}
 
+	/**
+	 * Kreira se dugme na ivicama trake, dimentija 0, 0
+	 * @return
+	 */
 	private JButton createZeroButton() {
 		JButton button = new JButton("zero button");
 		Dimension zeroDim = new Dimension(0, 0);

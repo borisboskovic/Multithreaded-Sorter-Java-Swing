@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	SinglethreadedTestController.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise kontroler sekcije serijski test
+ ***********************************************************************/
+
 package controller;
 
 import java.awt.Dimension;
@@ -23,6 +29,9 @@ public class SinglethreadedTestController {
 		view.getSortButton().addActionListener(sortBtnListener);
 	}
 
+	/**
+	 * Listener koji otvara fajl dijalog prozor, te omogucuje dodavanje fajlova
+	 */
 	private ActionListener addBtnListener = new ActionListener() {
 
 		@Override
@@ -42,6 +51,9 @@ public class SinglethreadedTestController {
 		}
 	};
 
+	/**
+	 * Listener za uklanjanje svih fajlova iz sekcije serijski test
+	 */
 	private ActionListener removeBtnListener = new ActionListener() {
 
 		@Override
@@ -51,6 +63,9 @@ public class SinglethreadedTestController {
 		}
 	};
 
+	/**
+	 * Listener za pokretanje testa
+	 */
 	private ActionListener sortBtnListener = new ActionListener() {
 
 		@Override

@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	Algorithms.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Klasa zaduzena za cuvanje referenci na postojece algoritme
+ * 			sortiranja
+ ***********************************************************************/
+
 package settings;
 
 import java.util.ArrayList;
@@ -18,6 +25,9 @@ public class Algorithms {
 
 	private Vector<String> list;
 
+	/**
+	 * Privatni konstruktor. Singleton klasa
+	 */
 	private Algorithms() {
 		list = new Vector<>();
 		list.add("Quick Sort");
@@ -29,16 +39,29 @@ public class Algorithms {
 		list.add("Shell Sort");
 	};
 
+	/**
+	 * Dohvatanje singleton instance klase
+	 * @return - instanca
+	 */
 	public static Algorithms getInstance() {
 		if (instance == null)
 			instance = new Algorithms();
 		return instance;
 	}
 
+	/**
+	 * Metoda vradca imena svih postojecih algoritama u listi
+	 */
 	public Vector<String> getList() {
 		return list;
 	}
 
+	/**
+	 * Metoda na osnovu imena algoritma vraca njegovu instancu
+	 * @param name - ime algoritma
+	 * @param array - niz za sortiranje
+	 * @return  - algoritam sa dodatim nizom
+	 */
 	public SortingAlgorithm createAlgorithm(String name, ArrayList<Integer> array) {
 		if (name.equals(list.get(0)))
 			return new QuickSort(array);

@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	GeneratorModel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise model sekcije generator test podataka
+ ***********************************************************************/
+
 package model;
 
 import java.util.ArrayList;
@@ -15,16 +21,26 @@ public class GeneratorModel implements SubjectInterface {
 		generators.add(model);
 	}
 
+	/**
+	 * Metoda zaduzena za dodavanje nove podsekcije
+	 * @param generator - podsekcija koja se dodaje
+	 */
 	public void addGenerator(GeneratorSectionModel generator) {
 		generator.setSectionNumber(generators.size() + 1);
 		generators.add(generator);
 
 	}
 
+	/**
+	 * Metoda uklanja sve podsekcije
+	 */
 	public void clearGenerators() {
 		generators = new ArrayList<>();
 	}
 
+	/**
+	 * @return - sve podsekcije koje se nalaze unutar komponente
+	 */
 	public ArrayList<GeneratorSectionModel> getGenerators() {
 		return generators;
 	}
@@ -52,6 +68,9 @@ public class GeneratorModel implements SubjectInterface {
 		}
 	}
 
+	/**
+	 * Metoda poziva generisanje nad svim podsekcijama
+	 */
 	public void generateAll() {
 		for (GeneratorSectionModel sectionModel : generators)
 			if (sectionModel.validate())

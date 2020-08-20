@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	Context.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Singleton klasa, nosi informacije o trenutnim podesavanjima
+ * 			aplikacije i trenutno izabranoj temi 
+ ***********************************************************************/
+
 package settings;
 
 import java.awt.Color;
@@ -30,6 +37,9 @@ public class Context {
 		readFonts();
 	}
 
+	/**
+	 * Metoda vraca singleton instancu klase
+	 */
 	public static Context getContext() {
 		if (instance == null)
 			instance = new Context();
@@ -37,7 +47,8 @@ public class Context {
 	}
 
 	/**
-	 * Reads preferences from file
+	 * Metoda cita podesavanja iz JSON fajla, u slucaju da to nije moguce kreira se fajl
+	 * sa podrazumijevanim podesavanjima.
 	 */
 	private void readPreferences() {
 		Gson gson = new GsonBuilder().create();
@@ -51,7 +62,8 @@ public class Context {
 	}
 
 	/**
-	 * Reads color theme from file
+	 * Metoda cita temu iz JSON fajla. U slucaju da to nije moguce kreira se fajl
+	 * sa podrazumijevanim podesavanjima.
 	 */
 	private void readTheme() {
 		Gson gson = new GsonBuilder().create();
@@ -69,7 +81,8 @@ public class Context {
 	}
 
 	/**
-	 * Reads font settings from file
+	 * Citanje podesavanja vezanih za font iz JSON fajla. U slucaju da to nije moguce kreira se fajl
+	 * sa podrazumijevanim podesavanjima.
 	 */
 	private void readFonts() {
 		Gson gson = new GsonBuilder().create();
@@ -84,7 +97,8 @@ public class Context {
 	}
 
 	/**
-	 * Registers user fonts to graphical ennvironment
+	 * Registrovanje korisnickih fontova u graficko okruzenje. Metoda se koristi za dodavanje novih fontova,
+	 * koji nisu dodati unutar podesavanja operativnog sistema
 	 */
 	public void registerFonts() {
 		File fontsDirectory = new File("resources//fonts");
@@ -111,6 +125,9 @@ public class Context {
 		}
 	}
 
+	/**
+	 * Metoda cuva trenutna podesavanja u tekstualni fajl (JSON)
+	 */
 	public void savePreferences() {
 		Gson gson = new GsonBuilder().create();
 		try {
@@ -122,7 +139,7 @@ public class Context {
 	}
 
 	/**
-	 * Writes default preferences to file
+	 * Metoda zaduzena za zapisivanje podrazumijevanih podesavanja u JSON fajl
 	 */
 	public void writeDefaultPreferences() {
 		preferences = new Preferences();
@@ -142,6 +159,9 @@ public class Context {
 		}
 	}
 
+	/**
+	 * Metoda zaduzena za zapisivanje podrazumijevane teme u JSON fajl
+	 */
 	public void writeDefaultTheme() {
 		colorTheme = new ColorTheme();
 		colorTheme.setThemeColor(new Color(92, 92, 92));
@@ -168,6 +188,9 @@ public class Context {
 		}
 	}
 
+	/**
+	 * Metoda zaduzena za zapisivanje podrazumijevanih podesavanja vezanih za font u JSON fajl
+	 */
 	public void writeDefaultFontSettings() {
 		fonts = new FontTheme();
 		fonts.setPanelButtonFont(new Font("Roboto Cn", Font.PLAIN, 20));

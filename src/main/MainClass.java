@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	MainClass.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Klasa predstavlja ulaznu tacku aplikacije. Pokrece glavni
+ * 			prozor aplikacije.
+ ***********************************************************************/
+
 package main;
 
 import model.PanelSwitchingModel;

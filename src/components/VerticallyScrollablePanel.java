@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	VerticallyScrollablePanel.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise klasu izvedenu iz klase JPanel cije se dimenzije po
+ * 			visini prilagodjavaju velicini i broju elemenata unutar nje.
+ ***********************************************************************/
+
 package components;
 
 import java.awt.Dimension;

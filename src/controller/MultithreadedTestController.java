@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Modul:  	MultithreadedTestController.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise kontroler sekcije Paralelni test
+ ***********************************************************************/
+
 package controller;
 
 import java.awt.Dimension;
@@ -25,6 +31,9 @@ public class MultithreadedTestController {
 		this.view.getBrowseBtn().addActionListener(browseBtnListener);
 	}
 
+	/**
+	 * Metoda provjerava da li zadati minimalan broj fajlova prekoracuje trenutne postavke
+	 */
 	private Boolean validateNumOfFiles() {
 		try {
 			int num = Integer.parseInt(view.getMinFilesPerThread().getText());
@@ -34,6 +43,9 @@ public class MultithreadedTestController {
 		}
 	}
 
+	/**
+	 * Listener za dugme Sortiraj
+	 */
 	private ActionListener sortBtnListener = new ActionListener() {
 
 		@Override
@@ -60,6 +72,9 @@ public class MultithreadedTestController {
 		}
 	};
 
+	/**
+	 * Listener za dugme browse. Otvara Fajl dijalog prozor.
+	 */
 	private ActionListener browseBtnListener = new ActionListener() {
 
 		@Override

@@ -1,3 +1,10 @@
+/***********************************************************************
+ * Modul:  	MultithreadedTestView.java
+ * Autori:  Milica Milosevic, Boris Boskovic
+ * Svrha: 	Definise pogled sekcije paralelni test
+ ***********************************************************************/
+
+
 package view;
 
 import java.awt.Dimension;
@@ -71,6 +78,9 @@ public class MultithreadedTestView extends JPanel {
 		new MultithreadedTestController(model, this);
 	}
 
+	/**
+	 * Metoda kreira panel sa tekstualnim poljem za unos putanje
+	 */
 	private JPanel createPathPanel(ColorTheme th) {
 		Font lblFont = Context.getContext().getFonts().getLabelFont();
 
@@ -98,6 +108,9 @@ public class MultithreadedTestView extends JPanel {
 		return container;
 	}
 
+	/**
+	 * Metoda kreira panel sa drop down listom za izbor algoritma sortiranja
+	 */
 	private JPanel createAlgorithmPanel(ColorTheme th) {
 		Font lblFont = Context.getContext().getFonts().getLabelFont();
 
@@ -127,6 +140,9 @@ public class MultithreadedTestView extends JPanel {
 		return panel;
 	}
 
+	/**
+	 * Metoda kreira panel sa poljima za unos parametara testa
+	 */
 	private JPanel createAmmountPanel(ColorTheme th) {
 		JPanel panel = new JPanel();
 		Font lblFont = Context.getContext().getFonts().getLabelFont();
@@ -183,6 +199,9 @@ public class MultithreadedTestView extends JPanel {
 		return container;
 	}
 
+	/**
+	 * Metoda kreira panel sa tekstualnim uputstvom koje se odnosi na minimalan broj fajlova
+	 */
 	private JPanel createNoticePanel(ColorTheme th) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -205,6 +224,9 @@ public class MultithreadedTestView extends JPanel {
 		return container;
 	}
 
+	/**
+	 * Metoda kreira panel sa dugmadima
+	 */
 	private JPanel createBtnPanel(ColorTheme th) {
 		Font fontLg = new Font(Context.getContext().getFonts().getMainButtonFont().getName(), Font.TRUETYPE_FONT, 32);
 
@@ -250,6 +272,9 @@ public class MultithreadedTestView extends JPanel {
 		super.paint(g);
 	}
 
+	/**
+	 * Metoda azurira model sekcije na osnovu stanja pogleda
+	 */
 	public void updateModel() {
 		model.setPath(path.getText());
 		model.setAlgorithmName(algorithm.getSelectedItem().toString());
